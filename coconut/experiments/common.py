@@ -34,6 +34,10 @@ CKPT_FILE = "stage4_checkpoint_25"
 START, END, LATENT = "<|start-latent|>", "<|end-latent|>", "<|latent|>"
 MARKERS = (START, END, LATENT)  # same order as tokenizer.add_tokens in run.py
 MAX_POSITIONS = 1024  # GPT-2 context limit
+# pivot (docs/planning/qwen7b_coconut_pivot.md): the saved tokenizer lacks the 3 Coconut tokens,
+# but the model has 3 extra embedding rows (vocab 151668 = 151665 + 3)
+QWEN_MODEL_ID = "agurung/coconut-qwen2.5-7b"
+QWEN_MARKER_IDS = [151665, 151666, 151667]  # expected ids of START, END, LATENT
 # old checkpoints can hold these constant causal-mask buffers; they are not weights
 BUFFER_KEY_ENDINGS = (".attn.bias", ".attn.masked_bias")
 
@@ -145,6 +149,41 @@ def load_model(tokenizer, ids, device, ckpt=None):
     return model, info
 
 
+def load_qwen(device, dtype=torch.bfloat16):
+    """agurung/coconut-qwen2.5-7b + the Coconut wrapper. Returns (model, tokenizer, ids, info).
+
+    Adds the 3 Coconut tokens in run.py order and raises unless they get exactly the
+    model's 3 extra rows (risk R1 in the pivot plan).
+    """
+    tokenizer = AutoTokenizer.from_pretrained(QWEN_MODEL_ID)
+    n_saved = len(tokenizer)
+    for token in MARKERS:
+        tokenizer.add_tokens(token)
+    ids = {
+        "start": tokenizer.convert_tokens_to_ids(START),
+        "end": tokenizer.convert_tokens_to_ids(END),
+        "latent": tokenizer.convert_tokens_to_ids(LATENT),
+        "eos": tokenizer.eos_token_id,
+    }
+    base = AutoModelForCausalLM.from_pretrained(QWEN_MODEL_ID, torch_dtype=dtype)
+    rows = base.get_input_embeddings().weight.shape[0]
+    info = {
+        "model": QWEN_MODEL_ID, "dtype": str(dtype), "tokenizer_len_saved": n_saved,
+        "tokenizer_len": len(tokenizer), "embedding_rows": rows,
+        "marker_ids": [ids["start"], ids["end"], ids["latent"]],
+    }
+    print(info, flush=True)
+    if rows != len(tokenizer) or info["marker_ids"] != QWEN_MARKER_IDS:
+        raise RuntimeError(f"latent tokens do not match the model's extra rows (risk R1): {info}")
+    model = Coconut(base, ids["latent"], ids["start"], ids["end"], ids["eos"])
+    # read by greedy_generate: Qwen ends with <|im_end|> or <|endoftext|>, and has a long context
+    model.eos_ids = {tokenizer.eos_token_id, tokenizer.convert_tokens_to_ids("<|endoftext|>")}
+    model.max_positions = base.config.max_position_embeddings
+    model.to(device)
+    model.eval()
+    return model, tokenizer, ids, info
+
+
 def encode(tokenizer, text, device):
     return torch.tensor([tokenizer.encode(text)], device=device)
 
@@ -212,9 +251,12 @@ def greedy_generate(model, tokenizer, embeds, max_new_tokens, stop_strings=(), u
     Coconut.generate.
     """
     base = model.base_causallm
+    # GPT-2 defaults; load_qwen sets these on the model
+    eos_ids = getattr(model, "eos_ids", {tokenizer.eos_token_id})
+    max_positions = getattr(model, "max_positions", MAX_POSITIONS)
     n_prompt = embeds.shape[1]
-    if n_prompt + max_new_tokens > MAX_POSITIONS:
-        raise ValueError(f"prompt {n_prompt} + {max_new_tokens} new tokens > {MAX_POSITIONS}")
+    if n_prompt + max_new_tokens > max_positions:
+        raise ValueError(f"prompt {n_prompt} + {max_new_tokens} new tokens > {max_positions}")
     device = embeds.device
 
     out = base(inputs_embeds=embeds, use_cache=use_cache)
@@ -223,7 +265,7 @@ def greedy_generate(model, tokenizer, embeds, max_new_tokens, stop_strings=(), u
     new_ids, stop_reason = [], "max_new_tokens"
     for step in range(max_new_tokens):
         next_id = int(out.logits[0, -1].argmax())
-        if next_id == tokenizer.eos_token_id:
+        if next_id in eos_ids:
             stop_reason = "eos"
             break
         new_ids.append(next_id)

@@ -123,7 +123,23 @@ def main():
     native_file = os.path.join(folder, "native.json")
     if os.path.exists(native_file):
         with open(native_file) as f:
-            results["native"] = native_summary(json.load(f)["records"])
+            native_records = json.load(f)["records"]
+        results["native"] = native_summary(native_records)
+        # pivot plan D2: same native prompts, latent slots without hidden-state feedback
+        plain_file = os.path.join(folder, "native_plain.json")
+        if os.path.exists(plain_file):
+            with open(plain_file) as f:
+                plain_records = json.load(f)["records"]
+            results["native_plain"] = native_summary(plain_records)
+            results["native_pairs"] = {}
+            for k in sorted({r["k"] for r in plain_records}):
+                fed = sorted((r for r in native_records if r["k"] == k), key=lambda r: r["idx"])
+                plain = sorted((r for r in plain_records if r["k"] == k), key=lambda r: r["idx"])
+                if [r["idx"] for r in fed] != [r["idx"] for r in plain]:
+                    raise ValueError(f"k={k}: native and native_plain are not on the same questions")
+                results["native_pairs"][f"k={k}"] = pair_test(
+                    {"records": fed}, {"records": plain}, "feedback", "plain"
+                )
 
     runs = {}
     for setting in sorted(prompts.SETTINGS):
@@ -153,6 +169,12 @@ def main():
         for k, s in results["native"].items():
             print(f"  k={k} latents={s['n_latents']}: {s['acc']:.4f} [{s['ci95'][0]:.3f}, {s['ci95'][1]:.3f}]"
                   f"  n={s['n']}  new tokens {s['mean_new_tokens']:.1f}  {s['mean_seconds']:.3f}s/question")
+    if "native_pairs" in results:
+        print("Part 1 control: hidden-state feedback vs plain latent embeddings (same prompts)")
+        for k, t in results["native_pairs"].items():
+            plain = results["native_plain"][k.split("=")[1]]
+            print(f"  {k}: plain {plain['acc']:.4f}  diff (feedback - plain) {t['diff']:+.4f}"
+                  f" [{t['ci95'][0]:+.3f}, {t['ci95'][1]:+.3f}]  McNemar p={t['mcnemar_p']:.3g}  -> {t['verdict']}")
     if runs:
         print("Part 2 (few-shot)")
         for s, b in results["fewshot"].items():

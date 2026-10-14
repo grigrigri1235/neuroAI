@@ -21,7 +21,12 @@ Contents:
 - **Where it runs:** Newton GPU cluster (Technion, Slurm), GPU **NVIDIA L40S 47GB**, section 7.
   Claude Code works on **lambda** (it has issues on Newton): code is written on lambda, pushed with git, and the
   user runs it on Newton (same paths, `/home/eran.b/neuroAI`). Logs and results come back through git.
-- **Next step (2026-10-15):** the code is written (`coconut/experiments/`, plan `docs/planning/gpt2_coconut_phase5_impl.md`),
+- **Update 2026-10-15 (after the GPT-2 run):** Part 1 worked (GSM8K 10.4% -> 12.9% -> 21.0% -> 27.1% with
+  0/2/4/6 latents; paper 34.1%). Part 2 hit a floor effect (GPT-2 ignores the few-shot format, writes `### <n>`,
+  S1-S5 = 3.4/10.2/1.1/0.9/1.1%, S3 = S5 on every question). Pivot approved: Part 2 moves to
+  `agurung/coconut-qwen2.5-7b`, behind a gate check (`docs/planning/qwen7b_coconut_pivot.md`), plus a GPT-2 control
+  in its own format (latent slots without feedback). Results: `coconut/results/gpt2/results.json`.
+- **Older next step (2026-10-15, done):** the code is written (`coconut/experiments/`, plan `docs/planning/gpt2_coconut_phase5_impl.md`),
   not run yet. User: set up Newton (section 7.3), `sbatch coconut/experiments/run_gpt2.slurm`, then push `logs/` and
   `coconut/results/gpt2/` back. Then: read the logs, build `analysis.ipynb`.
 

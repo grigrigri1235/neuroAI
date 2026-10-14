@@ -45,8 +45,14 @@ def main():
     parser.add_argument("--max-new-tokens", type=int, default=64)  # run.py uses 64 for GSM8K
     parser.add_argument("--data", default="data/gsm_test.json")
     parser.add_argument("--ckpt", default=None)
-    parser.add_argument("--out", default="results/gpt2/native.json")
+    parser.add_argument("--fill", default="official", choices=["official", "plain"],
+                        help="official: Coconut.generate (hidden-state feedback). plain: same input, latent "
+                             "slots keep their token embedding (no feedback), our greedy loop (pivot plan D2)")
+    parser.add_argument("--out", default=None,
+                        help="default: results/gpt2/native.json (official) or native_plain.json (plain)")
     args = parser.parse_args()
+    if args.out is None:
+        args.out = "results/gpt2/native.json" if args.fill == "official" else "results/gpt2/native_plain.json"
 
     common.set_seed(0)
     tokenizer, ids = common.load_tokenizer()
@@ -64,14 +70,18 @@ def main():
                 input_ids = torch.tensor([row["input_ids"]], device=device)
                 common.sync(device)
                 t0 = time.perf_counter()
-                output = model.generate(
-                    input_ids, torch.ones_like(input_ids), max_new_tokens=args.max_new_tokens
-                )
+                if args.fill == "official":
+                    output = model.generate(
+                        input_ids, torch.ones_like(input_ids), max_new_tokens=args.max_new_tokens
+                    )
+                    new_ids = output[0, input_ids.shape[1]:].tolist()
+                else:  # control: no hidden-state feedback (our loop equals Coconut.generate, smoke C3)
+                    embeds = common.get_embeds(model, input_ids, "plain")
+                    new_ids = common.greedy_generate(model, tokenizer, embeds, args.max_new_tokens)["new_ids"]
                 common.sync(device)
                 seconds = time.perf_counter() - t0
-                new_ids = output[0, input_ids.shape[1]:].tolist()
-                # official scoring, run.py lines 468-469
-                text_output = tokenizer.decode(output[0], skip_special_tokens=True)
+                # official scoring, run.py lines 468-469 (decode question + markers + new tokens)
+                text_output = tokenizer.decode(row["input_ids"] + new_ids, skip_special_tokens=True)
                 extracted = text_output.split("#")[-1].replace(",", "").strip()
                 gold = answers[row["idx"]]
                 k_records.append({
@@ -96,7 +106,7 @@ def main():
     out = common.path(args.out)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     meta = common.run_meta(
-        part="native", ks=args.ks, max_new_tokens=args.max_new_tokens, data=args.data,
+        part="native", fill=args.fill, ks=args.ks, max_new_tokens=args.max_new_tokens, data=args.data,
         limit=args.limit, seed=0,
     )
     with open(out, "w") as f:
