@@ -373,9 +373,11 @@ bash ~/miniconda.sh -b -p /home/eran.b/miniconda3 && rm ~/miniconda.sh
 source /home/eran.b/miniconda3/etc/profile.d/conda.sh
 conda init bash   # optional: conda in every new terminal
 
-# env (env name: neuroAI_project)
-conda env create -f environment_newton.yml > logs/setup_env.log 2>&1
+# env (env name: neuroAI_project). "conda env create -f environment_newton.yml" FAILS on Newton with
+# CondaToSNonInteractiveError (Anaconda defaults channels need a Terms-of-Service accept), so skip those channels:
+conda create -y -n neuroAI_project --override-channels -c conda-forge python=3.12 pip > logs/setup_env.log 2>&1
 conda activate neuroAI_project
+pip install torch==2.6.0 numpy==2.1.3 transformers==4.52.4 datasets==3.6.0 tokenizers==0.21.1 tqdm==4.67.0 pyyaml scipy matplotlib jupyter nbconvert ipykernel >> logs/setup_env.log 2>&1
 
 # GSM8K in Coconut format (Part 1) + GPT-2 and the checkpoint into the HF cache, with a CPU load check
 cd coconut
@@ -397,7 +399,7 @@ git clone https://github.com/allenai/entailment_bank.git   # only the old Phase 
 
 ### 7.4 Slurm and env vars
 New (Phase 5): `coconut/experiments/run_gpt2.slurm`, Technion Newton template format: `--cpus-per-task=8`,
-`--gres=gpu:L40S:1` (check the GPU name with `sinfo -o "%20N %40G"`), `--mem=32G`, `--time=04:00:00`, mail to
+`--gres=gpu:L40:1` (Newton's Slurm name for the L40S; `gpu:L40S:1` was rejected with "Requested node configuration is not available". Check names with `sinfo -N -o "%N %G"`), `--mem=32G`, `--time=04:00:00`, mail to
 `eran.b@cs.technion.ac.il`, `-o/-e` into `logs/` (relative to the submit folder = repo root, so `logs/` must exist).
 One job: smoke test (gate) -> full native -> full S1-S5 in parallel on one GPU -> score. Uses `HF_HUB_OFFLINE=1`.
 Old slurm header (`coconut/eval_qwen_1.5b_iterative_all.slurm`, lambda): `--gres=gpu:1 --cpus-per-task=2 --mem=32G --time=12:00:00`, outputs to `slurm_logs/<name>_%j.out/.err`.

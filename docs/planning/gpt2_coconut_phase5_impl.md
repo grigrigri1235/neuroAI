@@ -146,7 +146,7 @@ Greedy, seed 0, cudnn deterministic, fp32, batch size 1, KV cache on. 64 new tok
 
 ## 4. Newton job (`run_gpt2.slurm`)
 
-- Technion template: `--cpus-per-task=8`, `--gres=gpu:L40S:1` (no `--nodelist`), mail, job name, `-o/-e` into `logs/`.
+- Technion template: `--cpus-per-task=8`, `--gres=gpu:L40:1` (Newton's Slurm name for the L40S; `L40S` was rejected; no `--nodelist`), mail, job name, `-o/-e` into `logs/`.
   Added: `--mem=32G`, `--time=04:00:00`. Matlab module line dropped. `source .../conda.sh` added before
   `conda activate` (needed in batch jobs).
 - `HF_HUB_OFFLINE=1`: GPT-2 and the checkpoint are downloaded during setup on the login node (compute nodes may

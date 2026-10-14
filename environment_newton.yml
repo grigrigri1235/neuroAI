@@ -1,7 +1,8 @@
 # Lean environment for the Phase 5 GPT-2 Coconut runs on Newton (plan: docs/planning/gpt2_coconut_phase5_impl.md).
 # Same versions as environment.yml for the shared packages. No tensorflow / wandb / BLEURT: not needed for GSM8K.
-# conda-forge only ("nodefaults"), so conda never touches the Anaconda "defaults" channel (no Terms-of-Service prompt).
-#   conda env create -f environment_newton.yml
+# NOTE: on Newton, "conda env create -f" fails with CondaToSNonInteractiveError (the Anaconda "defaults" channels are in the
+# conda config, and "nodefaults" here does not stop the Terms-of-Service check). So on Newton create the env with
+# --override-channels -c conda-forge and pip install the list below (commands: KNOWLEDGE_RETENTION.md section 7.3).
 name: neuroAI_project
 channels:
   - conda-forge
