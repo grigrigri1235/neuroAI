@@ -1,5 +1,5 @@
-docs/
-__pycache__/
+# Too big for GitHub (>100MB files) or a nested git repo. See KNOWLEDGE_RETENTION.md section 7.
 coconut/wandb/
 coconut/bleurt-large-512/
 coconut/entailment_bank/
+__pycache__/
