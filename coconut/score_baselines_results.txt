@@ -1,0 +1,5 @@
+Evaluating Baseline Results...
+predictions_gsm8k_1.5b_baseline_a.json Accuracy: 34/100 (34.00%)
+predictions_gsm8k_1.5b_baseline_b.json Accuracy: 40/100 (40.00%)
+predictions_qwen_1.5b_baseline_a.json Avg BLEURT: 0.4052
+predictions_qwen_1.5b_baseline_b.json Avg BLEURT: 0.4273

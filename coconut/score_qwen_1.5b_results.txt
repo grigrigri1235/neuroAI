@@ -1,0 +1,3 @@
+Evaluating results...
+GSM8K Accuracy: 10/100 (10.00%)
+EntailmentBank Avg BLEURT: 0.4021

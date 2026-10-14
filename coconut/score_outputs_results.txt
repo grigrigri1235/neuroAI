@@ -1,0 +1,7 @@
+=== Evaluating Results ===
+GSM8K [Iterative Latents] Accuracy: 12/100 (12.00%)
+GSM8K [No-Latents Control] Accuracy: 6/100 (6.00%)
+Loading BLEURT-Large-512...
+EntailmentBank [Iterative Latents] Avg BLEURT: 0.4010
+EntailmentBank [No-Latents Control] Avg BLEURT: 0.3924
+=== Scoring Complete ===
