@@ -1,0 +1,31 @@
+Map (num_proc=32):   0%|          | 0/1319 [00:00<?, ? examples/s]Map (num_proc=32):   3%|▎         | 42/1319 [00:00<00:12, 98.41 examples/s]Map (num_proc=32):  10%|▉         | 126/1319 [00:00<00:04, 265.19 examples/s]Map (num_proc=32):  16%|█▌        | 210/1319 [00:00<00:02, 393.34 examples/s]Map (num_proc=32):  25%|██▌       | 335/1319 [00:00<00:01, 576.24 examples/s]Map (num_proc=32):  32%|███▏      | 417/1319 [00:00<00:01, 591.79 examples/s]Map (num_proc=32):  38%|███▊      | 499/1319 [00:01<00:01, 559.97 examples/s]Map (num_proc=32):  44%|████▍     | 581/1319 [00:01<00:01, 588.96 examples/s]Map (num_proc=32):  53%|█████▎    | 704/1319 [00:01<00:00, 724.05 examples/s]Map (num_proc=32):  60%|█████▉    | 786/1319 [00:01<00:00, 600.70 examples/s]Map (num_proc=32):  66%|██████▌   | 868/1319 [00:01<00:00, 613.75 examples/s]Map (num_proc=32):  75%|███████▌  | 991/1319 [00:01<00:00, 705.39 examples/s]Map (num_proc=32):  81%|████████▏ | 1073/1319 [00:01<00:00, 689.35 examples/s]Map (num_proc=32):  88%|████████▊ | 1155/1319 [00:02<00:00, 661.85 examples/s]Map (num_proc=32):  97%|█████████▋| 1278/1319 [00:02<00:00, 774.07 examples/s]Map (num_proc=32): 100%|██████████| 1319/1319 [00:02<00:00, 564.89 examples/s]
+Map (num_proc=32):   0%|          | 0/1319 [00:00<?, ? examples/s]Map (num_proc=32):  13%|█▎        | 168/1319 [00:00<00:01, 911.66 examples/s]Map (num_proc=32):  32%|███▏      | 417/1319 [00:00<00:00, 1470.49 examples/s]Map (num_proc=32):  60%|█████▉    | 786/1319 [00:00<00:00, 2207.24 examples/s]Map (num_proc=32): 100%|██████████| 1319/1319 [00:00<00:00, 2262.37 examples/s]
+Map (num_proc=32):   0%|          | 0/1319 [00:00<?, ? examples/s]Map (num_proc=32):  10%|▉         | 126/1319 [00:00<00:01, 920.08 examples/s]Map (num_proc=32):  22%|██▏       | 294/1319 [00:00<00:01, 1017.87 examples/s]Map (num_proc=32):  38%|███▊      | 499/1319 [00:00<00:00, 1318.22 examples/s]Map (num_proc=32):  63%|██████▎   | 827/1319 [00:00<00:00, 1913.45 examples/s]Map (num_proc=32): 100%|██████████| 1319/1319 [00:00<00:00, 1967.65 examples/s]
+Map (num_proc=32):   0%|          | 0/1319 [00:00<?, ? examples/s]Map (num_proc=32):  10%|▉         | 126/1319 [00:00<00:00, 1251.79 examples/s]Map (num_proc=32):  22%|██▏       | 294/1319 [00:00<00:00, 1095.62 examples/s]Map (num_proc=32):  35%|███▍      | 458/1319 [00:00<00:00, 1299.55 examples/s]Map (num_proc=32):  78%|███████▊  | 1032/1319 [00:00<00:00, 2834.16 examples/s]Map (num_proc=32): 100%|██████████| 1319/1319 [00:00<00:00, 2243.91 examples/s]
+Map (num_proc=32):   0%|          | 0/1319 [00:00<?, ? examples/s]Map (num_proc=32):   3%|▎         | 42/1319 [00:00<00:03, 419.23 examples/s]Map (num_proc=32):  16%|█▌        | 210/1319 [00:00<00:01, 1044.54 examples/s]Map (num_proc=32):  29%|██▊       | 376/1319 [00:00<00:00, 1257.61 examples/s]Map (num_proc=32):  66%|██████▌   | 868/1319 [00:00<00:00, 2522.09 examples/s]Map (num_proc=32): 100%|██████████| 1319/1319 [00:00<00:00, 2226.54 examples/s]
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+checkpoint: /home/eran.b/.cache/huggingface/hub/models--tsrigo--coconut/snapshots/c88fc87555c7601f22595d98adda7f3f56ea89b6/stage4_checkpoint_25
+  150 keys, first: ['base_causallm.transformer.wte.weight', 'base_causallm.transformer.wpe.weight', 'base_causallm.transformer.h.0.ln_1.weight']
+<All keys matched successfully>
+k=0:   0%|          | 0/1319 [00:00<?, ?it/s]k=0: 100%|██████████| 1319/1319 [00:25<00:00, 52.26it/s]
+k=0 idx=0 gold=18 extracted='48' output='### 48'
+k=0 idx=1 gold=3 extracted='3' output='### 3'
+k=0 idx=2 gold=70000 extracted='25000' output='### 25000'
+k=0 (0 latents): accuracy 0.1039 on 1319 questions
+k=1:   0%|          | 0/1319 [00:00<?, ?it/s]Passing a tuple of `past_key_values` is deprecated and will be removed in Transformers v4.53.0. You should pass an instance of `Cache` instead, e.g. `past_key_values=DynamicCache.from_legacy_cache(past_key_values)`.
+k=1:  77%|███████▋  | 1013/1319 [00:30<00:09, 33.75it/s]k=1: 100%|██████████| 1319/1319 [00:39<00:00, 33.74it/s]
+k=1 idx=0 gold=18 extracted='48' output='### 48'
+k=1 idx=1 gold=3 extracted='3' output='### 3'
+k=1 idx=2 gold=70000 extracted='25000' output='### 25000'
+k=1 (2 latents): accuracy 0.1289 on 1319 questions
+k=2:   0%|          | 0/1319 [00:00<?, ?it/s]k=2:  56%|█████▌    | 736/1319 [00:30<00:23, 24.52it/s]k=2:  56%|█████▌    | 736/1319 [00:45<00:23, 24.52it/s]k=2: 100%|██████████| 1319/1319 [00:53<00:00, 24.49it/s]
+k=2 idx=0 gold=18 extracted='32' output='### 32'
+k=2 idx=1 gold=3 extracted='3' output='### 3'
+k=2 idx=2 gold=70000 extracted='95000' output='### 95000'
+k=2 (4 latents): accuracy 0.2100 on 1319 questions
+k=3:   0%|          | 0/1319 [00:00<?, ?it/s]k=3:  44%|████▎     | 577/1319 [00:30<00:38, 19.21it/s]k=3:  44%|████▎     | 577/1319 [00:41<00:38, 19.21it/s]k=3:  88%|████████▊ | 1155/1319 [01:00<00:08, 19.24it/s]k=3: 100%|██████████| 1319/1319 [01:08<00:00, 19.21it/s]
+k=3 idx=0 gold=18 extracted='44' output='### 44'
+k=3 idx=1 gold=3 extracted='3' output='### 3'
+k=3 idx=2 gold=70000 extracted='95000' output='### 95000'
+k=3 (6 latents): accuracy 0.2707 on 1319 questions
+saved /home/eran.b/neuroAI/coconut/results/gpt2/native.json

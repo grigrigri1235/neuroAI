@@ -1,0 +1,187 @@
+]633;E;echo "=== GPUs per node ===";3ad8570c-ae96-4774-8ec3-16b8d98c8b10]633;C=== GPUs per node ===
+NODELIST GRES CPUS MEMORY TIMELIMIT PARTITION STATE
+bruno1 gpu:L40:8 112 1031699 infinite public* mixed
+bruno1 gpu:L40:8 112 1031699 infinite espresso mixed
+bruno1 gpu:L40:8 112 1031699 infinite a_temp mixed
+bruno2 gpu:L40:8 112 1011713 infinite public* mixed
+bruno2 gpu:L40:8 112 1011713 infinite espresso mixed
+bruno2 gpu:L40:8 112 1011713 infinite a_temp mixed
+bruno3 gpu:L40:8 96 1011717 infinite public* mixed
+bruno3 gpu:L40:8 96 1011717 infinite espresso mixed
+bruno3 gpu:L40:8 96 1011717 infinite a_temp mixed
+bruno4 gpu:L40:8(S:0-1) 128 1031821 infinite public* mixed
+bruno4 gpu:L40:8(S:0-1) 128 1031821 infinite espresso mixed
+bruno4 gpu:L40:8(S:0-1) 128 1031821 infinite a_temp mixed
+bruno5 gpu:PRO6000:8 128 1542721 infinite public* mixed
+bruno5 gpu:PRO6000:8 128 1542721 infinite espresso mixed
+bruno5 gpu:PRO6000:8 128 1542721 infinite a_temp mixed
+chuck1 gpu:A100:8 256 2050637 infinite public* mixed
+chuck1 gpu:A100:8 256 2050637 infinite ash mixed
+chuck1 gpu:A100:8 256 2050637 infinite a_temp mixed
+chuck2 gpu:A100:8 256 2050637 infinite public* mixed
+chuck2 gpu:A100:8 256 2050637 infinite ash mixed
+chuck2 gpu:A100:8 256 2050637 infinite a_temp mixed
+clair1 gpu:L40:8(S:0-1) 128 1031821 infinite public* mixed
+clair1 gpu:L40:8(S:0-1) 128 1031821 infinite clair mixed
+clair1 gpu:L40:8(S:0-1) 128 1031821 infinite a_temp mixed
+dym-lab gpu:A40:8 96 1001716 infinite public* mixed
+dym-lab gpu:A40:8 96 1001716 infinite dym mixed
+dym-lab gpu:A40:8 96 1001716 infinite a_temp mixed
+dym-lab2 gpu:A40:8 96 1001717 infinite public* planned
+dym-lab2 gpu:A40:8 96 1001717 infinite dym planned
+dym-lab2 gpu:A40:8 96 1001717 infinite a_temp planned
+dym-lab3 gpu:L40:8(S:0-1) 128 1031821 infinite public* mixed
+dym-lab3 gpu:L40:8(S:0-1) 128 1031821 infinite dym mixed
+dym-lab3 gpu:L40:8(S:0-1) 128 1031821 infinite a_temp mixed
+entropy1 gpu:A100:8 256 2063113 infinite public* mixed
+entropy1 gpu:A100:8 256 2063113 infinite ran mixed
+entropy1 gpu:A100:8 256 2063113 infinite a_temp mixed
+entropy2 gpu:A100:8 256 2063113 infinite public* allocated
+entropy2 gpu:A100:8 256 2063113 infinite ran allocated
+entropy2 gpu:A100:8 256 2063113 infinite a_temp allocated
+euler1 gpu:L40:8 96 1011717 infinite public* mixed
+euler1 gpu:L40:8 96 1011717 infinite euler mixed
+euler1 gpu:L40:8 96 1011717 infinite a_temp mixed
+euler2 gpu:L40:8(S:0-1) 128 1031721 infinite public* mixed
+euler2 gpu:L40:8(S:0-1) 128 1031721 infinite euler mixed
+euler2 gpu:L40:8(S:0-1) 128 1031721 infinite a_temp mixed
+galileo1 gpu:A40:8 96 515522 infinite public* mixed
+galileo1 gpu:A40:8 96 515522 infinite galileo mixed
+galileo1 gpu:A40:8 96 515522 infinite a_temp mixed
+galileo2 gpu:A40:8 96 515522 infinite public* idle
+galileo2 gpu:A40:8 96 515522 infinite galileo idle
+galileo2 gpu:A40:8 96 515522 infinite a_temp idle
+galileo4 gpu:H200:8(S:0-1) 224 2062983 infinite public* mixed
+galileo4 gpu:H200:8(S:0-1) 224 2062983 infinite galileo mixed
+galileo4 gpu:H200:8(S:0-1) 224 2062983 infinite a_temp mixed
+galileo5 gpu:PRO6000:8(S:0-1) 224 2062983 infinite public* mixed
+galileo5 gpu:PRO6000:8(S:0-1) 224 2062983 infinite galileo mixed
+galileo5 gpu:PRO6000:8(S:0-1) 224 2062983 infinite a_temp mixed
+houdini gpu:L40:4 96 515562 infinite public* mixed
+houdini gpu:L40:4 96 515562 infinite houdini mixed
+houdini gpu:L40:4 96 515562 infinite a_temp mixed
+newton1 gpu:1080ti:4,gpu:2080ti:5 64 255807 infinite public* idle
+newton2 gpu:A6000:6 112 772555 infinite newton idle
+newton2 gpu:A6000:6 112 772555 infinite public* idle
+newton3 gpu:A40:10 104 515221 infinite newton mixed
+newton3 gpu:A40:10 104 515221 infinite public* mixed
+newton4 gpu:A40:8 96 1031517 infinite newton mixed
+newton4 gpu:A40:8 96 1031517 infinite public* mixed
+newton5 gpu:L40:8 96 1031517 infinite newton mixed
+newton5 gpu:L40:8 96 1031517 infinite public* mixed
+nlp-2080-1 gpu:2080ti:8 80 192054 infinite public* idle
+nlp-2080-1 gpu:2080ti:8 80 192054 infinite a_temp idle
+nlp-2080-2 gpu:2080ti:8 80 191051 infinite nlp idle
+nlp-2080-2 gpu:2080ti:8 80 191051 infinite public* idle
+nlp-2080-2 gpu:2080ti:8 80 191051 infinite a_temp idle
+nlp-a40-1 gpu:A40:8 96 515322 infinite nlp mixed
+nlp-a40-1 gpu:A40:8 96 515322 infinite public* mixed
+nlp-a40-1 gpu:A40:8 96 515322 infinite a_temp mixed
+nlp-ada-1 gpu:6000ADA:8 128 1000757 infinite nlp idle
+nlp-ada-1 gpu:6000ADA:8 128 1000757 infinite public* idle
+nlp-ada-1 gpu:6000ADA:8 128 1000757 infinite a_temp idle
+nlp-ada-2 gpu:6000ADA:8 128 1000757 infinite nlp mixed
+nlp-ada-2 gpu:6000ADA:8 128 1000757 infinite public* mixed
+nlp-ada-2 gpu:6000ADA:8 128 1000757 infinite a_temp mixed
+nlp-h200-1 gpu:H200:8(S:0-1) 224 2062983 infinite nlp mixed
+nlp-h200-1 gpu:H200:8(S:0-1) 224 2062983 infinite public* mixed
+nlp-h200-1 gpu:H200:8(S:0-1) 224 2062983 infinite a_temp mixed
+nlp-l40-1 gpu:L40:8 96 1001517 infinite nlp mixed
+nlp-l40-1 gpu:L40:8 96 1001517 infinite public* mixed
+nlp-l40-1 gpu:L40:8 96 1001517 infinite a_temp mixed
+nlp-l40-2 gpu:L40:8 96 1001517 infinite nlp idle
+nlp-l40-2 gpu:L40:8 96 1001517 infinite public* idle
+nlp-l40-2 gpu:L40:8 96 1001517 infinite a_temp idle
+nlp-pro6000-1 gpu:PRO6000:8 128 1543721 infinite nlp idle
+nlp-pro6000-1 gpu:PRO6000:8 128 1543721 infinite public* idle
+nlp-pro6000-1 gpu:PRO6000:8 128 1543721 infinite a_temp idle
+nlp-pro6000-2 gpu:PRO6000:8 128 1547721 infinite nlp idle
+nlp-pro6000-2 gpu:PRO6000:8 128 1547721 infinite public* idle
+nlp-pro6000-3 gpu:PRO6000:8 128 1547721 infinite nlp mixed
+nlp-pro6000-3 gpu:PRO6000:8 128 1547721 infinite public* mixed
+plato1 gpu:A4000:16 128 515693 infinite bml mixed
+plato1 gpu:A4000:16 128 515693 infinite public* mixed
+plato1 gpu:A4000:16 128 515693 infinite a_temp mixed
+plato2 gpu:A4000:16 128 515703 infinite bml idle
+plato2 gpu:A4000:16 128 515703 infinite public* idle
+plato2 gpu:A4000:16 128 515703 infinite a_temp idle
+plotinus1 gpu:L4:16 128 513761 infinite bml idle
+plotinus1 gpu:L4:16 128 513761 infinite public* idle
+plotinus1 gpu:L4:16 128 513761 infinite a_temp idle
+plotinus2 gpu:L4:16 128 513761 infinite bml idle
+plotinus2 gpu:L4:16 128 513761 infinite public* idle
+plotinus2 gpu:L4:16 128 513761 infinite a_temp idle
+poincare gpu:mig6000:8 64 505634 infinite mic mixed
+poincare gpu:mig6000:8 64 505634 infinite public* mixed
+ran-mashawsha gpu:titanxp:8 64 128591 infinite ran idle
+ran-mashawsha gpu:titanxp:8 64 128591 infinite public* idle
+ran-mashawsha gpu:titanxp:8 64 128591 infinite a_temp idle
+tdk-bm4 gpu:L40:8 96 1031517 infinite tdk mixed
+tdk-bm4 gpu:L40:8 96 1031517 infinite public* mixed
+tdk-bm4 gpu:L40:8 96 1031517 infinite a_temp mixed
+tdk-bm4 gpu:L40:8 96 1031517 infinite tdk2 mixed
+=== partitions ===
+PARTITION TIMELIMIT NODES GRES
+public* infinite 8 gpu:L40:8
+public* infinite 4 gpu:L40:8(S:0-1)
+public* infinite 4 gpu:PRO6000:8
+public* infinite 4 gpu:A100:8
+public* infinite 6 gpu:A40:8
+public* infinite 2 gpu:H200:8(S:0-1)
+public* infinite 1 gpu:PRO6000:8(S:0-1)
+public* infinite 1 gpu:L40:4
+public* infinite 1 gpu:A40:10
+public* infinite 2 gpu:A4000:16
+public* infinite 1 gpu:mig6000:8
+public* infinite 1 gpu:1080ti:4,gpu:2080ti:5
+public* infinite 1 gpu:A6000:6
+public* infinite 2 gpu:2080ti:8
+public* infinite 2 gpu:6000ADA:8
+public* infinite 2 gpu:L4:16
+public* infinite 1 gpu:titanxp:8
+newton infinite 1 gpu:A40:10
+newton infinite 1 gpu:A40:8
+newton infinite 1 gpu:L40:8
+newton infinite 1 gpu:A6000:6
+nlp infinite 1 gpu:A40:8
+nlp infinite 1 gpu:H200:8(S:0-1)
+nlp infinite 2 gpu:L40:8
+nlp infinite 1 gpu:2080ti:8
+nlp infinite 2 gpu:6000ADA:8
+nlp infinite 3 gpu:PRO6000:8
+bml infinite 2 gpu:A4000:16
+bml infinite 2 gpu:L4:16
+ran infinite 2 gpu:A100:8
+ran infinite 1 gpu:titanxp:8
+galileo infinite 2 gpu:A40:8
+galileo infinite 1 gpu:H200:8(S:0-1)
+galileo infinite 1 gpu:PRO6000:8(S:0-1)
+a_temp infinite 7 gpu:L40:8
+a_temp infinite 4 gpu:L40:8(S:0-1)
+a_temp infinite 2 gpu:PRO6000:8
+a_temp infinite 4 gpu:A100:8
+a_temp infinite 5 gpu:A40:8
+a_temp infinite 2 gpu:H200:8(S:0-1)
+a_temp infinite 1 gpu:PRO6000:8(S:0-1)
+a_temp infinite 1 gpu:L40:4
+a_temp infinite 2 gpu:A4000:16
+a_temp infinite 2 gpu:2080ti:8
+a_temp infinite 2 gpu:6000ADA:8
+a_temp infinite 2 gpu:L4:16
+a_temp infinite 1 gpu:titanxp:8
+tdk infinite 1 gpu:L40:8
+tdk2 infinite 1 gpu:L40:8
+dym infinite 2 gpu:A40:8
+dym infinite 1 gpu:L40:8(S:0-1)
+espresso infinite 3 gpu:L40:8
+espresso infinite 1 gpu:L40:8(S:0-1)
+espresso infinite 1 gpu:PRO6000:8
+euler infinite 1 gpu:L40:8
+euler infinite 1 gpu:L40:8(S:0-1)
+houdini infinite 1 gpu:L40:4
+ash infinite 2 gpu:A100:8
+clair infinite 1 gpu:L40:8(S:0-1)
+mic infinite 1 gpu:mig6000:8
+=== my account/partition ===
+   houdini                                    normal 
+        cs                                    newton 

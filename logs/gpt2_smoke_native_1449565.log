@@ -1,0 +1,36 @@
+num_proc must be <= 20. Reducing num_proc to 20 for dataset of size 20.
+Map (num_proc=20):   0%|          | 0/20 [00:00<?, ? examples/s]Map (num_proc=20):   5%|▌         | 1/20 [00:00<00:04,  4.41 examples/s]Map (num_proc=20):  10%|█         | 2/20 [00:00<00:02,  6.55 examples/s]Map (num_proc=20):  25%|██▌       | 5/20 [00:00<00:01, 12.41 examples/s]Map (num_proc=20):  40%|████      | 8/20 [00:00<00:00, 15.52 examples/s]Map (num_proc=20):  55%|█████▌    | 11/20 [00:00<00:00, 17.72 examples/s]Map (num_proc=20):  70%|███████   | 14/20 [00:00<00:00, 20.57 examples/s]Map (num_proc=20):  90%|█████████ | 18/20 [00:00<00:00, 24.94 examples/s]Map (num_proc=20): 100%|██████████| 20/20 [00:01<00:00, 16.42 examples/s]
+num_proc must be <= 20. Reducing num_proc to 20 for dataset of size 20.
+Map (num_proc=20):   0%|          | 0/20 [00:00<?, ? examples/s]Map (num_proc=20):  10%|█         | 2/20 [00:00<00:00, 19.94 examples/s]Map (num_proc=20):  30%|███       | 6/20 [00:00<00:00, 29.25 examples/s]Map (num_proc=20):  60%|██████    | 12/20 [00:00<00:00, 41.03 examples/s]Map (num_proc=20): 100%|██████████| 20/20 [00:00<00:00, 43.55 examples/s]
+num_proc must be <= 20. Reducing num_proc to 20 for dataset of size 20.
+Map (num_proc=20):   0%|          | 0/20 [00:00<?, ? examples/s]Map (num_proc=20):  15%|█▌        | 3/20 [00:00<00:00, 28.88 examples/s]Map (num_proc=20):  30%|███       | 6/20 [00:00<00:00, 28.57 examples/s]Map (num_proc=20):  85%|████████▌ | 17/20 [00:00<00:00, 62.37 examples/s]Map (num_proc=20): 100%|██████████| 20/20 [00:00<00:00, 47.49 examples/s]
+num_proc must be <= 20. Reducing num_proc to 20 for dataset of size 20.
+Map (num_proc=20):   0%|          | 0/20 [00:00<?, ? examples/s]Map (num_proc=20):  10%|█         | 2/20 [00:00<00:00, 18.57 examples/s]Map (num_proc=20):  25%|██▌       | 5/20 [00:00<00:00, 24.58 examples/s]Map (num_proc=20): 100%|██████████| 20/20 [00:00<00:00, 51.30 examples/s]
+num_proc must be <= 20. Reducing num_proc to 20 for dataset of size 20.
+Map (num_proc=20):   0%|          | 0/20 [00:00<?, ? examples/s]Map (num_proc=20):  15%|█▌        | 3/20 [00:00<00:00, 28.62 examples/s]Map (num_proc=20):  30%|███       | 6/20 [00:00<00:00, 24.69 examples/s]Map (num_proc=20):  95%|█████████▌| 19/20 [00:00<00:00, 66.54 examples/s]Map (num_proc=20): 100%|██████████| 20/20 [00:00<00:00, 46.18 examples/s]
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+checkpoint: /home/eran.b/.cache/huggingface/hub/models--tsrigo--coconut/snapshots/c88fc87555c7601f22595d98adda7f3f56ea89b6/stage4_checkpoint_25
+  150 keys, first: ['base_causallm.transformer.wte.weight', 'base_causallm.transformer.wpe.weight', 'base_causallm.transformer.h.0.ln_1.weight']
+<All keys matched successfully>
+k=0:   0%|          | 0/20 [00:00<?, ?it/s]k=0: 100%|██████████| 20/20 [00:00<00:00, 22.26it/s]
+k=0 idx=0 gold=18 extracted='48' output='### 48'
+k=0 idx=1 gold=3 extracted='3' output='### 3'
+k=0 idx=2 gold=70000 extracted='25000' output='### 25000'
+k=0 (0 latents): accuracy 0.1500 on 20 questions
+k=1:   0%|          | 0/20 [00:00<?, ?it/s]Passing a tuple of `past_key_values` is deprecated and will be removed in Transformers v4.53.0. You should pass an instance of `Cache` instead, e.g. `past_key_values=DynamicCache.from_legacy_cache(past_key_values)`.
+k=1: 100%|██████████| 20/20 [00:01<00:00, 18.99it/s]
+k=1 idx=0 gold=18 extracted='48' output='### 48'
+k=1 idx=1 gold=3 extracted='3' output='### 3'
+k=1 idx=2 gold=70000 extracted='25000' output='### 25000'
+k=1 (2 latents): accuracy 0.1000 on 20 questions
+k=2:   0%|          | 0/20 [00:00<?, ?it/s]k=2: 100%|██████████| 20/20 [00:00<00:00, 21.97it/s]
+k=2 idx=0 gold=18 extracted='32' output='### 32'
+k=2 idx=1 gold=3 extracted='3' output='### 3'
+k=2 idx=2 gold=70000 extracted='95000' output='### 95000'
+k=2 (4 latents): accuracy 0.1000 on 20 questions
+k=3:   0%|          | 0/20 [00:00<?, ?it/s]k=3: 100%|██████████| 20/20 [00:01<00:00, 19.46it/s]
+k=3 idx=0 gold=18 extracted='44' output='### 44'
+k=3 idx=1 gold=3 extracted='3' output='### 3'
+k=3 idx=2 gold=70000 extracted='95000' output='### 95000'
+k=3 (6 latents): accuracy 0.2500 on 20 questions
+saved /home/eran.b/neuroAI/coconut/results/gpt2/smoke/native.json

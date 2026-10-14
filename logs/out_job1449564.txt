@@ -1,0 +1,21 @@
+job 1449564 on newton5 at Thu Oct 15 02:27:03 AM IDT 2026
+name, memory.total [MiB], driver_version
+NVIDIA L40S, 49140 MiB, 595.58.03
+torch 2.6.0+cu124 | cuda 12.4 | gpu True | transformers 4.52.4
+[02:27:28] start smoke_checks
+[02:28:14] done  smoke_checks
+[02:28:14] start smoke_native
+[02:28:39] done  smoke_native
+[02:28:39] start smoke_S1
+[02:28:57] done  smoke_S1
+[02:28:57] start smoke_S2
+[02:29:09] done  smoke_S2
+[02:29:09] start smoke_S3
+[02:29:27] done  smoke_S3
+[02:29:27] start smoke_S4
+[02:29:41] done  smoke_S4
+[02:29:41] start smoke_S5
+[02:29:57] done  smoke_S5
+[02:29:57] start smoke_score
+[02:30:06] done  smoke_score
+[02:30:06] start full_native

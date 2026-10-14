@@ -1,0 +1,14 @@
+Part 1 (native format, official scoring)
+  k=0 latents=0: 0.1500 [0.052, 0.360]  n=20  new tokens 2.4  0.044s/question
+  k=1 latents=2: 0.1000 [0.028, 0.301]  n=20  new tokens 2.4  0.052s/question
+  k=2 latents=4: 0.1000 [0.028, 0.301]  n=20  new tokens 2.4  0.045s/question
+  k=3 latents=6: 0.2500 [0.112, 0.469]  n=20  new tokens 2.4  0.051s/question
+Part 2 (few-shot)
+  S1: 0.0500 [0.009, 0.236]  n=20  no number 0.050  stop [{'eos': 20}]
+  S2: 0.1000 [0.028, 0.301]  n=20  no number 0.000  stop [{'eos': 20}]
+  S3: 0.0000 [0.000, 0.161]  n=20  no number 0.000  stop [{'eos': 20}, {'eos': 20}]
+  S4: 0.0000 [0.000, 0.161]  n=20  no number 0.000  stop [{'eos': 20}, {'eos': 20}]
+  S5: 0.0000 [0.000, 0.161]  n=20  no number 0.000  stop [{'eos': 20}, {'eos': 20}]
+  S3-S5: diff +0.0000 [+0.000, +0.000]  McNemar p=1  -> no clear difference
+  S3-S4: diff +0.0000 [+0.000, +0.000]  McNemar p=1  -> no clear difference
+saved /home/eran.b/neuroAI/coconut/results/gpt2/smoke/results.json

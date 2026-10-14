@@ -1,0 +1,18 @@
+few-shot examples: 3, longest possible stage-2 prompt: 735 tokens
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+checkpoint: /home/eran.b/.cache/huggingface/hub/models--tsrigo--coconut/snapshots/c88fc87555c7601f22595d98adda7f3f56ea89b6/stage4_checkpoint_25
+  150 keys, first: ['base_causallm.transformer.wte.weight', 'base_causallm.transformer.wpe.weight', 'base_causallm.transformer.h.0.ln_1.weight']
+<All keys matched successfully>
+S5:   0%|          | 0/20 [00:00<?, ?it/s]Passing a tuple of `past_key_values` is deprecated and will be removed in Transformers v4.53.0. You should pass an instance of `Cache` instead, e.g. `past_key_values=DynamicCache.from_legacy_cache(past_key_values)`.
+--- example 0: gold 18, pred 36
+  stage 1 [eos, 2 tokens, prompt 522]: '### 36'
+  stage 2 [eos, 2 tokens, prompt 546]: '### 36'
+--- example 1: gold 3, pred 36
+  stage 1 [eos, 2 tokens, prompt 483]: '### 36'
+  stage 2 [eos, 2 tokens, prompt 507]: '### 36'
+--- example 2: gold 70000, pred 50
+  stage 1 [eos, 2 tokens, prompt 506]: '### 50'
+  stage 2 [eos, 2 tokens, prompt 530]: '### 50'
+S5: 100%|██████████| 20/20 [00:01<00:00, 13.14it/s]
+S5: accuracy 0.0000 on 20 questions
+saved /home/eran.b/neuroAI/coconut/results/gpt2/smoke/fewshot_S5.json

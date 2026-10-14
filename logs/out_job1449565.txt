@@ -1,0 +1,31 @@
+job 1449565 on newton5 at Thu Oct 15 02:30:21 AM IDT 2026
+name, memory.total [MiB], driver_version
+NVIDIA L40S, 49140 MiB, 595.58.03
+torch 2.6.0+cu124 | cuda 12.4 | gpu True | transformers 4.52.4
+[02:30:29] start smoke_checks
+[02:30:54] done  smoke_checks
+[02:30:54] start smoke_native
+[02:31:14] done  smoke_native
+[02:31:14] start smoke_S1
+[02:31:25] done  smoke_S1
+[02:31:25] start smoke_S2
+[02:31:36] done  smoke_S2
+[02:31:36] start smoke_S3
+[02:31:55] done  smoke_S3
+[02:31:55] start smoke_S4
+[02:32:07] done  smoke_S4
+[02:32:07] start smoke_S5
+[02:32:22] done  smoke_S5
+[02:32:22] start smoke_score
+[02:32:30] done  smoke_score
+[02:32:30] start full_native
+[02:35:58] done  full_native
+[02:35:58] start full S1..S5 (parallel)
+[02:37:08] done  full_S1
+[02:37:18] done  full_S2
+[02:38:37] done  full_S3
+[02:38:37] done  full_S4
+[02:38:37] done  full_S5
+[02:38:37] start full_score
+[02:38:51] done  full_score
+all done at Thu Oct 15 02:38:51 AM IDT 2026

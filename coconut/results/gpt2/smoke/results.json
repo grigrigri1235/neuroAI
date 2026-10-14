@@ -1,0 +1,201 @@
+{
+ "dir": "results/gpt2/smoke",
+ "native": {
+  "0": {
+   "n": 20,
+   "correct": 3,
+   "acc": 0.15,
+   "ci95": [
+    0.052368745896216595,
+    0.36041886474075696
+   ],
+   "n_latents": 0,
+   "mean_new_tokens": 2.35,
+   "mean_seconds": 0.044431671500205994
+  },
+  "1": {
+   "n": 20,
+   "correct": 2,
+   "acc": 0.1,
+   "ci95": [
+    0.027866481213768224,
+    0.3010336452284873
+   ],
+   "n_latents": 2,
+   "mean_new_tokens": 2.35,
+   "mean_seconds": 0.05219796246383339
+  },
+  "2": {
+   "n": 20,
+   "correct": 2,
+   "acc": 0.1,
+   "ci95": [
+    0.027866481213768224,
+    0.3010336452284873
+   ],
+   "n_latents": 4,
+   "mean_new_tokens": 2.35,
+   "mean_seconds": 0.04522340532857925
+  },
+  "3": {
+   "n": 20,
+   "correct": 5,
+   "acc": 0.25,
+   "ci95": [
+    0.11186170140766569,
+    0.468700877618744
+   ],
+   "n_latents": 6,
+   "mean_new_tokens": 2.35,
+   "mean_seconds": 0.05113357214722782
+  }
+ },
+ "fewshot": {
+  "S1": {
+   "n": 20,
+   "correct": 1,
+   "acc": 0.05,
+   "ci95": [
+    0.008881448800795402,
+    0.23613119344674205
+   ],
+   "n_shots": null,
+   "max_new_tokens": 64,
+   "no_number_rate": 0.05,
+   "mean_new_tokens_per_stage": [
+    3.5
+   ],
+   "stop_reasons_per_stage": [
+    {
+     "eos": 20
+    }
+   ],
+   "markers_removed": 1,
+   "mean_seconds": 0.06325394524028524
+  },
+  "S2": {
+   "n": 20,
+   "correct": 2,
+   "acc": 0.1,
+   "ci95": [
+    0.027866481213768224,
+    0.3010336452284873
+   ],
+   "n_shots": null,
+   "max_new_tokens": 128,
+   "no_number_rate": 0.0,
+   "mean_new_tokens_per_stage": [
+    2.15
+   ],
+   "stop_reasons_per_stage": [
+    {
+     "eos": 20
+    }
+   ],
+   "markers_removed": 0,
+   "mean_seconds": 0.041244030301459136
+  },
+  "S3": {
+   "n": 20,
+   "correct": 0,
+   "acc": 0.0,
+   "ci95": [
+    0.0,
+    0.16112515805281938
+   ],
+   "n_shots": 3,
+   "max_new_tokens": 64,
+   "no_number_rate": 0.0,
+   "mean_new_tokens_per_stage": [
+    2.0,
+    2.0
+   ],
+   "stop_reasons_per_stage": [
+    {
+     "eos": 20
+    },
+    {
+     "eos": 20
+    }
+   ],
+   "markers_removed": 0,
+   "mean_seconds": 0.11935673044063151
+  },
+  "S4": {
+   "n": 20,
+   "correct": 0,
+   "acc": 0.0,
+   "ci95": [
+    0.0,
+    0.16112515805281938
+   ],
+   "n_shots": 3,
+   "max_new_tokens": 64,
+   "no_number_rate": 0.0,
+   "mean_new_tokens_per_stage": [
+    2.0,
+    2.0
+   ],
+   "stop_reasons_per_stage": [
+    {
+     "eos": 20
+    },
+    {
+     "eos": 20
+    }
+   ],
+   "markers_removed": 0,
+   "mean_seconds": 0.04356919955462217
+  },
+  "S5": {
+   "n": 20,
+   "correct": 0,
+   "acc": 0.0,
+   "ci95": [
+    0.0,
+    0.16112515805281938
+   ],
+   "n_shots": 3,
+   "max_new_tokens": 64,
+   "no_number_rate": 0.0,
+   "mean_new_tokens_per_stage": [
+    2.0,
+    2.0
+   ],
+   "stop_reasons_per_stage": [
+    {
+     "eos": 20
+    },
+    {
+     "eos": 20
+    }
+   ],
+   "markers_removed": 0,
+   "mean_seconds": 0.06699399960925803
+  }
+ },
+ "pairs": {
+  "S3-S5": {
+   "diff": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "mcnemar_p": 1.0,
+   "S3_only_correct": 0,
+   "S5_only_correct": 0,
+   "verdict": "no clear difference"
+  },
+  "S3-S4": {
+   "diff": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "mcnemar_p": 1.0,
+   "S3_only_correct": 0,
+   "S4_only_correct": 0,
+   "verdict": "no clear difference"
+  }
+ }
+}
