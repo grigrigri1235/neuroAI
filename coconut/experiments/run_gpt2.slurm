@@ -3,7 +3,7 @@
 #SBATCH --gres=gpu:L40:1 # Request 1 gpu type L40 (Newton's name for the L40S 47GB; "gpu:L40S:1" gave "node configuration not available")
 #SBATCH --mem=32G # RAM for up to 5 python processes at once (added, not in the Newton template)
 #SBATCH --time=04:00:00 # expected ~1-1.5 hours (added, not in the Newton template)
-#SBATCH --mail-user=eran.b@cs.technion.ac.il
+#SBATCH --mail-user=eran.b@campus.technion.ac.il
 #SBATCH --mail-type=ALL # Valid values are NONE, BEGIN, END, FAIL, REQUEUE, ALL
 #SBATCH --job-name="coconut_gpt2"
 #SBATCH -o ./logs/out_job%j.txt # stdout goes to logs/out_job<id>.txt (relative to where you run sbatch)

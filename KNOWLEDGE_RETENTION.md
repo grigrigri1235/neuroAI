@@ -400,7 +400,7 @@ git clone https://github.com/allenai/entailment_bank.git   # only the old Phase 
 ### 7.4 Slurm and env vars
 New (Phase 5): `coconut/experiments/run_gpt2.slurm`, Technion Newton template format: `--cpus-per-task=8`,
 `--gres=gpu:L40:1` (Newton's Slurm name for the L40S; `gpu:L40S:1` was rejected with "Requested node configuration is not available". Check names with `sinfo -N -o "%N %G"`), `--mem=32G`, `--time=04:00:00`, mail to
-`eran.b@cs.technion.ac.il`, `-o/-e` into `logs/` (relative to the submit folder = repo root, so `logs/` must exist).
+`eran.b@campus.technion.ac.il`, `-o/-e` into `logs/` (relative to the submit folder = repo root, so `logs/` must exist).
 One job: smoke test (gate) -> full native -> full S1-S5 in parallel on one GPU -> score. Uses `HF_HUB_OFFLINE=1`.
 Old slurm header (`coconut/eval_qwen_1.5b_iterative_all.slurm`, lambda): `--gres=gpu:1 --cpus-per-task=2 --mem=32G --time=12:00:00`, outputs to `slurm_logs/<name>_%j.out/.err`.
 ```bash
