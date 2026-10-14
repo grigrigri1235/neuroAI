@@ -2,7 +2,7 @@
 
 Single source of truth. Read this first on any machine (local, or the Newton GPU cluster).
 It is written so a new agent can continue the project **without reading any other doc**.
-Last updated: 2026-10-14.
+Last updated: 2026-10-15.
 
 Contents:
 0. Status · 1. Course requirements · 2. Paper essentials · 3. Project history (all phases) ·
@@ -18,8 +18,12 @@ Contents:
 - **Course task:** Part 1 reproduce (training exemption), Part 2 extend (see section 1).
 - **Where we are:** the old Qwen 1.5B experiment (Phase 4) had a fatal bug: no real latents (section 4). We are re-running **the same experiment, same prompts, on the real GPT-2 Coconut checkpoint** with real hidden-state feedback, plus one new control (S5).
 - **Dataset:** **GSM8K only.** ProsQA dropped (baselines already ~97%, no room to show a difference). EntailmentBank dropped (section 5.6).
-- **Where it runs:** Newton GPU cluster (Technion, Slurm), section 7.
-- **Next step:** Part 0 of the steps list (section 9). Nothing of the new experiment has been written or run yet.
+- **Where it runs:** Newton GPU cluster (Technion, Slurm), GPU **NVIDIA L40S 47GB**, section 7.
+  Claude Code works on **lambda** (it has issues on Newton): code is written on lambda, pushed with git, and the
+  user runs it on Newton (same paths, `/home/eran.b/neuroAI`). Logs and results come back through git.
+- **Next step (2026-10-15):** the code is written (`coconut/experiments/`, plan `docs/planning/gpt2_coconut_phase5_impl.md`),
+  not run yet. User: set up Newton (section 7.3), `sbatch coconut/experiments/run_gpt2.slurm`, then push `logs/` and
+  `coconut/results/gpt2/` back. Then: read the logs, build `analysis.ipynb`.
 
 ---
 
@@ -195,6 +199,8 @@ Question: What can we deduce in one logical step?
 Answer: 
 ```
 - In S3, stage-1 latents are recomputed inside stage 2 (causal model, same vectors). Total latents seen = 4.
+  The official `Coconut.forward` cannot do this: it assumes all latents sit in one block and crashes (IndexError)
+  on two blocks. We use our own `common.fill_latents()` (plan F1), checked equal to the official one on one block.
 - Score = last number of stage-2 text, commas removed first. Gold = text after `####` in `data/gsm8k_test.json` (or `answer` in `data/gsm_test.json`; both are the same 1319 test questions, use one consistently and say which).
 
 **GSM8K FEW_SHOT_PROMPT (verbatim from `coconut/eval_qwen_1.5b_gsm8k_less_handholding.py`):**
@@ -300,7 +306,8 @@ EntailmentBank baselines (Phase 4): S1 `Question: {question}\nAnswer:` (no facts
 - **One greedy loop for all settings**, so the only difference between settings is the input embeddings:
   1. Build `input_ids` for the prompt.
   2. Get `inputs_embeds`:
-     - S3: `Coconut.forward(input_ids, attention_mask=ones, labels=input_ids.clone(), position_ids=arange)` -> `.inputs_embeds`.
+     - S3: `common.fill_latents(model, input_ids)`. Same result as `Coconut.forward(...).inputs_embeds` when the
+       latents are one block, but also works for stage 2 (two blocks), where `Coconut.forward` crashes.
      - S5: `embedding(input_ids)` (latent tokens keep their plain learned embedding).
      - S1 / S2 / S4: `embedding(input_ids)` (no latent tokens present).
   3. Greedy loop on `base_causallm(inputs_embeds=..., past_key_values=...)`: argmax, append token embedding, stop on EOS / stop string / max tokens.
@@ -312,6 +319,13 @@ EntailmentBank baselines (Phase 4): S1 `Question: {question}\nAnswer:` (no facts
 - Speed: GPT-2 is tiny. Run settings as separate jobs / processes in parallel.
 - `get_dataset` uses `num_proc=32` for `.map`; on a node with fewer CPUs this is fine but slow to start.
 - `run.py` itself needs `torchrun` + NCCL + wandb, so do **not** use it directly for eval; reuse its loading logic.
+- More findings from reading the code (2026-10-15, details F2-F7 in `docs/planning/gpt2_coconut_phase5_impl.md`):
+  - the `<|latent|>` **input** embedding was never trained (every slot is replaced by a hidden state in training),
+    so S5 is an almost untrained pause token, not the paper's trained "pause as thought". Say so in the report.
+  - the 3 added tokens are not "special": `skip_special_tokens` keeps them. Generated text is cleaned of them before
+    it goes into stage 2 (else a stray `<|latent|>` would become a new latent slot).
+  - `get_dataset` crashes if more than 1 GPU is visible (`dist.get_rank()` without a process group). Use 1 GPU.
+  - prompts end with `"Answer: "`: the trailing space is a lone token for GPT-2. Kept (same prompts), noted as a risk.
 
 ---
 
@@ -347,20 +361,30 @@ EntailmentBank baselines (Phase 4): S1 `Question: {question}\nAnswer:` (no facts
     IdentitiesOnly yes
   ```
 
-### 7.3 Environment
+### 7.3 Environment (Newton, 2026-10-15: no conda there before)
+Run on the Newton login node. Miniconda must go to `/home/eran.b/miniconda3` (the slurm script uses that path).
+`environment_newton.yml` = lean `environment.yml` (same versions, no tensorflow / wandb, conda-forge only).
 ```bash
-git clone git@github.com:grigrigri1235/neuroAI.git
-cd neuroAI
-conda env create -f environment.yml      # env name: neuroAI_project (python 3.12, torch 2.6.0, transformers 4.52.4, datasets 3.6.0, tokenizers 0.21.1, wandb 0.18.7, tensorflow, accelerate)
+cd /home/eran.b/neuroAI && git pull && mkdir -p logs
+
+# Miniconda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
+bash ~/miniconda.sh -b -p /home/eran.b/miniconda3 && rm ~/miniconda.sh
+source /home/eran.b/miniconda3/etc/profile.d/conda.sh
+conda init bash   # optional: conda in every new terminal
+
+# env (env name: neuroAI_project)
+conda env create -f environment_newton.yml > logs/setup_env.log 2>&1
 conda activate neuroAI_project
-pip install pyyaml scipy statsmodels matplotlib jupyter nbconvert huggingface_hub
 
-# GSM8K in Coconut format (Part 1)
-cd coconut && bash preprocessing/gsm_icot.bash && cd ..
-
-# Coconut GPT-2 checkpoint (prints the local path)
-python -c "from huggingface_hub import hf_hub_download as d; print(d('tsrigo/coconut','stage4_checkpoint_25'))"
+# GSM8K in Coconut format (Part 1) + GPT-2 and the checkpoint into the HF cache, with a CPU load check
+cd coconut
+bash preprocessing/gsm_icot.bash > ../logs/setup_data.log 2>&1
+python experiments/common.py > ../logs/setup_model.log 2>&1   # must end with "loaded OK"
+cd ..
 ```
+Then `sbatch coconut/experiments/run_gpt2.slurm` from the repo root (section 7.4).
+The full lambda env is still `environment.yml` (tensorflow etc. for BLEURT, not needed now).
 Note: `coconut/requirements.txt` (official) pins older versions (torch 2.5.1, transformers 4.46.2); we used `environment.yml` successfully.
 
 Only if EntailmentBank / BLEURT is needed (not in git, too big for GitHub):
@@ -372,7 +396,11 @@ git clone https://github.com/allenai/entailment_bank.git   # only the old Phase 
 ```
 
 ### 7.4 Slurm and env vars
-Old slurm header (`coconut/eval_qwen_1.5b_iterative_all.slurm`): `--gres=gpu:1 --cpus-per-task=2 --mem=32G --time=12:00:00`, outputs to `slurm_logs/<name>_%j.out/.err`. Check Newton's partition / GPU names with `sinfo` before writing new scripts.
+New (Phase 5): `coconut/experiments/run_gpt2.slurm`, Technion Newton template format: `--cpus-per-task=8`,
+`--gres=gpu:L40S:1` (check the GPU name with `sinfo -o "%20N %40G"`), `--mem=32G`, `--time=04:00:00`, mail to
+`eran.b@cs.technion.ac.il`, `-o/-e` into `logs/` (relative to the submit folder = repo root, so `logs/` must exist).
+One job: smoke test (gate) -> full native -> full S1-S5 in parallel on one GPU -> score. Uses `HF_HUB_OFFLINE=1`.
+Old slurm header (`coconut/eval_qwen_1.5b_iterative_all.slurm`, lambda): `--gres=gpu:1 --cpus-per-task=2 --mem=32G --time=12:00:00`, outputs to `slurm_logs/<name>_%j.out/.err`.
 ```bash
 source <conda>/etc/profile.d/conda.sh && conda activate neuroAI_project
 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
@@ -429,15 +457,28 @@ coconut/
   predictions_qwen_1.5b_baseline_{a,b}.json          (EB S1/S2)
   predictions_entailment_1.5b_{fewshot,no_latents}.json   (EB S3/S4)
   score_*_results.txt, slurm_logs/   Phase 4 scores + logs
+Phase 5 (written 2026-10-15):
+  environment_newton.yml        lean env for Newton
+  coconut/experiments/common.py       model loading, fill_latents, greedy loop, text helpers (script: download + load check)
+  coconut/experiments/prompts.py      few-shot prompt (verbatim) + S1-S5 builders
+  coconut/experiments/run_native.py   Part 1 (k = 0..3)
+  coconut/experiments/run_fewshot.py  Part 2 (--setting S1..S5)
+  coconut/experiments/score.py        stats -> results.json
+  coconut/experiments/smoke_test.py   checks C0-C8
+  coconut/experiments/run_gpt2.slurm  the one Newton job
+  logs/                         Newton logs (pushed back with git)
 planned (Phase 5):
-  coconut/experiments/{common,prompts,run_native,run_fewshot,score}.py + run script / slurm
-  coconut/results/gpt2/         predictions + results JSON
+  coconut/results/gpt2/         predictions + results JSON (made by the job)
   coconut/analysis.ipynb        tables, plots, stats (executed, with outputs)
 ```
 
 ---
 
 ## 9. Steps (each is a tiny part, report "done with part i")
+
+Status 2026-10-15: Parts 1-6 are written (code + slurm). Part 0 is now inside the setup commands (section 7.3:
+`python experiments/common.py` downloads and load-checks the checkpoint; the smoke test prints token lengths).
+Parts 7 + 8 are one `sbatch` (the smoke test is a gate for the full run). Next: the user runs it on Newton.
 
 - Part 0a: download checkpoint, print state-dict keys and `load_state_dict` result.
 - Part 0b: count token lengths of the longest stage-2 prompt (GSM8K test).
@@ -463,7 +504,8 @@ planned (Phase 5):
 - Brainstorm / plans go in a file (`docs/planning/`), not in chat.
 - Plan first, then **stop and wait for explicit approval** ("proceed"). No code edits and **no bash commands** without approval.
 - After approval: split into tiny parts, say "done with part i" after each, keep going until all parts are done.
-- Bash output always to a file in a logs folder, never the terminal (old path: `/home/eran.b/PAR_FINAL/PAR_FINAL/alt-project/logs`; on Newton pick e.g. `~/neuroAI/logs/` and say so).
+- Bash output always to a file in a logs folder, never the terminal (old path: `/home/eran.b/PAR_FINAL/PAR_FINAL/alt-project/logs`; on Newton: `/home/eran.b/neuroAI/logs/`, decided 2026-10-15).
+- The user runs the commands on Newton; Claude (on lambda) gives exact step-by-step commands and reads the logs after they are pushed back.
 - If code crashes: do **not** fix it alone. Report the reason and stop.
 - Short, simple language with the user and in reports.
 - Reports must be dense: data, code for reproducibility, and plots. Text-only summaries = failure.

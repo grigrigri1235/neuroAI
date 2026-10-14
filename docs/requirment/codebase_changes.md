@@ -43,3 +43,19 @@ This file concisely documents all modifications made to the repository across th
   - [`eval_qwen_1.5b_iterative_all.slurm`](file:///home/eran.b/neuroAI/coconut/eval_qwen_1.5b_iterative_all.slurm): Master SLURM script executing all four experimental settings and evaluation in sequence.
 - **Repository Cleanup:**
   - Removed obsolete 2.1GB zip archive and dead legacy test scripts to ensure a clean git footprint.
+
+---
+
+## 5. Phase 5: GPT-2 Coconut re-run on GSM8K (2026-10-15, code written, not run yet)
+- **Plan:** `docs/planning/gpt2_coconut_phase5_impl.md` (the *how*); `KNOWLEDGE_RETENTION.md` sections 5-6 (the *what*).
+- **Why:** in Phase 4 the "latents" were a plain text token (`<c_thought>`, not even in the vocab) and `model.generate()`; no hidden state was fed back. Phase 5 runs the same prompts on the real GPT-2 Coconut checkpoint (`tsrigo/coconut/stage4_checkpoint_25`) with real hidden-state feedback, plus a pause-token control (S5).
+- **Official files unchanged:** `coconut.py`, `run.py`, `dataset.py`, `utils.py` are only imported.
+- **New code in `coconut/experiments/`:**
+  - `common.py`: loads GPT-2 + the checkpoint like `run.py` and refuses a checkpoint whose keys do not match. `fill_latents()` fills each `<|latent|>` slot with the previous position's last hidden state. We need our own version because the official `Coconut.forward` assumes all latents are in one block and crashes (IndexError) on the stage-2 prompt, which has two blocks. One greedy loop for all settings, with stop strings and a 1024-token check. Answer extraction removes commas first.
+  - `prompts.py`: the Phase 4 GSM8K few-shot prompt (verbatim) and the S1-S5 prompt builders. The latent block is `<|start-latent|><|latent|><|latent|><|end-latent|>`, and stage 2 now keeps the stage-1 question line (Phase 4 bug).
+  - `run_native.py`: Part 1. The model's own format with 0/2/4/6 latents, input built by the official `dataset.py`, official `Coconut.generate`, `run.py` scoring rule.
+  - `run_fewshot.py`: Part 2, one setting per run (S1-S5), with a length guard for GPT-2's 1024 tokens. Generated text is cleaned of the 3 marker tokens before reuse (they are not "special" tokens).
+  - `score.py`: accuracy, 95% Wilson CI, exact McNemar, paired bootstrap CI, written to `coconut/results/gpt2/results.json`.
+  - `smoke_test.py`: checks C0-C8. Examples: the prompt equals the Phase 4 one; our latent filling equals the official one where the official one works; our greedy loop equals `Coconut.generate`.
+  - `run_gpt2.slurm`: one Newton job in the Technion template format: smoke test, then the full runs on one L40S, then scoring.
+- **Other:** `environment_newton.yml` (lean env for Newton, same versions, no TensorFlow). `.gitignore` now skips the GSM8K train JSON (over GitHub's 100MB limit).

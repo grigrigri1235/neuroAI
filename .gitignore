@@ -3,3 +3,5 @@ coconut/wandb/
 coconut/bleurt-large-512/
 coconut/entailment_bank/
 __pycache__/
+# GSM8K train split made by coconut/preprocessing/gsm_icot.bash (~150MB, over GitHub's 100MB limit; re-run the script)
+coconut/data/gsm_train.json
