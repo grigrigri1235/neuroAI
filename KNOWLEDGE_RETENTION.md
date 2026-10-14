@@ -17,7 +17,7 @@ Contents:
 - **Paper:** Coconut, "Training Large Language Models to Reason in a Continuous Latent Space" (Hao et al., FAIR Meta, code: github.com/facebookresearch/coconut). Copy in `og_coconut.md` / `og_coconut.pdf`.
 - **Course task:** Part 1 reproduce (training exemption), Part 2 extend (see section 1).
 - **Where we are:** the old Qwen 1.5B experiment (Phase 4) had a fatal bug: no real latents (section 4). We are re-running **the same experiment, same prompts, on the real GPT-2 Coconut checkpoint** with real hidden-state feedback, plus one new control (S5).
-- **Dataset:** GSM8K only for the main runs. ProsQA dropped (baselines already ~97%, no room to show a difference). EntailmentBank: open question (section 5.6).
+- **Dataset:** **GSM8K only.** ProsQA dropped (baselines already ~97%, no room to show a difference). EntailmentBank dropped (section 5.6).
 - **Where it runs:** Newton GPU cluster (Technion, Slurm), section 7.
 - **Next step:** Part 0 of the steps list (section 9). Nothing of the new experiment has been written or run yet.
 
@@ -281,9 +281,10 @@ EntailmentBank baselines (Phase 4): S1 `Question: {question}\nAnswer:` (no facts
 - Failure cases: chosen by a fixed rule (e.g. first 5 questions where S3 and S5 disagree, in both directions), not cherry-picked.
 - Expected risk: **floor effect**. GPT-2 Coconut never saw this few-shot format. All S1-S5 may be near 0-10%. If so, report it honestly; Part 1 still stands.
 
-### 5.6 OPEN QUESTION: EntailmentBank in the new runs?
-- Default: **GSM8K only** (user: "GSM8K is really enough"). The GSM8K-trained GPT-2 is out of domain on EntailmentBank (Phase 3b already showed no latent effect there).
-- If kept: all 340 of `data/entailmentbank/test_decomposed.json`, same S1-S5, BLEURT-20 + paired bootstrap CI.
+### 5.6 DECIDED (2026-10-15): no EntailmentBank, GSM8K only
+- User decision: "lets not use entailment bank just GSM8K for now". The GSM8K-trained GPT-2 is out of domain on EntailmentBank anyway (Phase 3b showed no latent effect there).
+- So BLEURT and the AllenAI scorer are **not needed** on Newton. EntailmentBank material in this file is kept for history only.
+- If ever re-added: all 340 of `data/entailmentbank/test_decomposed.json`, same S1-S5, BLEURT-20 + paired bootstrap CI.
 
 ### 5.7 Optional (if time): look inside the latents
 - Decode each continuous thought with the LM head (top-5 tokens), like paper Fig. 9.
