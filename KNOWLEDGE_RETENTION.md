@@ -126,7 +126,7 @@ Hardware until now: local SLURM cluster, single **NVIDIA RTX 2080, 8GB VRAM**.
 8. **Possible sampling.** No seed and `do_sample` not set; Qwen-Instruct generation configs often sample by default.
 9. **Answer extraction:** `-?\d+\.?\d*` without removing commas, so "1,000" -> "000".
 10. **Metric name.** The folder `coconut/bleurt-large-512/` actually holds **BLEURT-20** (`bleurt_config.json`: `"name": "BLEURT-20"`). Call it BLEURT-20.
-11. **Docs over-claim.** "doubled", "decisive proof", "100% identical", "conclusively proved". All docs under `docs/` and the root copy `entailmentbank_report.md` still contain these and must be rewritten.
+11. **Docs over-claim.** "doubled", "decisive proof", "100% identical", "conclusively proved". All docs under `docs/` and the old report `entailmentbank_report.md` (repo root) still contain these and must be rewritten.
 12. **Code style.** 6 copy-pasted scripts, hard-coded relative paths, unused `argparse` import.
 
 ---
@@ -395,7 +395,7 @@ Old local paths to change on Newton: `/home/eran.b/miniconda3/...` and `/home/er
 
 ```
 KNOWLEDGE_RETENTION.md          <- this file
-entailmentbank_report.md        root copy of the old Phase 3b+4 report (over-claims, to be rewritten)
+entailmentbank_report.md        old Phase 3b+4 report, moved here from docs/report/ (over-claims, to be rewritten)
 og_coconut.md / .pdf            paper
 environment.yml                 conda env
 .gitignore                      excludes only wandb, BLEURT, entailment_bank clone, __pycache__
@@ -404,7 +404,6 @@ docs/
   requirment/requirment.md      course task (section 1)
   requirment/summary.md, codebase_changes.md, detailed_explanations.md, proposed_followup_ideas.md
                                 old Phase 1-4 notes (content merged here; over-claiming, to be rewritten)
-  report/entailmentbank_report.md   old report (Phase 3b + 4)
   planning/gpt2_coconut_rerun_plan.md   first draft of the new plan (superseded by this file)
   planning/less_handholding_plan.md     Phase 4 design (source of the prompts)
   planning/entailmentbank_experiment_plan.md   Phase 3b design
