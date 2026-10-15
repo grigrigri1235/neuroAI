@@ -1,0 +1,5 @@
+job 1449771 on clair1 at Thu Oct 15 11:23:14 AM IDT 2026
+name, memory.total [MiB], driver_version
+NVIDIA L40S, 49140 MiB, 595.58.03
+[11:23:25] start simcot_run
+[11:37:52] done  simcot_run
