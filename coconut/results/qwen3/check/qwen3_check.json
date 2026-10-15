@@ -1,0 +1,1461 @@
+{
+ "meta": {
+  "date": "2026-10-15T03:33:54",
+  "host": "tdk-bm4",
+  "slurm_job": "1449576",
+  "torch": "2.6.0+cu124",
+  "transformers": "4.52.4",
+  "gpu": "NVIDIA L40S",
+  "part": "qwen3_check",
+  "n_loop": 5,
+  "n_native": 50,
+  "native_latents": [
+   0,
+   2,
+   4,
+   6
+  ],
+  "native_tokens": 256,
+  "n_preview": 10,
+  "per_stage": 128,
+  "out": "results/qwen3/check/qwen3_check.json"
+ },
+ "G0": {
+  "pass": true,
+  "model": "agurung/coconut-qwen3-4b-ff",
+  "dtype": "torch.bfloat16",
+  "tokenizer_source": "Qwen/Qwen3-4B-Instruct-2507",
+  "tokenizer_len": 151672,
+  "embedding_rows": 151672,
+  "marker_ids": [
+   151669,
+   151670,
+   151671
+  ],
+  "expected_marker_ids": [
+   151669,
+   151670,
+   151671
+  ],
+  "rope_theta": 5000000,
+  "missing_keys": [],
+  "unexpected_keys": []
+ },
+ "G1": {
+  "matches": 10,
+  "n": 10,
+  "pass": true,
+  "rows": [
+   {
+    "prompt_end": "lars does she make every day at the farmers' market?\nAnswer:",
+    "same": true,
+    "hf": " \\boxed{Yes}",
+    "ours": " \\boxed{Yes}"
+   },
+   {
+    "prompt_end": " white fiber.  How many bolts in total does it take?\nAnswer:",
+    "same": true,
+    "hf": " \\boxed{Yes}",
+    "ours": " \\boxed{Yes}"
+   },
+   {
+    "prompt_end": " of the house by 150%.  How much profit did he make?\nAnswer:",
+    "same": true,
+    "hf": " \\boxed{Yes}",
+    "ours": " \\boxed{Yes}"
+   },
+   {
+    "prompt_end": "h sprint.  How many total meters does he run a week?\nAnswer:",
+    "same": true,
+    "hf": " \\boxed{Yes}",
+    "ours": " \\boxed{Yes}"
+   },
+   {
+    "prompt_end": "the day if the size of Wendi's flock is 20 chickens?\nAnswer:",
+    "same": true,
+    "hf": " \\boxed{Yes}",
+    "ours": " \\boxed{Yes}"
+   },
+   {
+    "prompt_end": "\n\nQuestion: What can we deduce in one logical step?\nAnswer: ",
+    "same": true,
+    "hf": "16 - 3 - 4 = 9 eggs are left after Janet eats and bakes muffins.\nAt $2 per egg, she makes 9 * 2 = $18.\nIn summary, \\boxed{Yes}",
+    "ours": "16 - 3 - 4 = 9 eggs are left after Janet eats and bakes muffins.\nAt $2 per egg, she makes 9 * 2 = $18.\nIn summary, \\boxed{Yes}"
+   },
+   {
+    "prompt_end": "\n\nQuestion: What can we deduce in one logical step?\nAnswer: ",
+    "same": true,
+    "hf": "2 (blue) + 1 (white) = 3 bolts in total.\nIn summary, \\boxed{Yes}",
+    "ours": "2 (blue) + 1 (white) = 3 bolts in total.\nIn summary, \\boxed{Yes}"
+   },
+   {
+    "prompt_end": "\n\nQuestion: What can we deduce in one logical step?\nAnswer: ",
+    "same": true,
+    "hf": "150% of $80,000 is 0.15 * 80,000 = $12,000.\nIn summary, \\boxed{Yes}",
+    "ours": "150% of $80,000 is 0.15 * 80,000 = $12,000.\nIn summary, \\boxed{Yes}"
+   },
+   {
+    "prompt_end": "\n\nQuestion: What can we deduce in one logical step?\nAnswer: ",
+    "same": true,
+    "hf": "3 sprints per week * 60 meters per sprint = 180 meters per week.\nIn summary, \\boxed{Yes}",
+    "ours": "3 sprints per week * 60 meters per sprint = 180 meters per week.\nIn summary, \\boxed{Yes}"
+   },
+   {
+    "prompt_end": "\n\nQuestion: What can we deduce in one logical step?\nAnswer: ",
+    "same": true,
+    "hf": "3 \\boxed{Yes}",
+    "ours": "3 \\boxed{Yes}"
+   }
+  ]
+ },
+ "G2": {
+  "N=0 latent": {
+   "correct": 0,
+   "n": 50,
+   "per_question": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "N=2 latent": {
+   "correct": 0,
+   "n": 50,
+   "per_question": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "N=2 plain": {
+   "correct": 0,
+   "n": 50,
+   "per_question": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "N=2 discordant": {
+   "feedback_only": 0,
+   "plain_only": 0
+  },
+  "N=4 latent": {
+   "correct": 0,
+   "n": 50,
+   "per_question": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "N=4 plain": {
+   "correct": 0,
+   "n": 50,
+   "per_question": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "N=4 discordant": {
+   "feedback_only": 0,
+   "plain_only": 0
+  },
+  "N=6 latent": {
+   "correct": 0,
+   "n": 50,
+   "per_question": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "N=6 plain": {
+   "correct": 0,
+   "n": 50,
+   "per_question": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "N=6 discordant": {
+   "feedback_only": 0,
+   "plain_only": 0
+  }
+ },
+ "G3": {
+  "S1": {
+   "correct": 0,
+   "n": 10,
+   "tokens_per_second": 29.118833223357363,
+   "mean_seconds": 0.17171017676591874,
+   "records": [
+    {
+     "idx": 0,
+     "gold": "18",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17164837568998337,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 1,
+     "gold": "3",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17164772748947144,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 2,
+     "gold": "70000",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17166390269994736,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 3,
+     "gold": "540",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17190784215927124,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 4,
+     "gold": "20",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17178519070148468,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 5,
+     "gold": "64",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17180348932743073,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 6,
+     "gold": "260",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17176222801208496,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 7,
+     "gold": "160",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17151868343353271,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 8,
+     "gold": "45",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17179593443870544,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 9,
+     "gold": "460",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.1715683937072754,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    }
+   ]
+  },
+  "S2": {
+   "correct": 0,
+   "n": 10,
+   "tokens_per_second": 29.100246682860455,
+   "mean_seconds": 0.17181984931230546,
+   "records": [
+    {
+     "idx": 0,
+     "gold": "18",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17195147275924683,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 1,
+     "gold": "3",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17169735580682755,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 2,
+     "gold": "70000",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17178210616111755,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 3,
+     "gold": "540",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17183926701545715,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 4,
+     "gold": "20",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.1722802370786667,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 5,
+     "gold": "64",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17170928418636322,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 6,
+     "gold": "260",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17181237041950226,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 7,
+     "gold": "160",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17164891958236694,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 8,
+     "gold": "45",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17208142578601837,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    },
+    {
+     "idx": 9,
+     "gold": "460",
+     "pred": null,
+     "correct": false,
+     "seconds": 0.17139605432748795,
+     "new_tokens": 5,
+     "stages": [
+      {
+       "text": "\\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 5
+      }
+     ]
+    }
+   ]
+  },
+  "S3": {
+   "correct": 1,
+   "n": 10,
+   "tokens_per_second": 30.557133038548262,
+   "mean_seconds": 2.0649843007326125,
+   "records": [
+    {
+     "idx": 0,
+     "gold": "18",
+     "pred": "9",
+     "correct": false,
+     "seconds": 5.379439115524292,
+     "new_tokens": 177,
+     "stages": [
+      {
+       "text": "16 - 3 - 4 = 9 eggs are left after Janet eats and bakes muffins.\nAt $2 per egg, she makes 9 * 2 = $18.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 49
+      },
+      {
+       "text": "16 - 3 - 4 = 9\nYes\nYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYes",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 1,
+     "gold": "3",
+     "pred": "3",
+     "correct": true,
+     "seconds": 1.2506439238786697,
+     "new_tokens": 35,
+     "stages": [
+      {
+       "text": "2 (blue) + 1 (white) = 3 bolts in total.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 25
+      },
+      {
+       "text": "3\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 10
+      }
+     ]
+    },
+    {
+     "idx": 2,
+     "gold": "70000",
+     "pred": "150",
+     "correct": false,
+     "seconds": 1.822995588183403,
+     "new_tokens": 55,
+     "stages": [
+      {
+       "text": "150% of $80,000 is 0.15 * 80,000 = $12,000.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 43
+      },
+      {
+       "text": "150%\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 12
+      }
+     ]
+    },
+    {
+     "idx": 3,
+     "gold": "540",
+     "pred": "180",
+     "correct": false,
+     "seconds": 1.4214604869484901,
+     "new_tokens": 41,
+     "stages": [
+      {
+       "text": "3 sprints per week * 60 meters per sprint = 180 meters per week.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 29
+      },
+      {
+       "text": "180\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 12
+      }
+     ]
+    },
+    {
+     "idx": 4,
+     "gold": "20",
+     "pred": "60",
+     "correct": false,
+     "seconds": 4.688174545764923,
+     "new_tokens": 155,
+     "stages": [
+      {
+       "text": "20 chickens \u00d7 3 cups of feed per chicken = 60 cups of feed.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 27
+      },
+      {
+       "text": "20 \u00d7 3 = 60\nYes\nYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYes",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 5,
+     "gold": "64",
+     "pred": "16",
+     "correct": false,
+     "seconds": 0.6805690005421638,
+     "new_tokens": 15,
+     "stages": [
+      {
+       "text": "16 glasses \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 8
+      },
+      {
+       "text": "16 \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 7
+      }
+     ]
+    },
+    {
+     "idx": 6,
+     "gold": "260",
+     "pred": "20",
+     "correct": false,
+     "seconds": 2.0029862970113754,
+     "new_tokens": 61,
+     "stages": [
+      {
+       "text": "20 * 4 = 80 (Charleston), 80 * 2 = 160 (Toulouse), 20 + 80 + 160 = 260\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 54
+      },
+      {
+       "text": "20 \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 7
+      }
+     ]
+    },
+    {
+     "idx": 7,
+     "gold": "160",
+     "pred": "200",
+     "correct": false,
+     "seconds": 0.7679870501160622,
+     "new_tokens": 18,
+     "stages": [
+      {
+       "text": "200 GB \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 9
+      },
+      {
+       "text": "200 GB \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 9
+      }
+     ]
+    },
+    {
+     "idx": 8,
+     "gold": "45",
+     "pred": "180",
+     "correct": false,
+     "seconds": 1.5188747718930244,
+     "new_tokens": 44,
+     "stages": [
+      {
+       "text": "3 hours at 60 mph = 180 miles.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 22
+      },
+      {
+       "text": "3 hours at 60 mph = 180 miles.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 22
+      }
+     ]
+    },
+    {
+     "idx": 9,
+     "gold": "460",
+     "pred": "45",
+     "correct": false,
+     "seconds": 1.1167122274637222,
+     "new_tokens": 30,
+     "stages": [
+      {
+       "text": "45 hours at $10 per hour = $450.\n\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 23
+      },
+      {
+       "text": "45 \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 7
+      }
+     ]
+    }
+   ]
+  },
+  "S4": {
+   "correct": 2,
+   "n": 10,
+   "tokens_per_second": 32.82814250211212,
+   "mean_seconds": 1.3768674239516259,
+   "records": [
+    {
+     "idx": 0,
+     "gold": "18",
+     "pred": "9",
+     "correct": false,
+     "seconds": 1.9643935337662697,
+     "new_tokens": 65,
+     "stages": [
+      {
+       "text": "16 - 3 - 4 = 9 eggs are left after Janet eats and bakes muffins.\nAt $2 per egg, she makes 9 * 2 = $18.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 49
+      },
+      {
+       "text": "16 - 3 - 4 = 9 \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 16
+      }
+     ]
+    },
+    {
+     "idx": 1,
+     "gold": "3",
+     "pred": "3",
+     "correct": true,
+     "seconds": 1.0760274529457092,
+     "new_tokens": 35,
+     "stages": [
+      {
+       "text": "2 (blue) + 1 (white) = 3 bolts in total.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 25
+      },
+      {
+       "text": "3\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 10
+      }
+     ]
+    },
+    {
+     "idx": 2,
+     "gold": "70000",
+     "pred": "150",
+     "correct": false,
+     "seconds": 1.6503797098994255,
+     "new_tokens": 55,
+     "stages": [
+      {
+       "text": "150% of $80,000 is 0.15 * 80,000 = $12,000.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 43
+      },
+      {
+       "text": "150%\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 12
+      }
+     ]
+    },
+    {
+     "idx": 3,
+     "gold": "540",
+     "pred": "180",
+     "correct": false,
+     "seconds": 1.2502935528755188,
+     "new_tokens": 41,
+     "stages": [
+      {
+       "text": "3 sprints per week * 60 meters per sprint = 180 meters per week.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 29
+      },
+      {
+       "text": "180\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 12
+      }
+     ]
+    },
+    {
+     "idx": 4,
+     "gold": "20",
+     "pred": "3",
+     "correct": false,
+     "seconds": 0.4214335307478905,
+     "new_tokens": 12,
+     "stages": [
+      {
+       "text": "3 \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 6
+      },
+      {
+       "text": "3 \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 6
+      }
+     ]
+    },
+    {
+     "idx": 5,
+     "gold": "64",
+     "pred": "16",
+     "correct": false,
+     "seconds": 0.505035474896431,
+     "new_tokens": 15,
+     "stages": [
+      {
+       "text": "16 glasses \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 8
+      },
+      {
+       "text": "16 \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 7
+      }
+     ]
+    },
+    {
+     "idx": 6,
+     "gold": "260",
+     "pred": "260",
+     "correct": true,
+     "seconds": 3.183737590909004,
+     "new_tokens": 108,
+     "stages": [
+      {
+       "text": "20 * 4 = 80 (Charleston), 80 * 2 = 160 (Toulouse), 20 + 80 + 160 = 260.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 54
+      },
+      {
+       "text": "20 * 4 = 80 (Yes), 80 * 2 = 160 (Yes), 20 + 80 + 160 = 260 (Yes)\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 54
+      }
+     ]
+    },
+    {
+     "idx": 7,
+     "gold": "160",
+     "pred": "80",
+     "correct": false,
+     "seconds": 1.286363236606121,
+     "new_tokens": 42,
+     "stages": [
+      {
+       "text": "40% of 200 GB is 80 GB, so \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 21
+      },
+      {
+       "text": "40% of 200 GB is 80 GB, so \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 21
+      }
+     ]
+    },
+    {
+     "idx": 8,
+     "gold": "45",
+     "pred": "180",
+     "correct": false,
+     "seconds": 1.3468305170536041,
+     "new_tokens": 44,
+     "stages": [
+      {
+       "text": "3 hours at 60 mph = 180 miles.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 22
+      },
+      {
+       "text": "3 hours at 60 mph = 180 miles.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 22
+      }
+     ]
+    },
+    {
+     "idx": 9,
+     "gold": "460",
+     "pred": "45",
+     "correct": false,
+     "seconds": 1.0841796398162842,
+     "new_tokens": 35,
+     "stages": [
+      {
+       "text": "45 hours = 40 hours (regular) + 5 hours (overtime).\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 27
+      },
+      {
+       "text": "45 hours \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 8
+      }
+     ]
+    }
+   ]
+  },
+  "S5": {
+   "correct": 2,
+   "n": 10,
+   "tokens_per_second": 33.2945929609004,
+   "mean_seconds": 1.736017619073391,
+   "records": [
+    {
+     "idx": 0,
+     "gold": "18",
+     "pred": "9",
+     "correct": false,
+     "seconds": 5.14948583394289,
+     "new_tokens": 177,
+     "stages": [
+      {
+       "text": "16 - 3 - 4 = 9 eggs are left after Janet eats and bakes muffins.\nAt $2 per egg, she makes 9 * 2 = $18.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 49
+      },
+      {
+       "text": "16 - 3 - 4 = 9\nYes\nYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYes",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 1,
+     "gold": "3",
+     "pred": "3",
+     "correct": true,
+     "seconds": 1.0826735123991966,
+     "new_tokens": 35,
+     "stages": [
+      {
+       "text": "2 (blue) + 1 (white) = 3 bolts in total.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 25
+      },
+      {
+       "text": "3\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 10
+      }
+     ]
+    },
+    {
+     "idx": 2,
+     "gold": "70000",
+     "pred": "150",
+     "correct": false,
+     "seconds": 1.6794485002756119,
+     "new_tokens": 55,
+     "stages": [
+      {
+       "text": "150% of $80,000 is 0.15 * 80,000 = $12,000.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 43
+      },
+      {
+       "text": "150%\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 12
+      }
+     ]
+    },
+    {
+     "idx": 3,
+     "gold": "540",
+     "pred": "180",
+     "correct": false,
+     "seconds": 1.736571080982685,
+     "new_tokens": 58,
+     "stages": [
+      {
+       "text": "3 sprints per week * 60 meters per sprint = 180 meters per week.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 29
+      },
+      {
+       "text": "3 sprints per week * 60 meters per sprint = 180 meters per week.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 29
+      }
+     ]
+    },
+    {
+     "idx": 4,
+     "gold": "20",
+     "pred": "30",
+     "correct": false,
+     "seconds": 0.7099128291010857,
+     "new_tokens": 22,
+     "stages": [
+      {
+       "text": "30\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 11
+      },
+      {
+       "text": "30\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 11
+      }
+     ]
+    },
+    {
+     "idx": 5,
+     "gold": "64",
+     "pred": "16",
+     "correct": false,
+     "seconds": 0.5056719779968262,
+     "new_tokens": 15,
+     "stages": [
+      {
+       "text": "16 glasses \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 8
+      },
+      {
+       "text": "16 \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 7
+      }
+     ]
+    },
+    {
+     "idx": 6,
+     "gold": "260",
+     "pred": "260",
+     "correct": true,
+     "seconds": 3.183576077222824,
+     "new_tokens": 108,
+     "stages": [
+      {
+       "text": "20 * 4 = 80 (Charleston), 80 * 2 = 160 (Toulouse), 20 + 80 + 160 = 260\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 54
+      },
+      {
+       "text": "20 * 4 = 80 (Yes), 80 * 2 = 160 (Yes), 20 + 80 + 160 = 260 (Yes)\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 54
+      }
+     ]
+    },
+    {
+     "idx": 7,
+     "gold": "160",
+     "pred": "200",
+     "correct": false,
+     "seconds": 0.5905654281377792,
+     "new_tokens": 18,
+     "stages": [
+      {
+       "text": "200 GB \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 9
+      },
+      {
+       "text": "200 GB \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 9
+      }
+     ]
+    },
+    {
+     "idx": 8,
+     "gold": "45",
+     "pred": "180",
+     "correct": false,
+     "seconds": 1.3338400050997734,
+     "new_tokens": 44,
+     "stages": [
+      {
+       "text": "3 hours at 60 mph = 180 miles.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 22
+      },
+      {
+       "text": "3 hours at 60 mph = 180 miles.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 22
+      }
+     ]
+    },
+    {
+     "idx": 9,
+     "gold": "460",
+     "pred": "450",
+     "correct": false,
+     "seconds": 1.3884309455752373,
+     "new_tokens": 46,
+     "stages": [
+      {
+       "text": "45 hours at $10 per hour = $450.\n\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 23
+      },
+      {
+       "text": "45 hours at $10 per hour = $450.\nIn summary, \\boxed{Yes}",
+       "stop_reason": "eos",
+       "n_new_tokens": 23
+      }
+     ]
+    }
+   ]
+  },
+  "S3_vs_S5_outputs_differ": 4
+ },
+ "seconds": 198.9522294253111
+}

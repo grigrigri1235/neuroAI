@@ -1,0 +1,232 @@
+tokenizer of agurung/coconut-qwen3-4b-ff does not load (ImportError: 
+ requires the protobuf library but it was not found in your environment. Checkout the instructions on the
+installation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+), using Qwen/Qwen3-4B-Instruct-2507
+{'model': 'agurung/coconut-qwen3-4b-ff', 'dtype': 'torch.bfloat16', 'tokenizer_source': 'Qwen/Qwen3-4B-Instruct-2507', 'tokenizer_len': 151672, 'embedding_rows': 151672, 'marker_ids': [151669, 151670, 151671], 'expected_marker_ids': [151669, 151670, 151671], 'rope_theta': 5000000, 'missing_keys': [], 'unexpected_keys': []}
+G0 load: PASS
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+--- G1 same
+  hf:   ' \\boxed{Yes}'
+  ours: ' \\boxed{Yes}'
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+--- G1 same
+  hf:   ' \\boxed{Yes}'
+  ours: ' \\boxed{Yes}'
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+--- G1 same
+  hf:   ' \\boxed{Yes}'
+  ours: ' \\boxed{Yes}'
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+--- G1 same
+  hf:   ' \\boxed{Yes}'
+  ours: ' \\boxed{Yes}'
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+--- G1 same
+  hf:   ' \\boxed{Yes}'
+  ours: ' \\boxed{Yes}'
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+--- G1 same
+  hf:   '16 - 3 - 4 = 9 eggs are left after Janet eats and bakes muffins.\nAt $2 per egg, she makes 9 * 2 = $18.\nIn summary, \\boxed{Yes}'
+  ours: '16 - 3 - 4 = 9 eggs are left after Janet eats and bakes muffins.\nAt $2 per egg, she makes 9 * 2 = $18.\nIn summary, \\boxed{Yes}'
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+--- G1 same
+  hf:   '2 (blue) + 1 (white) = 3 bolts in total.\nIn summary, \\boxed{Yes}'
+  ours: '2 (blue) + 1 (white) = 3 bolts in total.\nIn summary, \\boxed{Yes}'
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+--- G1 same
+  hf:   '150% of $80,000 is 0.15 * 80,000 = $12,000.\nIn summary, \\boxed{Yes}'
+  ours: '150% of $80,000 is 0.15 * 80,000 = $12,000.\nIn summary, \\boxed{Yes}'
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+--- G1 same
+  hf:   '3 sprints per week * 60 meters per sprint = 180 meters per week.\nIn summary, \\boxed{Yes}'
+  ours: '3 sprints per week * 60 meters per sprint = 180 meters per week.\nIn summary, \\boxed{Yes}'
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+--- G1 same
+  hf:   '3 \\boxed{Yes}'
+  ours: '3 \\boxed{Yes}'
+G1 loop: PASS (10/10 same)
+--- G2 N=0 latent q0 gold 18 pred None
+  'In summary, \\boxed{Yes}'
+--- G2 N=0 latent q1 gold 3 pred None
+  'In summary, \\boxed{Yes}'
+G2 N=0 latent: 0/50
+--- G2 N=2 latent q0 gold 18 pred None
+  'In summary, \\boxed{Yes}'
+--- G2 N=2 latent q1 gold 3 pred None
+  'In summary, \\boxed{Yes}'
+G2 N=2 latent: 0/50
+--- G2 N=2 plain q0 gold 18 pred None
+  'In summary, \\boxed{Yes}'
+--- G2 N=2 plain q1 gold 3 pred None
+  'In summary, \\boxed{Yes}'
+G2 N=2 plain: 0/50
+--- G2 N=4 latent q0 gold 18 pred None
+  'In summary, \\boxed{Yes}'
+--- G2 N=4 latent q1 gold 3 pred None
+  'In summary, \\boxed{Yes}'
+G2 N=4 latent: 0/50
+--- G2 N=4 plain q0 gold 18 pred None
+  'In summary, \\boxed{Yes}'
+--- G2 N=4 plain q1 gold 3 pred None
+  'In summary, \\boxed{Yes}'
+G2 N=4 plain: 0/50
+--- G2 N=6 latent q0 gold 18 pred None
+  'In summary, \\boxed{Yes}'
+--- G2 N=6 latent q1 gold 3 pred None
+  'InIn________InInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInInIn'
+G2 N=6 latent: 0/50
+--- G2 N=6 plain q0 gold 18 pred None
+  'In summary, \\boxed{Yes}'
+--- G2 N=6 plain q1 gold 3 pred None
+  'In summary, \\boxed{Yes}'
+G2 N=6 plain: 0/50
+--- S1 q0 gold 18 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S1 q1 gold 3 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S1 q2 gold 70000 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S1 q3 gold 540 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S1 q4 gold 20 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S1 q5 gold 64 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S1 q6 gold 260 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S1 q7 gold 160 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S1 q8 gold 45 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S1 q9 gold 460 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S2 q0 gold 18 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S2 q1 gold 3 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S2 q2 gold 70000 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S2 q3 gold 540 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S2 q4 gold 20 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S2 q5 gold 64 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S2 q6 gold 260 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S2 q7 gold 160 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S2 q8 gold 45 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S2 q9 gold 460 pred None (0.2s)
+  stage 1 [eos, 5 tok]: '\\boxed{Yes}'
+--- S3 q0 gold 18 pred 9 (5.4s)
+  stage 1 [eos, 49 tok]: '16 - 3 - 4 = 9 eggs are left after Janet eats and bakes muffins.\nAt $2 per egg, she makes 9 * 2 = $18.\nIn summary, \\boxed{Yes}'
+  stage 2 [max_new_tokens, 128 tok]: '16 - 3 - 4 = 9\nYes\nYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYes'
+--- S3 q1 gold 3 pred 3 (1.3s)
+  stage 1 [eos, 25 tok]: '2 (blue) + 1 (white) = 3 bolts in total.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 10 tok]: '3\nIn summary, \\boxed{Yes}'
+--- S3 q2 gold 70000 pred 150 (1.8s)
+  stage 1 [eos, 43 tok]: '150% of $80,000 is 0.15 * 80,000 = $12,000.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 12 tok]: '150%\nIn summary, \\boxed{Yes}'
+--- S3 q3 gold 540 pred 180 (1.4s)
+  stage 1 [eos, 29 tok]: '3 sprints per week * 60 meters per sprint = 180 meters per week.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 12 tok]: '180\nIn summary, \\boxed{Yes}'
+--- S3 q4 gold 20 pred 60 (4.7s)
+  stage 1 [eos, 27 tok]: '20 chickens × 3 cups of feed per chicken = 60 cups of feed.\nIn summary, \\boxed{Yes}'
+  stage 2 [max_new_tokens, 128 tok]: '20 × 3 = 60\nYes\nYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYes'
+--- S3 q5 gold 64 pred 16 (0.7s)
+  stage 1 [eos, 8 tok]: '16 glasses \\boxed{Yes}'
+  stage 2 [eos, 7 tok]: '16 \\boxed{Yes}'
+--- S3 q6 gold 260 pred 20 (2.0s)
+  stage 1 [eos, 54 tok]: '20 * 4 = 80 (Charleston), 80 * 2 = 160 (Toulouse), 20 + 80 + 160 = 260\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 7 tok]: '20 \\boxed{Yes}'
+--- S3 q7 gold 160 pred 200 (0.8s)
+  stage 1 [eos, 9 tok]: '200 GB \\boxed{Yes}'
+  stage 2 [eos, 9 tok]: '200 GB \\boxed{Yes}'
+--- S3 q8 gold 45 pred 180 (1.5s)
+  stage 1 [eos, 22 tok]: '3 hours at 60 mph = 180 miles.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 22 tok]: '3 hours at 60 mph = 180 miles.\nIn summary, \\boxed{Yes}'
+--- S3 q9 gold 460 pred 45 (1.1s)
+  stage 1 [eos, 23 tok]: '45 hours at $10 per hour = $450.\n\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 7 tok]: '45 \\boxed{Yes}'
+--- S4 q0 gold 18 pred 9 (2.0s)
+  stage 1 [eos, 49 tok]: '16 - 3 - 4 = 9 eggs are left after Janet eats and bakes muffins.\nAt $2 per egg, she makes 9 * 2 = $18.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 16 tok]: '16 - 3 - 4 = 9 \\boxed{Yes}'
+--- S4 q1 gold 3 pred 3 (1.1s)
+  stage 1 [eos, 25 tok]: '2 (blue) + 1 (white) = 3 bolts in total.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 10 tok]: '3\nIn summary, \\boxed{Yes}'
+--- S4 q2 gold 70000 pred 150 (1.7s)
+  stage 1 [eos, 43 tok]: '150% of $80,000 is 0.15 * 80,000 = $12,000.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 12 tok]: '150%\nIn summary, \\boxed{Yes}'
+--- S4 q3 gold 540 pred 180 (1.3s)
+  stage 1 [eos, 29 tok]: '3 sprints per week * 60 meters per sprint = 180 meters per week.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 12 tok]: '180\nIn summary, \\boxed{Yes}'
+--- S4 q4 gold 20 pred 3 (0.4s)
+  stage 1 [eos, 6 tok]: '3 \\boxed{Yes}'
+  stage 2 [eos, 6 tok]: '3 \\boxed{Yes}'
+--- S4 q5 gold 64 pred 16 (0.5s)
+  stage 1 [eos, 8 tok]: '16 glasses \\boxed{Yes}'
+  stage 2 [eos, 7 tok]: '16 \\boxed{Yes}'
+--- S4 q6 gold 260 pred 260 (3.2s)
+  stage 1 [eos, 54 tok]: '20 * 4 = 80 (Charleston), 80 * 2 = 160 (Toulouse), 20 + 80 + 160 = 260.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 54 tok]: '20 * 4 = 80 (Yes), 80 * 2 = 160 (Yes), 20 + 80 + 160 = 260 (Yes)\nIn summary, \\boxed{Yes}'
+--- S4 q7 gold 160 pred 80 (1.3s)
+  stage 1 [eos, 21 tok]: '40% of 200 GB is 80 GB, so \\boxed{Yes}'
+  stage 2 [eos, 21 tok]: '40% of 200 GB is 80 GB, so \\boxed{Yes}'
+--- S4 q8 gold 45 pred 180 (1.3s)
+  stage 1 [eos, 22 tok]: '3 hours at 60 mph = 180 miles.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 22 tok]: '3 hours at 60 mph = 180 miles.\nIn summary, \\boxed{Yes}'
+--- S4 q9 gold 460 pred 45 (1.1s)
+  stage 1 [eos, 27 tok]: '45 hours = 40 hours (regular) + 5 hours (overtime).\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 8 tok]: '45 hours \\boxed{Yes}'
+--- S5 q0 gold 18 pred 9 (5.1s)
+  stage 1 [eos, 49 tok]: '16 - 3 - 4 = 9 eggs are left after Janet eats and bakes muffins.\nAt $2 per egg, she makes 9 * 2 = $18.\nIn summary, \\boxed{Yes}'
+  stage 2 [max_new_tokens, 128 tok]: '16 - 3 - 4 = 9\nYes\nYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYes'
+--- S5 q1 gold 3 pred 3 (1.1s)
+  stage 1 [eos, 25 tok]: '2 (blue) + 1 (white) = 3 bolts in total.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 10 tok]: '3\nIn summary, \\boxed{Yes}'
+--- S5 q2 gold 70000 pred 150 (1.7s)
+  stage 1 [eos, 43 tok]: '150% of $80,000 is 0.15 * 80,000 = $12,000.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 12 tok]: '150%\nIn summary, \\boxed{Yes}'
+--- S5 q3 gold 540 pred 180 (1.7s)
+  stage 1 [eos, 29 tok]: '3 sprints per week * 60 meters per sprint = 180 meters per week.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 29 tok]: '3 sprints per week * 60 meters per sprint = 180 meters per week.\nIn summary, \\boxed{Yes}'
+--- S5 q4 gold 20 pred 30 (0.7s)
+  stage 1 [eos, 11 tok]: '30\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 11 tok]: '30\nIn summary, \\boxed{Yes}'
+--- S5 q5 gold 64 pred 16 (0.5s)
+  stage 1 [eos, 8 tok]: '16 glasses \\boxed{Yes}'
+  stage 2 [eos, 7 tok]: '16 \\boxed{Yes}'
+--- S5 q6 gold 260 pred 260 (3.2s)
+  stage 1 [eos, 54 tok]: '20 * 4 = 80 (Charleston), 80 * 2 = 160 (Toulouse), 20 + 80 + 160 = 260\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 54 tok]: '20 * 4 = 80 (Yes), 80 * 2 = 160 (Yes), 20 + 80 + 160 = 260 (Yes)\nIn summary, \\boxed{Yes}'
+--- S5 q7 gold 160 pred 200 (0.6s)
+  stage 1 [eos, 9 tok]: '200 GB \\boxed{Yes}'
+  stage 2 [eos, 9 tok]: '200 GB \\boxed{Yes}'
+--- S5 q8 gold 45 pred 180 (1.3s)
+  stage 1 [eos, 22 tok]: '3 hours at 60 mph = 180 miles.\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 22 tok]: '3 hours at 60 mph = 180 miles.\nIn summary, \\boxed{Yes}'
+--- S5 q9 gold 460 pred 450 (1.4s)
+  stage 1 [eos, 23 tok]: '45 hours at $10 per hour = $450.\n\nIn summary, \\boxed{Yes}'
+  stage 2 [eos, 23 tok]: '45 hours at $10 per hour = $450.\nIn summary, \\boxed{Yes}'
+=== summary ===
+G1 loop: 10/10 same as HF generate
+G2 N=0 latent: 0/50
+G2 N=2 latent: 0/50
+G2 N=2 plain: 0/50
+G2 N=2 discordant: {'feedback_only': 0, 'plain_only': 0}
+G2 N=4 latent: 0/50
+G2 N=4 plain: 0/50
+G2 N=4 discordant: {'feedback_only': 0, 'plain_only': 0}
+G2 N=6 latent: 0/50
+G2 N=6 plain: 0/50
+G2 N=6 discordant: {'feedback_only': 0, 'plain_only': 0}
+G3 S1: 0/10 correct, 29.1 tok/s
+G3 S2: 0/10 correct, 29.1 tok/s
+G3 S3: 1/10 correct, 30.6 tok/s
+G3 S4: 2/10 correct, 32.8 tok/s
+G3 S5: 2/10 correct, 33.3 tok/s
+G3 S3 vs S5 outputs differ: 4/10
+saved /home/eran.b/neuroAI/coconut/results/qwen3/check/qwen3_check.json

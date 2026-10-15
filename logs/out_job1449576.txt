@@ -1,0 +1,5 @@
+job 1449576 on tdk-bm4 at Thu Oct 15 03:32:57 AM IDT 2026
+name, memory.total [MiB], driver_version
+NVIDIA L40S, 49140 MiB, 535.247.01
+[03:33:10] start qwen3_check
+[03:37:14] done  qwen3_check
