@@ -1,0 +1,77 @@
+key prefixes: {'base_causallm': 149, 'expainable_llm': 149, 'embedding': 1}
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+Passing a tuple of `past_key_values` is deprecated and will be removed in Transformers v4.53.0. You should pass an instance of `Cache` instead, e.g. `past_key_values=DynamicCache.from_legacy_cache(past_key_values)`.
+checkpoint: /home/eran.b/.cache/huggingface/hub/models--internlm--SIM_COT-GPT2-Coconut/snapshots/676c8a8aeb4afcef3a4fb98da9d539588d969340/checkpoint_28
+  150 keys, first: ['base_causallm.transformer.wte.weight', 'base_causallm.transformer.wpe.weight', 'base_causallm.transformer.h.0.ln_1.weight']
+<All keys matched successfully>
+--- q0 gold 18 | L '18' | T2-in '54' | T2-in-gold '18'
+  T2-in:      Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. 3+4=7. How much in dollars does she make every day at the farmers' market?
+  T2-in-gold: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. 16-3-4=9. How much in dollars does she make every day at the farmers' market?
+--- q1 gold 3 | L '3' | T2-in '3' | T2-in-gold '3'
+  T2-in:      A robe takes 2 bolts of blue fiber and half that much white fiber.  2/2=1. How many bolts in total does it take?
+  T2-in-gold: A robe takes 2 bolts of blue fiber and half that much white fiber.  2/2=1. How many bolts in total does it take?
+--- q2 gold 70000 | L '45000' | T2-in '45000' | T2-in-gold '45000'
+  T2-in:      Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,000 in repairs.  This increased the value of the house by 150%.  80000*.5=40000. How much profit did he make?
+  T2-in-gold: Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,000 in repairs.  This increased the value of the house by 150%.  80000+50000=130000. How much profit did he make?
+--- q3 gold 540 | L '180' | T2-in '360' | T2-in-gold '243'
+  T2-in:      James decides to run 3 sprints 3 times a week.  He runs 60 meters each sprint.  3*60=180. How many total meters does he run a week?
+  T2-in-gold: James decides to run 3 sprints 3 times a week.  He runs 60 meters each sprint.  3*3=9. How many total meters does he run a week?
+--- q4 gold 20 | L '20' | T2-in '8' | T2-in-gold '20'
+  T2-in:      Every day, Wendi feeds each of her chickens three cups of mixed chicken feed, containing seeds, mealworms and vegetables to help keep them healthy.  She gives the chickens their feed in three separate meals. In the morning, she gives her flock of chickens 15 cups of feed.  In the afternoon, she gives her chickens another 25 cups of feed.  3+15=18. How many cups of feed does she need to give her chickens in the final meal of the day if the size of Wendi's flock is 20 chickens?
+  T2-in-gold: Every day, Wendi feeds each of her chickens three cups of mixed chicken feed, containing seeds, mealworms and vegetables to help keep them healthy.  She gives the chickens their feed in three separate meals. In the morning, she gives her flock of chickens 15 cups of feed.  In the afternoon, she gives her chickens another 25 cups of feed.  3*20=60. How many cups of feed does she need to give her chickens in the final meal of the day if the size of Wendi's flock is 20 chickens?
+--- q5 gold 64 | L '46' | T2-in '34' | T2-in-gold '34'
+  T2-in:      Kylar went to the store to buy glasses for his new apartment. One glass costs $5, but every second glass costs only 60% of the price. Kylar wants to buy 16 glasses. 5*0.60=3. How much does he need to pay for them?
+  T2-in-gold: Kylar went to the store to buy glasses for his new apartment. One glass costs $5, but every second glass costs only 60% of the price. Kylar wants to buy 16 glasses. 60/100*5=3. How much does he need to pay for them?
+--- q6 gold 260 | L '260' | T2-in '260' | T2-in-gold '260'
+  T2-in:      Toulouse has twice as many sheep as Charleston. Charleston has 4 times as many sheep as Seattle. 4*20=80. How many sheep do Toulouse, Charleston, and Seattle have together if Seattle has 20 sheep?
+  T2-in-gold: Toulouse has twice as many sheep as Charleston. Charleston has 4 times as many sheep as Seattle. 20*4=80. How many sheep do Toulouse, Charleston, and Seattle have together if Seattle has 20 sheep?
+--- q7 gold 160 | L '160' | T2-in '112' | T2-in-gold '112'
+  T2-in:      Carla is downloading a 200 GB file. Normally she can download 2 GB/minute, but 40% of the way through the download, Windows forces a restart to install updates, which takes 20 minutes. Then Carla has to restart the download from the beginning. 200*0.4=80. How load does it take to download the file?
+  T2-in-gold: Carla is downloading a 200 GB file. Normally she can download 2 GB/minute, but 40% of the way through the download, Windows forces a restart to install updates, which takes 20 minutes. Then Carla has to restart the download from the beginning. 200*40*.01=80. How load does it take to download the file?
+--- q8 gold 45 | L '20' | T2-in '60' | T2-in-gold '60'
+  T2-in:      John drives for 3 hours at a speed of 60 mph and then turns around because he realizes he forgot something very important at home.  He tries to get home in 4 hours but spends the first 2 hours in standstill traffic.  He spends the next half-hour driving at a speed of 30mph, before being able to drive the remaining time of the 4 hours going at 80 mph.  3*60=180. How far is he from home at the end of those 4 hours?
+  T2-in-gold: John drives for 3 hours at a speed of 60 mph and then turns around because he realizes he forgot something very important at home.  He tries to get home in 4 hours but spends the first 2 hours in standstill traffic.  He spends the next half-hour driving at a speed of 30mph, before being able to drive the remaining time of the 4 hours going at 80 mph.  3*60=180. How far is he from home at the end of those 4 hours?
+--- q9 gold 460 | L '528' | T2-in '528' | T2-in-gold '460'
+  T2-in:      Eliza's rate per hour for the first 40 hours she works each week is $10. She also receives an overtime pay of 1.2 times her regular hourly rate. 10*40=400. If Eliza worked for 45 hours this week, how much are her earnings for this week?
+  T2-in-gold: Eliza's rate per hour for the first 40 hours she works each week is $10. She also receives an overtime pay of 1.2 times her regular hourly rate. 45-40=5. If Eliza worked for 45 hours this week, how much are her earnings for this week?
+--- q10 gold 366 | L '318' | T2-in '336' | T2-in-gold '288'
+  T2-in:      A new program had 60 downloads in the first month. The number of downloads in the second month was three times as many as the downloads in the first month, but then reduced by 30% in the third month. 60*3=180. How many downloads did the program have total over the three months?
+  T2-in-gold: A new program had 60 downloads in the first month. The number of downloads in the second month was three times as many as the downloads in the first month, but then reduced by 30% in the third month. 3*60=180. How many downloads did the program have total over the three months?
+--- q11 gold 694 | L '726' | T2-in '704' | T2-in-gold '704'
+  T2-in:      Toula went to the bakery and bought various types of pastries. She bought 3 dozen donuts which cost $68 per dozen, 2 dozen mini cupcakes which cost $80 per dozen, and 6 dozen mini cheesecakes for $55 per dozen. 3*68=204. How much was the total cost?
+  T2-in-gold: Toula went to the bakery and bought various types of pastries. She bought 3 dozen donuts which cost $68 per dozen, 2 dozen mini cupcakes which cost $80 per dozen, and 6 dozen mini cheesecakes for $55 per dozen. 3*68=204. How much was the total cost?
+--- q12 gold 13 | L '10' | T2-in '0.64' | T2-in-gold '0.64'
+  T2-in:      Carlos is planting a lemon tree. The tree will cost $90 to plant. Each year it will grow 7 lemons, which he can sell for $1.5 each. It costs $3 a year to water and feed the tree. 7*1.5=10.5. How many years will it take before he starts earning money on the lemon tree?
+  T2-in-gold: Carlos is planting a lemon tree. The tree will cost $90 to plant. Each year it will grow 7 lemons, which he can sell for $1.5 each. It costs $3 a year to water and feed the tree. 7*1.5=10.5. How many years will it take before he starts earning money on the lemon tree?
+--- q13 gold 18 | L '24' | T2-in '30' | T2-in-gold '33.33'
+  T2-in:      Melanie is a door-to-door saleswoman. She sold a third of her vacuum cleaners at the green house, 2 more to the red house, and half of what was left at the orange house. 5+2=7. If Melanie has 5 vacuum cleaners left, how many did she start with?
+  T2-in-gold: Melanie is a door-to-door saleswoman. She sold a third of her vacuum cleaners at the green house, 2 more to the red house, and half of what was left at the orange house. 5*2=10. If Melanie has 5 vacuum cleaners left, how many did she start with?
+--- q14 gold 60 | L '60' | T2-in '60' | T2-in-gold '60'
+  T2-in:      In a dance class of 20 students, 20% enrolled in contemporary dance, 25% of the remaining enrolled in jazz dance, and the rest enrolled in hip-hop dance. 20*25/100=5. What percentage of the entire students enrolled in hip-hop dance?
+  T2-in-gold: In a dance class of 20 students, 20% enrolled in contemporary dance, 25% of the remaining enrolled in jazz dance, and the rest enrolled in hip-hop dance. 20*20/100=4. What percentage of the entire students enrolled in hip-hop dance?
+--- q15 gold 125 | L '346' | T2-in '90' | T2-in-gold '135'
+  T2-in:      A merchant wants to make a choice of purchase between 2 purchase plans: jewelry worth $5,000 or electronic gadgets worth $8,000. His financial advisor speculates that the jewelry market will go up 2.5% while the electronic gadgets market will rise 1.2% within the same month. 5000*2.5*.01=125. If the merchant is looking to maximize profit at the end of this month by making a choice, how much profit would this be?
+  T2-in-gold: A merchant wants to make a choice of purchase between 2 purchase plans: jewelry worth $5,000 or electronic gadgets worth $8,000. His financial advisor speculates that the jewelry market will go up 2.5% while the electronic gadgets market will rise 1.2% within the same month. 5000*(2.5/100)=125. If the merchant is looking to maximize profit at the end of this month by making a choice, how much profit would this be?
+--- q16 gold 230 | L '115' | T2-in '55' | T2-in-gold '180'
+  T2-in:      Two trains leave San Rafael at the same time. They begin traveling westward, both traveling for 80 miles. The next day, they travel northwards, covering 150 miles. 80+150=230. What's the distance covered by each train in the two days?
+  T2-in-gold: Two trains leave San Rafael at the same time. They begin traveling westward, both traveling for 80 miles. The next day, they travel northwards, covering 150 miles. 2*80=160. What's the distance covered by each train in the two days?
+--- q17 gold 57500 | L '7250' | T2-in '12250' | T2-in-gold '12750'
+  T2-in:      Jill gets paid $20 per hour to teach and $30 to be a cheerleading coach. 50*35=1750. If she works 50 weeks a year, 35 hours a week as a teacher and 15 hours a week as a coach, what's her annual salary?
+  T2-in-gold: Jill gets paid $20 per hour to teach and $30 to be a cheerleading coach. 20*35=700. If she works 50 weeks a year, 35 hours a week as a teacher and 15 hours a week as a coach, what's her annual salary?
+--- q18 gold 7 | L '7' | T2-in '7' | T2-in-gold '7'
+  T2-in:      Claire makes a 3 egg omelet every morning for breakfast.  3*7=21. How many dozens of eggs will she eat in 4 weeks?
+  T2-in-gold: Claire makes a 3 egg omelet every morning for breakfast.  3*7=21. How many dozens of eggs will she eat in 4 weeks?
+--- q19 gold 6 | L '2' | T2-in '4' | T2-in-gold '3'
+  T2-in:      Marissa is hiking a 12-mile trail. She took 1 hour to walk the first 4 miles, then another hour to walk the next two miles. 4+2=6. If she wants her average speed to be 4 miles per hour, what speed (in miles per hour) does she need to walk the remaining distance?
+  T2-in-gold: Marissa is hiking a 12-mile trail. She took 1 hour to walk the first 4 miles, then another hour to walk the next two miles. 12/4=3. If she wants her average speed to be 4 miles per hour, what speed (in miles per hour) does she need to walk the remaining distance?
+=== summary ===
+checks: {'L_equal_saved': 1319, 's1_equal_saved': 1319, 'n': 1319, 'gold_step_empty': 18, 's1_is_answer': 0, 'one_sentence_question': 16}
+L: 0.4466 [0.420, 0.473]  n=1319
+T2_in: 0.2449 [0.222, 0.269]  n=1319
+T2_in_gold: 0.2722 [0.249, 0.297]  n=1319
+T2_in-L: diff -0.2017 [-0.226, -0.179]  McNemar p=1.24e-58 -> T2_in lower
+T2_in_gold-L: diff -0.1744 [-0.199, -0.151]  McNemar p=4.48e-43 -> T2_in_gold lower
+T2_in-T2_in_gold: diff -0.0273 [-0.042, -0.013]  McNemar p=0.000306 -> T2_in lower
+T2_in-T2: diff -0.0993 [-0.122, -0.077]  McNemar p=5.78e-17 -> T2_in lower
+T2_in_gold-T2_gold: diff -0.1137 [-0.138, -0.090]  McNemar p=4.58e-20 -> T2_in_gold lower
+saved /home/eran.b/neuroAI/coconut/results/simcot/simcot_t2in.json
