@@ -5,3 +5,5 @@ coconut/entailment_bank/
 __pycache__/
 # GSM8K train split made by coconut/preprocessing/gsm_icot.bash (~150MB, over GitHub's 100MB limit; re-run the script)
 coconut/data/gsm_train.json
+# fine-tuned SIM-CoT models (~0.5GB each), made by coconut/experiments/simcot_finetune.py
+coconut/checkpoints_ft/

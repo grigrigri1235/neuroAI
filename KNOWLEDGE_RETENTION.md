@@ -14,6 +14,40 @@ How we work (lambda / Newton / conversation rules, exact commands, pitfalls): `w
 
 ---
 
+## FINAL PHASE (2026-10-15, user decision): no more experiments, write the report, clean the repo, submit
+
+- The user decided to **stop experimenting** after T2-in (all 4 interleaving variants below L, section 16.6) and
+  prepare the final submission. The user feels bad about the negative Part 2; the report should be honest but not
+  defeated: Part 1 is a working reproduction + control, Part 2 is a careful negative result with a clear reason.
+- The user asked for a **future work section** that lists why it did not work ("excuses", written as plain
+  limitations) and what could make it work: **fine-tuning the model itself** on an interleaved layout
+  (latents -> written step -> latents), not prompting tricks.
+- Asked for: document all in KR, write the report (`final_rep/main.tex`), remove clutter from the repo.
+- Plan: `docs/planning/final_submission_plan.md`. User answers: author Eran Ben Eliyahou (solo, final format),
+  title "Reproducing Coconut and Testing Written Steps Between Latent Thoughts", remove old files (no archive,
+  git tag `pre-cleanup` first). The user wants the report to **show all the failed attempts** (plan section 6:
+  12-row attempt table at the end of the paper + `docs/attempt_log.md`).
+- **Then the user chose one last try before submitting: a short fine-tune** (plan
+  `docs/planning/simcot_finetune_plan.md`, APPROVED, code written, NOT RUN). EntailmentBank was considered and
+  rejected (SIM-CoT knows only GSM8K math; Phase 3b already showed no latent effect there).
+  - User's fix to the first draft: train with the model's **own** step 1 (explainer output of the original model),
+    not the true step, because at test time (T2) the step is the explainer's (exact only 42.5%); training on true
+    steps only would be off-distribution.
+  - Design: step 0 makes own step 1 for 50,000 shuffled `gsm_train.json` questions (the iCoT-expanded train set,
+    ~385k; the original GSM8K train is ~7.5k). FT-mix = half with own step, half without; FT-plain = same
+    questions, never a step (control for "just more training": the user asked why it is needed; answer: our extra
+    training itself can move accuracy). Both always have the 10 thoughts. Test: original / FT-mix / FT-plain x
+    L / T2 (saved s1) / T2-gold, 1319.
+  - Report names: L = "no step", T2 = "own step", T2-gold = "true step" (the user found the code names unclear).
+  - Files: `simcot_ft_steps.py`, `simcot_finetune.py`, `simcot_ft_eval.py`, `simcot_ft.slurm`. Checks 0-5 inside.
+  - Commands: lambda commit/push; Newton `git pull`, `sbatch --test-only coconut/experiments/simcot_ft.slurm`,
+    `sbatch ...` (~3-4 h, 10 h limit, resubmit skips finished parts). Then push `logs` + `coconut/results`.
+  - When results arrive: logs `logs/simcot_ft_{steps,train_mix,train_plain,eval}_<job>.log`; results
+    `coconut/results/simcot/ft_train_{mix,plain}.json`, `ft_eval.json`. Read checks first, then Q1 (FT-mix T2 vs
+    L), Q2 (FT-mix T2-gold vs L), Q3 (gaps FT-mix vs FT-plain). Crash: report, do not fix alone.
+  - After that: the final submission plan (`final_submission_plan.md`, approved answers in its section 5; attempt
+    table in section 6, row 12 = this fine-tune).
+
 ## HANDOFF (read first): exactly where we stopped (2026-10-15, end of a long session)
 
 **New session: read this block, then `workflow.md` (how we work, commands, Newton details), then section 16 (all
@@ -23,7 +57,9 @@ results).** Global rules: `~/.claude/CLAUDE.md` (recap them at the start of ever
    10 latents, decoded thoughts are readable `<<a*b=c>>` steps). Main: **T2 34.4% and T2-gold 38.6%, both lower than
    L 44.7%** (CIs exclude 0). Even the true step hurts, so the layout (a `<<...>>` line after the question, never seen
    in training) is the likely cause. The user was disappointed by the negative result and chose one more try.
-2. **T2-in job: WRITTEN, NOT RUN** (user approved 2026-10-15). Plan `docs/planning/simcot_t2in_plan.md`. Files
+2. **T2-in job 1450454: DONE, also negative** (T2-in 24.5%, T2-in-gold 27.2% vs L 44.7%; worse than T2;
+   section 16.6). Next decision is the user's: stop experiments and plan the report (recommended), or another try.
+   History of this step (user approved 2026-10-15): Plan `docs/planning/simcot_t2in_plan.md`. Files
    `coconut/experiments/simcot_t2in.py` + `.slurm`. Step 1 written as `16-3-4=9.` and put **inside the question,
    before its last sentence**. Settings L / T2-in / T2-in-gold (1319, paired) + placement effect vs the saved T2 /
    T2-gold. Needs `coconut/results/simcot/simcot_run.json` on Newton (it is there). ~10 min.
@@ -532,6 +568,8 @@ Phase 5 (written 2026-10-15):
   coconut/experiments/qwen3_check.py + .slurm   Qwen3-4B gate G0-G3 (common.load_coconut_hf)
   coconut/experiments/simcot_run.py + .slurm    SIM-CoT gate G0-G2 + L / T2 / T2-gold (job 1449771)
   coconut/experiments/simcot_t2in.py + .slurm   SIM-CoT T2-in / T2-in-gold (step inside the question)
+  coconut/experiments/simcot_ft_steps.py, simcot_finetune.py, simcot_ft_eval.py, simcot_ft.slurm   short fine-tune
+  coconut/checkpoints_ft/       fine-tuned models (git-ignored, Newton only)
   coconut/results/simcot/       simcot_run.json, simcot_t2in.json
   coconut/results/gpt2/         native.json, native_plain.json, fewshot_S1..S5.json, results.json, smoke/
   coconut/results/qwen7b/check/, coconut/results/qwen3/check/   gate reports
@@ -804,7 +842,29 @@ T2 vs T2-gold: -4.2 [-5.8, -2.6], p = 1e-6. s1 exactly equal to the true step 1:
   Explained to the user: T2 already was "step added to the question"; a text label like "START OF YOUR ANSWER:"
   would not help (GPT-2 does not follow instructions).
 
-**T2-in / T2-in-gold:** written, not run (plan `docs/planning/simcot_t2in_plan.md`). Results go here.
+**T2-in / T2-in-gold** (job 1450454, 400 s, `coconut/results/simcot/simcot_t2in.json`, plan
+`docs/planning/simcot_t2in_plan.md`): step 1 written as `16-3-4=9.` and put inside the question, before its last
+sentence. Checks: L re-run = saved L on 1319/1319, s1 = saved s1 on 1319/1319; insertion looked right on the printed
+questions; 18 questions have no true step (question unchanged), 16 have one sentence (step at the start).
+
+| Setting | Accuracy | vs L [95% CI] | McNemar p | vs old spot [95% CI] |
+|---|---|---|---|---|
+| L | 44.7% | - | - | - |
+| T2-in | 24.5% | -20.2 [-22.6, -17.9] | 1e-58 | vs T2: -9.9 [-12.2, -7.7] |
+| T2-in-gold | 27.2% | -17.4 [-19.9, -15.1] | 4e-43 | vs T2-gold: -11.4 [-13.8, -9.0] |
+
+T2-in vs T2-in-gold: -2.7 [-4.2, -1.3], p = 3e-4.
+
+- **Result:** putting the step inside the question hurts even more than appending it (about -10 more points), for
+  both the explainer's step and the true step.
+- **All 4 variants (T2, T2-gold, T2-in, T2-in-gold) are below L.** The true step is always 3-4 points better than
+  the explainer's step, but never better than no step at all.
+- **Reading:** this model computes everything from the raw question inside its latents. Any edit to the input,
+  even a correct fact, disturbs it; the more it changes the question itself, the worse. A plausible (not tested)
+  reason: the inserted numbers act like extra quantities to use (cf. "LLMs are easily distracted by irrelevant
+  context", Shi et al. 2023, GSM-IC). Example q0: T2-in (`3+4=7.` inserted) answered 54 instead of 18.
+- Can claim: "for this checkpoint, written steps in the input do not help in either position we tried". Cannot
+  claim: interleaving fails for models trained on an interleaved layout.
 
 ### 16.5 Other Part 2 ideas (cheap, GPT-2, inference only; offered, not chosen yet)
 Thought transplant (question A's thoughts into question B: does B's answer follow A?), per-thought ablation (which of

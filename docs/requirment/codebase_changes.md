@@ -75,3 +75,23 @@ This file concisely documents all modifications made to the repository across th
   right before its last sentence (`insert_step`). Settings L / T2-in / T2-in-gold, all 1319, paired; also compared
   with the saved T2 / T2-gold (placement effect). Checks: the L re-run and s1 must equal job 1449771. Reuses
   `run_round` and `decode_thoughts` from `simcot_run.py`; no existing file changed.
+  Result (job 1450454): T2-in 24.5%, T2-in-gold 27.2%, both lower than L and than T2 / T2-gold.
+
+## 7. Phase 5c: short fine-tune so the model learns to read its own step (2026-10-15)
+- **Plan:** `docs/planning/simcot_finetune_plan.md`. **Motivation:** all 4 prompt-only variants hurt because the
+  model never saw a written step in its input during training. With Newton's L40S, a short fine-tune of GPT-2 is
+  possible. The user asked to train with the model's **own** step (not the true one), so training matches the test.
+- **`experiments/simcot_ft_steps.py`** (step 0): for 50,000 shuffled training questions (`gsm_train.json`, seed 0),
+  the original SIM-CoT model's own step 1 (10 latents, explainer on thought pair 1; same code path as
+  `simcot_run.py`, checked equal on 20 test questions). Saves/continues `results/simcot/ft_train_steps.json`.
+- **`experiments/simcot_finetune.py`** (`--mode mix|plain`): FT-mix = half the questions (coin flip, seed 1) with the
+  own step after the question; FT-plain = same questions and order, no step (control for "just more training").
+  Input text built by `prefix_text`, checked token-equal to `simcot_run.run_round` (check 1). Loss only on
+  `### N<eos>` (official final-stage rule), official `Coconut.forward` + `MyCollator`. AdamW lr 2e-5, warmup 100,
+  linear decay, batch 32, one pass, clip 1.0. Saves `checkpoints_ft/<mode>.pt` (git-ignored) +
+  `results/simcot/ft_train_<mode>.json` (checks, loss curve, valid L on 300).
+- **`experiments/simcot_ft_eval.py`**: original / FT-mix / FT-plain x L / T2 (saved s1 of job 1449771) / T2-gold,
+  all 1319; check 5 = original reproduces 589/454/509; paired tests inside and between models + difference of
+  step gains (FT-mix vs FT-plain). Output `results/simcot/ft_eval.json`.
+- **`experiments/simcot_ft.slurm`**: steps -> train mix -> train plain -> eval (finished parts skipped on resubmit).
+- `.gitignore`: `coconut/checkpoints_ft/`. No existing code changed.
