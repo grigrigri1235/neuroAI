@@ -8,7 +8,9 @@ Contents:
 0. Status · 1. Course requirements · 2. Paper essentials · 3. Project history (all phases) ·
 4. What went wrong in Phase 4 · 5. The new experiment · 6. Implementation notes · 7. Server setup (Newton) ·
 8. Repo map · 9. Steps · 10. Working rules · 11. Part 2 follow-up ideas · 12. Old results in detail ·
-13. Data formats · 14. Lessons learned · 15. Glossary
+13. Data formats · 14. Lessons learned · 15. Glossary · **16. Phase 5 results + model search (2026-10-15)**
+
+How we work (lambda / Newton / conversation rules, exact commands, pitfalls): `workflow.md`.
 
 ---
 
@@ -21,6 +23,12 @@ Contents:
 - **Where it runs:** Newton GPU cluster (Technion, Slurm), GPU **NVIDIA L40S 47GB**, section 7.
   Claude Code works on **lambda** (it has issues on Newton): code is written on lambda, pushed with git, and the
   user runs it on Newton (same paths, `/home/eran.b/neuroAI`). Logs and results come back through git.
+- **LATEST (2026-10-15, night):** all Phase 5 results and the model search are in **section 16**. Summary: Part 1
+  reproduced (27.1% at 6 latents vs paper 34.1%) + a strong control (feedback vs plain +17.5 points). The user's
+  Idea 2 (interleaved latent thinking) is **not yet tested**: GPT-2 ignores step prompts, the Qwen2.5-7B export is
+  broken, and the Qwen3-4B export was trained on a yes/no task. **Next:** SIM-CoT GPT-2 (`internlm/SIM_COT-GPT2-Coconut`),
+  whose trained explainer can write the steps from the thoughts. Plan `docs/planning/simcot_interleaved_plan.md`,
+  gate job not written yet (waiting for "proceed").
 - **Update 2026-10-15 (after the GPT-2 run):** Part 1 worked (GSM8K 10.4% -> 12.9% -> 21.0% -> 27.1% with
   0/2/4/6 latents; paper 34.1%). Part 2 hit a floor effect (GPT-2 ignores the few-shot format, writes `### <n>`,
   S1-S5 = 3.4/10.2/1.1/0.9/1.1%, S3 = S5 on every question). Pivot approved: Part 2 moves to
@@ -473,6 +481,13 @@ Phase 5 (written 2026-10-15):
   coconut/experiments/score.py        stats -> results.json
   coconut/experiments/smoke_test.py   checks C0-C8
   coconut/experiments/run_gpt2.slurm  the one Newton job
+  coconut/experiments/qwen_check.py + .slurm    Qwen2.5-7B gate (+ GPT-2 run_native --fill plain control)
+  coconut/experiments/qwen3_check.py + .slurm   Qwen3-4B gate G0-G3 (common.load_coconut_hf)
+  coconut/results/gpt2/         native.json, native_plain.json, fewshot_S1..S5.json, results.json, smoke/
+  coconut/results/qwen7b/check/, coconut/results/qwen3/check/   gate reports
+  docs/planning/gpt2_coconut_phase5_impl.md, qwen7b_coconut_pivot.md, qwen3_4b_interleaved_plan.md,
+                simcot_interleaved_plan.md (next)
+  workflow.md                   how we work (lambda/Newton, conversation lifecycle, commands, pitfalls)
   logs/                         Newton logs (pushed back with git)
 planned (Phase 5):
   coconut/results/gpt2/         predictions + results JSON (made by the job)
@@ -589,6 +604,13 @@ Qualitative examples recorded in the old report (useful as failure-case template
 9. Small GPU: 7B models do not fit 8GB; offloading is too slow.
 10. TensorFlow (BLEURT) and PyTorch on the same GPU in one process crash; score BLEURT on CPU.
 11. Write claims in plain words that match the code; the oral check will test this.
+12. Gate every new checkpoint with a short check job before any big run (loads right, our loop = HF/official,
+    latents change the output, the model follows the format). It caught the broken Qwen2.5-7B and the yes/no Qwen3-4B
+    in ~10 min each.
+13. A floor effect is not a result about the hypothesis. If every setting is ~0%, the test could not see anything.
+14. HF exports from newer transformers can load silently wrong in older versions (Qwen3 export: `rope_theta` nested
+    in `rope_parameters`). Check the actual values after loading.
+15. A model card without the training data and format is a red flag. Check what the model actually writes first.
 
 ---
 
@@ -602,3 +624,97 @@ Qualitative examples recorded in the old report (useful as failure-case template
 - **Tautology collapse:** stage outputs like `7 + 7 = 14` that ignore the question (Phase 4, made-up examples).
 - **BLEURT-20:** learned text-similarity metric (Google). Our folder is misnamed `bleurt-large-512`.
 - **S1-S5:** settings in section 5.3.
+- **Plain / no-feedback control:** the same latent slots, but filled with the `<|latent|>` token embedding instead
+  of the previous hidden state (`--fill plain`, S5).
+- **Gate check:** a ~10-30 min job that must pass before a full run is planned.
+- **Explainer (SIM-CoT):** a second GPT-2, trained to write the step text that a pair of continuous thoughts stands for.
+
+---
+
+## 16. Phase 5 results + model search (2026-10-15)
+
+All runs on Newton, NVIDIA L40S, transformers 4.52.4, greedy, seed 0, GSM8K test (1319) unless stated.
+
+### 16.1 GPT-2 Coconut (`tsrigo/coconut/stage4_checkpoint_25`), job 1449565 + 1449567
+Smoke test: all required checks passed. Our `fill_latents` = official `Coconut.forward` (difference 0.0). Our loop =
+`Coconut.generate` (20/20, cache on and off). The official forward crashes on two latent blocks
+(`IndexError: index 22 is out of bounds`), so our own filler is needed. Few-shot prompt = Phase 4 byte for byte.
+The two GSM8K files hold the same 1319 questions and answers.
+
+**Part 1 (reproduction) + control** (`coconut/results/gpt2/results.json`):
+
+| Latents | Feedback (Coconut) | 95% CI | Plain (no feedback) | Feedback - plain [95% CI] | McNemar p |
+|---|---|---|---|---|---|
+| 0 | 10.4% | 8.9-12.1 | 10.4% | 0 (identical, sanity check) | 1 |
+| 2 | 12.9% | 11.2-14.8 | 10.2% | +2.7 [+1.5, +4.1] | 4e-5 |
+| 4 | 21.0% | 18.9-23.3 | 9.9% | +11.1 [+9.0, +13.1] | 2e-26 |
+| 6 | 27.1% | 24.7-29.5 | 9.6% | +17.5 [+15.2, +19.9] | 7e-50 |
+
+- **Trend reproduced:** more thoughts give better accuracy. The level is below the paper (34.1%). Possible reasons: a
+  third-party checkpoint, the last epoch rather than the best on validation. Not proven.
+- **The model writes only `### N`** (~2.3 tokens). Time per question: 0.019 s (0 latents) to 0.052 s (6 latents).
+- **Control:** without feedback, extra slots add nothing (stays ~10%), so the gain needs the hidden-state feedback.
+  Caveat: the plain slots are an untrained input (the paper's "pause as thought" baseline was trained). This
+  mostly confirms the paper's claim, in a cheaper inference-only way.
+
+**Part 2 few-shot S1-S5 = floor effect** (the full explanation is in `docs/planning/simcot_interleaved_plan.md`
+section 0): S1 3.4%, S2 10.2%, S3 1.1%, S4 0.9%, S5 1.1%. Every stage wrote `### <n>` and stopped, often `36` copied from
+the examples. S3 = S5 on all 1319 (0 discordant). Why: the checkpoint knows only `question -> latents -> ### answer`,
+and a 124M model cannot learn a new format from 3 examples. So no step was written, and the interleaving never happened.
+
+Marker embeddings (smoke C8): `<|latent|>` cosine 0.65 to its `<<` init (`<<` itself moved to 0.46). So "less trained
+than normal tokens", not "untrained".
+
+### 16.2 `agurung/coconut-qwen2.5-7b`, gate job 1449567: BROKEN, abandoned
+The saved tokenizer lacks the latent tokens, but the 3 extra rows sit at ids 151665-7, and our check confirmed the
+mapping. The output rows of all 3 markers are still the exact `<<` init (cosine 1.0, same norm), so they were barely
+trained. **It writes garbage in every setting, even S1 with no latents** (`a additional a additional ...`).
+0/10 everywhere. Later the Qwen3 G1 check showed our loop = HF `generate` on Qwen models, so the garbage is the
+checkpoint, not our code.
+
+### 16.3 `agurung/coconut-qwen3-4b-ff`, gate job 1449576: trained on a yes/no task, stop
+Base Qwen3-4B-Instruct-2507, checkpoint_32. Saved by transformers 5.5.4: the loader copies the nested `rope_theta`
+(5e6) and checks the rotary frequencies. The repo tokenizer does not load in 4.52, so the base Qwen3 tokenizer is used;
+the ids match `latent_metadata.json`.
+- G0 load PASS. G1 our loop = HF `generate` 10/10 PASS.
+- **G2 FAIL:** in the native format with 0/2/4/6 latents (feedback and plain), 0/50, always `In summary, \boxed{Yes}`.
+- G3: in the few-shot loop stage 1 it writes real math steps (`16 - 3 - 4 = 9 eggs ... 9 * 2 = $18`), then
+  `\boxed{Yes}`. Stage 2 often repeats itself or loops `YesYesYes`. 1-2/10 correct.
+- So it was trained on an undocumented yes/no task. GSM8K is out of its domain. Training data not found on the
+  author's HF page.
+
+### 16.4 Status of the user's Idea 2 (interleaved latent thinking)
+Not tested yet. Needs a model with (a) working latents and (b) the ability to write steps between them.
+GPT-2: (a) yes, (b) no. Qwen2.5-7B: broken. Qwen3-4B: (b) partly, (a) no effect on GSM8K.
+**Next candidate:** `internlm/SIM_COT-GPT2-Coconut` (arXiv 2509.20317), GPT-2 Coconut + SIM-CoT, same GSM8K format,
+`c_thought 2`, `max_latent_stage 5` (10 latents), file `checkpoint_28` (~1.4GB). Its training added an **explainer**
+GPT-2 that turns each thought pair into the step text (e.g. `<<16-3-4=9>>`). If the explainer is in the checkpoint,
+the model can write its own steps from its own thoughts, without in-context learning.
+Plan `docs/planning/simcot_interleaved_plan.md`.
+
+**CHOSEN design (user, 2026-10-15): minimal 2 rounds** (plan section 2c), GSM8K test 1319, paired:
+- **L** (baseline): question -> 10 latents -> `### answer`.
+- **T2** (the user's idea): round 1: question -> 10 latents; the explainer turns thought pair 1 into step s1
+  (e.g. `<<16-3-4=9>>`). Round 2: question + "\n" + s1 -> 10 latents -> `### answer`.
+- **T2-gold** (best case): as T2, but s1 = the true step 1 from `gsm_test.json`.
+- Metrics: accuracy T2 vs L, T2 vs T2-gold (McNemar + bootstrap); exact match of s1 vs the true step 1.
+- The answer always comes from the SIM-CoT model itself (base GPT-2 was never trained on math). Full 10-latent budget
+  in both rounds.
+- Dropped by the user: T2-plain (round 2 with plain latents, "we know latent thinking works"), and A (as many rounds
+  as the true number of steps, an oracle hint).
+- Why 2 rounds: same as the original 2-stage idea, and failures stay easy to understand. All earlier failures are
+  documented (16.1-16.3, plan section 0), and the user expects the instructor to accept the reduced scope.
+
+Earlier designs considered (not chosen, kept for the record):
+- **L:** all latent (10).
+- **R (the user's design):** re-prompt each round with the decoded steps added to the question; full 10-latent
+  budget every round; stop on a repeated step, no new step, or 5 rounds.
+- **I:** one sequence: pair, step text, pair, ...
+- Plain-latent controls.
+- Gate first: G0 explainer in checkpoint? G1 native sweep 0-10 latents (paper reproduction, vs our 27.1%).
+  G2 decode thoughts of 20 questions vs the gold steps. G3 pilot of the chosen design: L, T2, T2-gold on 20 questions.
+- Open risk: in R, after step 1 is added, do the thoughts move on to step 2 or repeat step 1?
+
+### 16.5 Other Part 2 ideas (cheap, GPT-2, inference only; offered, not chosen yet)
+Thought transplant (question A's thoughts into question B: does B's answer follow A?), per-thought ablation (which of
+the 6 thoughts matters), noise/steering robustness (Idea 3), more thoughts than trained (8-10).

@@ -96,10 +96,20 @@ def checkpoint_path(ckpt=None):
     return hf_hub_download(CKPT_REPO, CKPT_FILE)
 
 
-def load_model(tokenizer, ids, device, ckpt=None):
+def strip_wrapper_prefixes(weights):
+    for prefix in ("module.", "_fsdp_wrapped_module."):
+        if all(k.startswith(prefix) for k in weights):
+            print(f"stripping key prefix '{prefix}'")
+            weights = {k[len(prefix):]: v for k, v in weights.items()}
+    return weights
+
+
+def load_model(tokenizer, ids, device, ckpt=None, weights=None, ignore_prefixes=()):
     """GPT-2 + Coconut wrapper + the tsrigo/coconut weights, like run.py lines 103-167.
 
-    Returns (model, info). Raises if the checkpoint does not match the model.
+    `weights` (an already loaded state dict) replaces `ckpt`; keys starting with `ignore_prefixes`
+    are left out (e.g. SIM-CoT's explainer). Returns (model, info). Raises if the checkpoint does
+    not match the model.
     """
     base = AutoModelForCausalLM.from_pretrained(BASE_MODEL_ID)
     base.resize_token_embeddings(len(tokenizer))
@@ -111,12 +121,12 @@ def load_model(tokenizer, ids, device, ckpt=None):
         base.lm_head.weight.data[token_id] = base.lm_head.weight.data[target_id]
     model = Coconut(base, ids["latent"], ids["start"], ids["end"], ids["eos"])
 
-    ckpt_file = checkpoint_path(ckpt)
-    weights = torch.load(ckpt_file, map_location="cpu", weights_only=True)
-    for prefix in ("module.", "_fsdp_wrapped_module."):
-        if all(k.startswith(prefix) for k in weights):
-            print(f"stripping key prefix '{prefix}'")
-            weights = {k[len(prefix):]: v for k, v in weights.items()}
+    if weights is None:
+        ckpt_file = checkpoint_path(ckpt)
+        weights = strip_wrapper_prefixes(torch.load(ckpt_file, map_location="cpu", weights_only=True))
+    else:
+        ckpt_file = ckpt or "(weights given)"
+    weights = {k: v for k, v in weights.items() if not k.startswith(tuple(ignore_prefixes))}
     print(f"checkpoint: {ckpt_file}\n  {len(weights)} keys, first: {list(weights)[:3]}")
     if not any(k.startswith("base_causallm.") for k in weights):
         raise RuntimeError("no key starts with 'base_causallm.': this is not a Coconut checkpoint")
@@ -182,6 +192,66 @@ def load_qwen(device, dtype=torch.bfloat16):
     model.to(device)
     model.eval()
     return model, tokenizer, ids, info
+
+
+SIMCOT_REPO, SIMCOT_FILE = "internlm/SIM_COT-GPT2-Coconut", "checkpoint_28"
+EXPLAINER_PREFIX = "expainable_llm."  # sic: the name used in SIM-CoT's coconut.py
+
+
+def load_simcot(device):
+    """SIM-CoT GPT-2 Coconut (plan: docs/planning/simcot_interleaved_plan.md): the reasoning model in our
+    Coconut wrapper + the explainer GPT-2 (None if the checkpoint has no explainer).
+    Returns (model, explainer, tokenizer, ids, info)."""
+    from collections import Counter
+
+    from huggingface_hub import hf_hub_download
+
+    tokenizer, ids = load_tokenizer()  # SIM-CoT run.py adds the same 3 tokens in the same order
+    ckpt_file = hf_hub_download(SIMCOT_REPO, SIMCOT_FILE)
+    weights = strip_wrapper_prefixes(torch.load(ckpt_file, map_location="cpu", weights_only=True))
+    prefixes = dict(Counter(k.split(".")[0] for k in weights))
+    print("key prefixes:", prefixes, flush=True)
+    model, info = load_model(tokenizer, ids, device, ckpt=ckpt_file, weights=weights,
+                             ignore_prefixes=(EXPLAINER_PREFIX,))
+    info["key_prefixes"] = prefixes
+
+    explainer_weights = {k[len(EXPLAINER_PREFIX):]: v for k, v in weights.items() if k.startswith(EXPLAINER_PREFIX)}
+    explainer = None
+    if explainer_weights:
+        # SIM-CoT run.py: a fresh GPT-2 from the same model_id, not resized
+        explainer = AutoModelForCausalLM.from_pretrained(BASE_MODEL_ID)
+        result = explainer.load_state_dict(explainer_weights, strict=False)
+        state = explainer.state_dict()
+        loaded_tensors = {state[k].data_ptr() for k in explainer_weights if k in state}
+        missing = [k for k in result.missing_keys if state[k].data_ptr() not in loaded_tensors]
+        unexpected = [k for k in result.unexpected_keys if not k.endswith(BUFFER_KEY_ENDINGS)]
+        info["explainer"] = {"n_keys": len(explainer_weights), "missing_keys": list(result.missing_keys),
+                             "unexpected_keys": list(result.unexpected_keys)}
+        if missing or unexpected:
+            raise RuntimeError(f"explainer weights do not match GPT-2: missing={missing}, unexpected={unexpected}")
+        explainer.to(device)
+        explainer.eval()
+    return model, explainer, tokenizer, ids, info
+
+
+@torch.no_grad()
+def explain(model, explainer, tokenizer, thoughts, max_new_tokens=32):
+    """Decode a group of continuous thoughts (n, d) into step text with the SIM-CoT explainer.
+
+    Like SIM-CoT training: input = the thought vectors, then the main model's embeddings of the tokens
+    written so far; positions start at 1; stops at EOS. Greedy (SIM-CoT samples only for its visualisation).
+    """
+    device = thoughts.device
+    seq = thoughts.unsqueeze(0)
+    out_ids = []
+    for _ in range(max_new_tokens):
+        position_ids = torch.arange(1, seq.shape[1] + 1, device=device).unsqueeze(0)
+        next_id = int(explainer(inputs_embeds=seq, position_ids=position_ids).logits[0, -1].argmax())
+        if next_id == tokenizer.eos_token_id:
+            break
+        out_ids.append(next_id)
+        seq = torch.cat([seq, model.embedding(torch.tensor([[next_id]], device=device))], dim=1)
+    return tokenizer.decode(out_ids).strip()
 
 
 QWEN3_MODEL_ID = "agurung/coconut-qwen3-4b-ff"
