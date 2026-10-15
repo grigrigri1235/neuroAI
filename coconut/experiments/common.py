@@ -184,6 +184,87 @@ def load_qwen(device, dtype=torch.bfloat16):
     return model, tokenizer, ids, info
 
 
+QWEN3_MODEL_ID = "agurung/coconut-qwen3-4b-ff"
+QWEN3_BASE_ID = "Qwen/Qwen3-4B-Instruct-2507"  # tokenizer fallback only
+
+
+def load_coconut_hf(repo, base_repo, device, dtype=torch.bfloat16):
+    """A Coconut model exported to plain HF format (agurung/coconut-qwen3-4b-ff) + the Coconut wrapper.
+
+    Plan: docs/planning/qwen3_4b_interleaved_plan.md (gate G0). Returns (model, tokenizer, ids, info).
+    Raises if the token ids, embedding rows, weights or RoPE do not match.
+    """
+    import json
+
+    from huggingface_hub import hf_hub_download
+    from transformers import AutoConfig
+
+    with open(hf_hub_download(repo, "latent_metadata.json")) as f:
+        expected = json.load(f)["latent_token_ids"]
+
+    # saved by transformers 5.x: rope_theta is nested, and 4.52 would silently use its default
+    config = AutoConfig.from_pretrained(repo)
+    nested = getattr(config, "rope_parameters", None)
+    if isinstance(nested, dict) and "rope_theta" in nested:
+        config.rope_theta = nested["rope_theta"]
+
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(repo)
+        tokenizer_source = repo
+    except Exception as e:  # tokenizer files from transformers 5.x may not load in 4.52
+        print(f"tokenizer of {repo} does not load ({type(e).__name__}: {e}), using {base_repo}")
+        tokenizer = AutoTokenizer.from_pretrained(base_repo)
+        tokenizer_source = base_repo
+    for token in MARKERS:  # run.py order; no-op if the tokenizer already has them
+        if token not in tokenizer.get_vocab():
+            tokenizer.add_tokens(token)
+    ids = {
+        "start": tokenizer.convert_tokens_to_ids(START),
+        "end": tokenizer.convert_tokens_to_ids(END),
+        "latent": tokenizer.convert_tokens_to_ids(LATENT),
+        "eos": tokenizer.eos_token_id,
+    }
+
+    base, load_info = AutoModelForCausalLM.from_pretrained(
+        repo, config=config, torch_dtype=dtype, output_loading_info=True
+    )
+    head_dim = getattr(config, "head_dim", None) or config.hidden_size // config.num_attention_heads
+    inv_freq = base.model.rotary_emb.inv_freq.float().cpu()
+    wanted_inv_freq = 1.0 / (config.rope_theta ** (torch.arange(0, head_dim, 2).float() / head_dim))
+    rows = base.get_input_embeddings().weight.shape[0]
+    missing = [k for k in load_info["missing_keys"]
+               if not (k == "lm_head.weight" and config.tie_word_embeddings)]
+    info = {
+        "model": repo, "dtype": str(dtype), "tokenizer_source": tokenizer_source,
+        "tokenizer_len": len(tokenizer), "embedding_rows": rows,
+        "marker_ids": [ids["start"], ids["end"], ids["latent"]],
+        "expected_marker_ids": [expected[START], expected[END], expected[LATENT]],
+        "rope_theta": config.rope_theta, "missing_keys": load_info["missing_keys"],
+        "unexpected_keys": load_info["unexpected_keys"],
+    }
+    print(info, flush=True)
+    problems = []
+    if info["marker_ids"] != info["expected_marker_ids"]:
+        problems.append("latent token ids differ from latent_metadata.json")
+    if rows != len(tokenizer):
+        problems.append("embedding rows != tokenizer size")
+    if isinstance(nested, dict) and config.rope_theta != nested.get("rope_theta"):
+        problems.append("rope_theta not taken from rope_parameters")
+    if not torch.allclose(inv_freq, wanted_inv_freq, rtol=1e-2):
+        problems.append("rotary inv_freq does not match rope_theta")
+    if missing or load_info["unexpected_keys"]:
+        problems.append("weights do not match the model")
+    if problems:
+        raise RuntimeError(f"G0 failed: {problems}")
+
+    model = Coconut(base, ids["latent"], ids["start"], ids["end"], ids["eos"])
+    model.eos_ids = {tokenizer.eos_token_id, tokenizer.convert_tokens_to_ids("<|endoftext|>")}
+    model.max_positions = config.max_position_embeddings
+    model.to(device)
+    model.eval()
+    return model, tokenizer, ids, info
+
+
 def encode(tokenizer, text, device):
     return torch.tensor([tokenizer.encode(text)], device=device)
 
