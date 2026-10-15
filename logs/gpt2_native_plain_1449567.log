@@ -1,0 +1,31 @@
+Map (num_proc=32):   0%|          | 0/1319 [00:00<?, ? examples/s]Map (num_proc=32):   3%|▎         | 42/1319 [00:00<00:06, 185.09 examples/s]Map (num_proc=32):  16%|█▌        | 210/1319 [00:00<00:01, 615.26 examples/s]Map (num_proc=32):  29%|██▊       | 376/1319 [00:00<00:01, 871.33 examples/s]Map (num_proc=32):  41%|████      | 540/1319 [00:00<00:00, 1026.92 examples/s]Map (num_proc=32):  53%|█████▎    | 704/1319 [00:00<00:00, 1126.55 examples/s]Map (num_proc=32):  66%|██████▌   | 868/1319 [00:00<00:00, 1188.57 examples/s]Map (num_proc=32):  78%|███████▊  | 1032/1319 [00:00<00:00, 1255.43 examples/s]Map (num_proc=32):  97%|█████████▋| 1278/1319 [00:01<00:00, 1520.56 examples/s]Map (num_proc=32): 100%|██████████| 1319/1319 [00:01<00:00, 1085.53 examples/s]
+Map (num_proc=32):   0%|          | 0/1319 [00:00<?, ? examples/s]Map (num_proc=32):  25%|██▌       | 335/1319 [00:00<00:00, 3188.01 examples/s]Map (num_proc=32):  50%|█████     | 663/1319 [00:00<00:00, 3143.80 examples/s]Map (num_proc=32): 100%|██████████| 1319/1319 [00:00<00:00, 3929.20 examples/s]
+Map (num_proc=32):   0%|          | 0/1319 [00:00<?, ? examples/s]Map (num_proc=32):  22%|██▏       | 294/1319 [00:00<00:00, 2703.14 examples/s]Map (num_proc=32):  56%|█████▋    | 745/1319 [00:00<00:00, 3598.36 examples/s]Map (num_proc=32): 100%|██████████| 1319/1319 [00:00<00:00, 3989.97 examples/s]
+Map (num_proc=32):   0%|          | 0/1319 [00:00<?, ? examples/s]Map (num_proc=32):  19%|█▉        | 252/1319 [00:00<00:00, 2460.13 examples/s]Map (num_proc=32):  41%|████      | 540/1319 [00:00<00:00, 2703.84 examples/s]Map (num_proc=32): 100%|██████████| 1319/1319 [00:00<00:00, 3930.44 examples/s]
+Map (num_proc=32):   0%|          | 0/1319 [00:00<?, ? examples/s]Map (num_proc=32):  16%|█▌        | 210/1319 [00:00<00:00, 1990.22 examples/s]Map (num_proc=32):  38%|███▊      | 499/1319 [00:00<00:00, 2438.23 examples/s]Map (num_proc=32): 100%|██████████| 1319/1319 [00:00<00:00, 3804.45 examples/s]
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+checkpoint: /home/eran.b/.cache/huggingface/hub/models--tsrigo--coconut/snapshots/c88fc87555c7601f22595d98adda7f3f56ea89b6/stage4_checkpoint_25
+  150 keys, first: ['base_causallm.transformer.wte.weight', 'base_causallm.transformer.wpe.weight', 'base_causallm.transformer.h.0.ln_1.weight']
+<All keys matched successfully>
+k=0:   0%|          | 0/1319 [00:00<?, ?it/s]Passing a tuple of `past_key_values` is deprecated and will be removed in Transformers v4.53.0. You should pass an instance of `Cache` instead, e.g. `past_key_values=DynamicCache.from_legacy_cache(past_key_values)`.
+k=0: 100%|██████████| 1319/1319 [00:29<00:00, 45.01it/s]
+k=0 idx=0 gold=18 extracted='48' output='### 48'
+k=0 idx=1 gold=3 extracted='3' output='### 3'
+k=0 idx=2 gold=70000 extracted='25000' output='### 25000'
+k=0 (0 latents): accuracy 0.1039 on 1319 questions
+k=1:   0%|          | 0/1319 [00:00<?, ?it/s]k=1: 100%|██████████| 1319/1319 [00:28<00:00, 45.97it/s]
+k=1 idx=0 gold=18 extracted='48' output='### 48'
+k=1 idx=1 gold=3 extracted='3' output='### 3'
+k=1 idx=2 gold=70000 extracted='25000' output='### 25000'
+k=1 (2 latents): accuracy 0.1016 on 1319 questions
+k=2:   0%|          | 0/1319 [00:00<?, ?it/s]k=2: 100%|██████████| 1319/1319 [00:28<00:00, 46.00it/s]
+k=2 idx=0 gold=18 extracted='48' output='### 48'
+k=2 idx=1 gold=3 extracted='3' output='### 3'
+k=2 idx=2 gold=70000 extracted='25000' output='### 25000'
+k=2 (4 latents): accuracy 0.0993 on 1319 questions
+k=3:   0%|          | 0/1319 [00:00<?, ?it/s]k=3: 100%|██████████| 1319/1319 [00:28<00:00, 45.77it/s]
+k=3 idx=0 gold=18 extracted='48' output='### 48'
+k=3 idx=1 gold=3 extracted='3' output='### 3'
+k=3 idx=2 gold=70000 extracted='50000' output='### 50000'
+k=3 (6 latents): accuracy 0.0955 on 1319 questions
+saved /home/eran.b/neuroAI/coconut/results/gpt2/native_plain.json

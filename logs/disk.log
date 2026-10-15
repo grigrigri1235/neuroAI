@@ -1,0 +1,14 @@
+Filesystem               Size  Used Avail Use% Mounted on
+nfs1.vast:/newton_users  137T   91T   46T  67% /home
+
+Command 'quota' not found, but can be installed with:
+
+apt install quota
+
+Please ask your administrator.
+
+Command 'quota' not found, but can be installed with:
+
+apt install quota
+
+Please ask your administrator.

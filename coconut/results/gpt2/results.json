@@ -50,6 +50,102 @@
    "mean_seconds": 0.051794914364739916
   }
  },
+ "native_plain": {
+  "0": {
+   "n": 1319,
+   "correct": 137,
+   "acc": 0.10386656557998483,
+   "ci95": [
+    0.08853609087267632,
+    0.12149773968808357
+   ],
+   "n_latents": 0,
+   "mean_new_tokens": 2.2774829416224414,
+   "mean_seconds": 0.021963239428739064
+  },
+  "1": {
+   "n": 1319,
+   "correct": 134,
+   "acc": 0.10159211523881728,
+   "ci95": [
+    0.08642776583759249,
+    0.11907037379815741
+   ],
+   "n_latents": 2,
+   "mean_new_tokens": 2.268385140257771,
+   "mean_seconds": 0.02150301626898275
+  },
+  "2": {
+   "n": 1319,
+   "correct": 131,
+   "acc": 0.09931766489764973,
+   "ci95": [
+    0.08432194230486419,
+    0.11664050640587574
+   ],
+   "n_latents": 4,
+   "mean_new_tokens": 2.2645943896891585,
+   "mean_seconds": 0.02148461934225669
+  },
+  "3": {
+   "n": 1319,
+   "correct": 126,
+   "acc": 0.09552691432903715,
+   "ci95": [
+    0.08081800376080525,
+    0.11258496007491803
+   ],
+   "n_latents": 6,
+   "mean_new_tokens": 2.2805155420773313,
+   "mean_seconds": 0.021593408415149094
+  }
+ },
+ "native_pairs": {
+  "k=0": {
+   "diff": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "mcnemar_p": 1.0,
+   "feedback_only_correct": 0,
+   "plain_only_correct": 0,
+   "verdict": "no clear difference"
+  },
+  "k=1": {
+   "diff": 0.027293404094010626,
+   "ci95": [
+    0.015144048521607287,
+    0.040940106141015925
+   ],
+   "mcnemar_p": 4.3689322062244415e-05,
+   "feedback_only_correct": 56,
+   "plain_only_correct": 20,
+   "verdict": "feedback higher"
+  },
+  "k=2": {
+   "diff": 0.11068991660348748,
+   "ci95": [
+    0.09021986353297953,
+    0.13115996967399546
+   ],
+   "mcnemar_p": 2.4939699689719926e-26,
+   "feedback_only_correct": 176,
+   "plain_only_correct": 30,
+   "verdict": "feedback higher"
+  },
+  "k=3": {
+   "diff": 0.17513267626990142,
+   "ci95": [
+    0.15238817285822592,
+    0.19863532979529946
+   ],
+   "mcnemar_p": 6.543013696752309e-50,
+   "feedback_only_correct": 255,
+   "plain_only_correct": 24,
+   "verdict": "feedback higher"
+  }
+ },
  "fewshot": {
   "S1": {
    "n": 1319,

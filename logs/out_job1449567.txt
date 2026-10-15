@@ -1,0 +1,10 @@
+job 1449567 on bruno4 at Thu Oct 15 02:58:24 AM IDT 2026
+name, memory.total [MiB], driver_version
+NVIDIA L40S, 49140 MiB, 595.71.05
+[02:58:31] start qwen_check
+[03:06:23] done  qwen_check
+[03:06:23] start gpt2_native_plain
+[03:08:35] done  gpt2_native_plain
+[03:08:35] start gpt2_score
+[03:08:43] done  gpt2_score
+finished at Thu Oct 15 03:08:43 AM IDT 2026, failed=0

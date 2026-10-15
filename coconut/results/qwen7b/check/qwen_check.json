@@ -1,0 +1,1077 @@
+{
+ "meta": {
+  "date": "2026-10-15T02:59:05",
+  "host": "bruno4",
+  "slurm_job": "1449567",
+  "torch": "2.6.0+cu124",
+  "transformers": "4.52.4",
+  "gpu": "NVIDIA L40S",
+  "part": "qwen_check",
+  "n": 10,
+  "per_stage": 128
+ },
+ "load": {
+  "model": "agurung/coconut-qwen2.5-7b",
+  "dtype": "torch.bfloat16",
+  "tokenizer_len_saved": 151665,
+  "tokenizer_len": 151668,
+  "embedding_rows": 151668,
+  "marker_ids": [
+   151665,
+   151666,
+   151667
+  ]
+ },
+ "load_seconds": 23.80053142714314,
+ "R1_ids": "PASS",
+ "R1_init": {
+  "<<_id": 2442,
+  "input": {
+   "cos_to_<<": {
+    "start": 0.998363733291626,
+    "end": 0.99573814868927,
+    "latent": 1.0000001192092896
+   },
+   "random_tokens_mean_cos_to_<<": 0.0036712783097755165,
+   "pairwise_cos": {
+    "start-end": 0.9955110549926758,
+    "start-latent": 0.998363733291626,
+    "end-latent": 0.99573814868927
+   },
+   "norm": {
+    "start": 0.9545655250549316,
+    "end": 0.9537109136581421,
+    "latent": 0.9529273509979248
+   },
+   "random_tokens_mean_norm": 0.8141827314347029
+  },
+  "output": {
+   "cos_to_<<": {
+    "start": 1.0,
+    "end": 1.0,
+    "latent": 1.0
+   },
+   "random_tokens_mean_cos_to_<<": 0.018899149392964318,
+   "pairwise_cos": {
+    "start-end": 1.0,
+    "start-latent": 1.0,
+    "end-latent": 1.0
+   },
+   "norm": {
+    "start": 0.7055599689483643,
+    "end": 0.7055599689483643,
+    "latent": 0.7055599689483643
+   },
+   "random_tokens_mean_norm": 0.7223224692046643
+  }
+ },
+ "R2_native": {
+  "differ": 10,
+  "n": 10,
+  "rows": [
+   {
+    "question": "Janet\u2019s ducks lay 16 eggs per day. She eats three for breakfast every morning an",
+    "latent": "reasoning will be additional to the to additional to the to additional to the to additional to the a to additional to the to additional to the a a a additional to the to additional to the a a a additional to the a a additional to the a a a additional to the a a additional to the a a additional to the a a additional to the a a additional to the a a a additional to the a a a additional to the a a additional to the a a additional to the the of theing be the of theing be the of of being a a a additional a a additional a a additional the of being a a a additional the of being a a a additional the of being a additional the of being a a additional the of being a a a additional the be the of of planing a the be the of of planing of planing of planing of be, a a a a a a a a a the be the planing of being be the planing of being to be the of planing of be, a a a a a additional a the be a the be the planing of be, be the planing of be, be the planing of be of being be the planing a a",
+    "plain": " serve the a a additional a additional to additional to additional to additional the a a a additional to additional to additional to additional the a a additional to additional to additional the a a additional to additional to additional the a a additional to additional the a a additional to additional the a a additional to additional the a a additional to additional the a a additional to additional the a a additional to additional the of theing be additional the of of of ofing be the of of planing a the be the planing to the be the of being be the planing to the be the planing of being to the be the planing of being to the be the of planing of being to the be the of being be the planing of being a a a a additional the be of planing of be of be, a a a a a a additional the be the planing of being be the planing of be of being be the planing of be of being be the planing a the be be the planing of be of be, be the plan, be the planing of be of be be the planing of be of be of planing of be planing a a the be being be the planing of be",
+    "same": false
+   },
+   {
+    "question": "A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bol",
+    "latent": " serve to the a to additional to the a to additional to the to the a to additional to the a to additional to the the to additional theing a the of of ofing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing a the ofing be theing to additional theing to additional theing to additional theing a the of theing to theing to additional theing to additional theing a the ofing be theing to theing to additional theing to additional theing a the ofing be theing to theing to additional theing to additional theing a the ofing be theing a the of of, additional theing to theing to theing to additional theing to additional theing a the ofing be theing to theing to additional theing a the ofing be theing to theing to theing to additional theing to additional theing to additional theing a the ofing be theing to theing to additional theing to theing a the be theing to theing to theing a the be theing to theing to",
+    "plain": " likely the a to additional the the to additional to the a to additional to the to the a to additional to the a the of of be theing to additional theing to additional to the a the ofing be a theing a a a the of being to the of theing to the ofing be the of of planing to of being a a the be the of being to the of being a the be the of planing of planing of be, a a the be be the planing of be, be the planing of be of be of planing of be planing a the be being be the planing of be, be the planing of be of be of be, be the planing of be of be of planing a of be planing of be planing a a the planing of be planing to being be the planing of be of be of planing of be be of be of be of planing a of be planing of be planing a a the be be of be of planing of be planing of be planing a be being being a additional the be being be the plan of planing of be planing a a the be be of be",
+    "same": false
+   },
+   {
+    "question": "Josh decides to try flipping a house.  He buys a house for $80,000 and then puts",
+    "latent": "reasoning will be additional to the to the to additional to the to additional to the to additional to the to additional to the a the of be theing to additional to the a to additional to the a the of be theing to additional to the a the of of of ofing to theing to additional to the theing to additional theing to additional theing to additional to the theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to\u6027\u4ef7 additional the of theing to additional theing to additional theing to\u6027\u4ef7 additional theing to\u6027\u4ef7 additional the of theing to additional theing to additional theing to\u6027\u4ef7 additional the of theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing a a a additional the of be theing be theing to theing to additional theing to additional theing to additional theing to additional theing a the be theing be theing to theing to additional theing to additional theing to additional theing to additional theing a the be the,\u6027\u4ef7 additional a a additional the of be the ofing",
+    "plain": " serve the a to additional the to additional the to additional to additional to additional to additional to additional to the a the of be theing to additional theing to additional theing to\u6027\u4ef7 additional to the a the of be theing to additional to the a the of being to additional theing to additional to the a the of of of of ofing a the of being to the of theing to the of theing to the of of of ofing be the of being to the of of of, be the of being to the be the of planing of planing of be of be of be of planing of be, be the planing of be of be of planing of be of be being be the planing of be of be of planing of be of planing of be planing of be planing of be of be of planing of be of be of planing of be of be of planing of be of planing of be planing of be planing of be planing of be of be planing of be planing of be planing toin be a the be being be the planing of be plan of planing of be planing of be planing of be planing of be",
+    "same": false
+   },
+   {
+    "question": "James decides to run 3 sprints 3 times a week.  He runs 60 meters each sprint.  ",
+    "latent": " serve the to additional to additional to the to additional to additional to additional to the to additional to the a to additional to additional to additional to additional to additional to additional to additional to additional to additional to additional the a a a a a additional to additional to additional to additional the a a a additional to additional to additional the the a the of theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to\u6027\u4ef7 additional the the of theing to additional theing to\u6027\u4ef7 additional theing to\u6027\u4ef7\u6027\u4ef7\u6027\u4ef7\u6027\u4ef7\u6027\u4ef7\u6027\u4ef7\u6027\u4ef7 additional the additional the of theing to\u6027\u4ef7\u6027\u4ef7\u6027\u4ef7\u6027\u4ef7\u6027\u4ef7 additional additional the a a additional to additional the of theing a a a additional to additional the of theing to additional theing a a a additional to the of theing to additional theing a a a additional to theing a a a additional to theing a additional to theing a a additional to theing a a a additional to theing a a additional to theing a a a additional to theing a additional to additional theing a the be additional theing to additional theing a the be theing be additional theing a the be additional theing be",
+    "plain": " serve the a to additional a a a additional to additional to additional to additional to additional to additional to the a a a a a the a a additional to the to additional to additional to the a a a a the of be a a a a the be a a a additional to the a a additional to the of be the planing to the be the of being to the be the of planing of being to the be the of be of being to the be the of planing of being a a a a a a a a a a a a a a a additional a a the be a the be a the being a the be a the being to be the of planing of be of being to be the of planing of be of be of planing of be of be of be of planing of be of being being a a a a a the be being a a the be be the planing of be of be of planing of be planing of be planing of be be of be of be of be of be of planing of be planing of be planing of be planing of be planing of be planing of be planing of be planing of be planing of",
+    "same": false
+   },
+   {
+    "question": "Every day, Wendi feeds each of her chickens three cups of mixed chicken feed, co",
+    "latent": "This additional a the a additional the to additional the to additional the to additional to additional to additional to additional to additional to additional the a a additional to additional to additional to additional to additional the a a additional to additional to additional the a a additional to additional to additional the a a additional to additional the a a additional to additional the a a additional to additional the a a additional to additional the a a additional to additional the a a additional to additional the a a a additional to additional the of theing to\u6027\u4ef7 additional the a a additional to additional the of theing to\u6027\u4ef7 additional a additional the of of of of ofing a additional to additional the of theing to\u7f51\u9996\u9875 additional the a a additional a additional to additional the a a additional to additional the of the ofing be the be the be the planing to the be the planing to the be the planing to the be the ofing be the planing to the be the ofing be the planing to the be the of of planing to of be the of of planing toin be the of being a additional a a additional a a additional a a additional a a additional the be the planing a the be the planing toin be additional the of being a additional a a additional",
+    "plain": " serve additional the a additional a additional a additional a additional to additional the to additional the to additional the to additional the to additional the to additional the to additional the to additional the to additional the to additional the to additional the of be a additional to additional to additional the to\u6027\u4ef7 additional a additional to additional to\u6027\u4ef7 additional the a additional the to additional the of theing a additional to additional the of theing to\u6027\u4ef7 additional a additional the a a additional to additional the of theing to\u6027\u4ef7 additional a additional the ofin a additional the of be a additional to additional the of theing to\u6027\u4ef7 additional a additional the of be the be the be the be the planing to the be a additional to additional the of of of be the planing to the be the planing to the be the planing to the be the planing to the be the planing to the be the planing to the be the planing to of be the of planing to of being a additional the plan of planing of be of be of be of being a additional a a additional the be the plan of planing of be of be of be of being a additional a a additional a a additional the being a additional a a additional a a additional the be the plan",
+    "same": false
+   },
+   {
+    "question": "Kylar went to the store to buy glasses for his new apartment. One glass costs $5",
+    "latent": "reasoning will be insighting to a the to the to the to the to the to the to additional to the to the to additional to the a a a a the of be theing to the of of of, a a a a a a the be theing to the of being to the of be theing to the of of of of, a the of being to the of being to the of of of, a the of being to the of being to the of being to the of being to the of being a a a additional to the of be of of of ofing to the of of ofing to the of being a a a additional to the be a a a a additional to the be a the be a the being a a a the be of being a a a a additional to the of being a a a the be of being a a a the be of of of of, a the be of of of of, be the of be of of of ofing be of ofing be a the be of of of ofing be be the planing of planing of be of be of be of planing of be of planing of be planing to be the of plan",
+    "plain": " serve the additional to the a the a a additional to the a the of be theing be a the of being to the of be theing to the of be theing to the of being to the of being to the of be theing to the of being to the of being to the of be theing to the, a the be theing to the of being to the of being a the of being to the of being a the being to the of being to the of being a the be a the be a the being a the be a the being a the being a a a additional the planing to of be a the of be of planing to be the, a a the planing of be of planing to being be a the planing of be of be of planing to being be the of planing of planing to be the, being a the planing to be the, be the of planing of be of planing to be the, being a the be of planing to being be a the planing a of be planing to being be a the be being a the be of planing to being be",
+    "same": false
+   },
+   {
+    "question": "Toulouse has twice as many sheep as Charleston. Charleston has 4 times as many s",
+    "latent": "reasoning will be the the to the to the to the to the to insight the to the to additional a the to the to the to the a to the a to the to the the to the a the of of of, a a a a a a the be a the of being to the of of ofing to theing to the of be a a a a a a the be a the be a the be the, a the be a the be a the being of being to the of of ofing to the, a a a a a a the be of being to the be the of of of, be the, be the of of planing of be of being a the be of of be, a a a the be being a a the be of of of of, be a the be of of of, be the, be the, be the of planing of planing of be of be, be the of planing of be of planing of be of be of planing of be of be of planing of be of be of planing of be of be of planing of be of be of planing of be of be of planing of be being be the planing of be of",
+    "plain": " likely the a to additional the to the a to additional to the to additional to the to the a to additional to the a to additional to the the to additional the the to additional the the theing to additional theing to additional the the theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing to additional theing a the of theing to theing a the of theing be theing be theing be theing be theing be theing be theing be theing be theing be theing be theing be theing be theing be theing be theing be theing being a the of planing to be theing being a the of planing to be theing being a the be theing be theing being a the of planing of being to of being a the of planing of be, a the of be of planing of be, be the, being a the be, be the, being a the being a the being a the being a the be, a the being be the, being a",
+    "same": false
+   },
+   {
+    "question": "Carla is downloading a 200 GB file. Normally she can download 2 GB/minute, but 4",
+    "latent": "reasoning will likely serve to the to the of be theing to the of of of, a the of being to the of of, a the of being to the of being to the of being a a a a a the be of being to the be a the be a the being a a the being a a a a the be a the be of of of be, a a a a the be of being a a the be of being a a a a the be of being a a a the be of being a a the be of being a a a a the be of being a a a a a a the be of being a additional a a a a the be of being a a a the be of being a a a a the be of being a a a the be of of be of of of, be a the be of being a a a the be be the planing of being to be the of planing of be of be of be of be, be the planing of be of be of be, be the planing of be of be of planing of be planing a of be planing of be be of be, be the",
+    "plain": " serve to the a the be a the of be a the of being to the of being to the of being to the of of of, a the of be of being to the of being a a the be a the be, a the being a a the being a a the be a the being a a the be, a a the be of being a a the be of being a a the be of being a a the be of being a a the be of being a a the be of being a a the be of being a a the be of being a a the be of being a a a the be be the planing a a the be being a a the be of planing to be the of planing of be of be of be of be of planing a aing to be a the planing of be of be of be of be, be the planing of be of be of planing of be planing a aing be being a a the be being be the planing of be of be of be of be of planing of be of be planing of be planing of be planing a a a the be be of",
+    "same": false
+   },
+   {
+    "question": "John drives for 3 hours at a speed of 60 mph and then turns around because he re",
+    "latent": "reasoning will the be additional to the to additional the to additional to the to additional to additional to the a a a additional to the to additional to the a a a additional to the a the of of be theing to additional to the a a a additional to the a a a the of be theing to additional the a the of be theing to the of theing to additional to the a a a additional to the of theing to additional theing to additional the of theing to additional theing a a a additional to the of theing to additional theing to additional the of theing to additional theing to additional theing to additional theing to\u6027\u4ef7 additional a additional to additional to additional the a a a additional to the of theing to additional theing to additional theing to additional theing a a a additional to the a a a additional a a additional the of be the ofing be theing be the of theing be theing be the ofing be theing be the ofing be the ofing be theing be the ofing be the ofing be theing be the ofing being a additional a a additional the of being a a a additional a a additional the be the ofing be the ofing be",
+    "plain": " serve the additional to the a a additional to the a a additional to the a a additional to the a a additional to the a a additional to the a a the of be theing to additional the a the of be theing be a the of be theing be theing be a the of being a a a additional to the of be theing be a the be a the be the of being a a a a the be the of being a the be the of planing of being a a a a a the be a the be the of planing of being a a the be of being a a a a the be a the be a the being a a the be a the be a the being be the of planing of being to be the, a a a the be of being a a a the be a the planing of be, a a the planing of be of be, a a the be being a a the be of being be the planing of be of be of being a a a the be be the planing of be of planing of be of be being a a a the be be the planing of being to be the of planing of",
+    "same": false
+   },
+   {
+    "question": "Eliza's rate per hour for the first 40 hours she works each week is $10. She als",
+    "latent": " serve the a the of be a additional to the a a a additional to additional to additional to the a the be a the of be the of planing to the be a the be the of planing of being to the be the of being to the be theing be the of planing to the of planing toing be additional to the of be the of being to the be the of planing of being to a the planing to of being a a the be a the be of being to be the of planing of be of be of being be the planing of being to be the, a the be of planing of being to of being a a a a the be be the planing of being to be the, a a the be of being to be the of planing of be of planing to be theing be of being a a the be being a a the be be the planing of be of be of planing of be of being be a the be be the planing of be of planing of be of being be the planing of be of being be the planing of be of being be the planing of be of",
+    "plain": " serve the additional the a a additional to additional to additional the a a additional to additional to additional to the a a additional to additional to additional the of theing to\u6027\u4ef7 additional the a a additional to additional to additional the of theing to\u6027\u4ef7 additional the a a additional to additional to additional the of theing to additional theing to additional the of theing to additional the ofing be the ofing be the ofing be the ofing be the of of ofing being a additional to the ofing be the planing to the be the of of planing of being to the planing to of being a the be the planing of planing to of being a a a the be a the be the planing of be of planing to be the of planing of be of be of be of planing a the be being be the planing of being to be the of planing of be of planing of be of be of planing a the be be of being be the planing of be of be of planing of be of planing of be planing a the be be of be of planing of be planing a a the be being be the planing of be of be of plan",
+    "same": false
+   }
+  ]
+ },
+ "preview": {
+  "S1": {
+   "correct": 0,
+   "n": 10,
+   "tokens_per_second": 38.72638451183308,
+   "mean_seconds": 3.3052401253953576,
+   "records": [
+    {
+     "idx": 0,
+     "gold": "18",
+     "pred": null,
+     "correct": false,
+     "seconds": 3.3076697930227965,
+     "new_tokens": 128,
+     "stages": [
+      {
+       "text": "be a\u6027\u4ef7 additional a additional a a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional the of be the of be the of be the of planing a the be the of planing of being of be the planing of being a additional a a additional the planing a a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 1,
+     "gold": "3",
+     "pred": null,
+     "correct": false,
+     "seconds": 3.298037613974884,
+     "new_tokens": 128,
+     "stages": [
+      {
+       "text": "a additional a additional a additional a additional a a additional a a additional the be a the be a the be a the be the of being a the be the of planing a the planing a the planing a the planing of be of being to be a the be a the be be the planing a the be of being be the planing a the be be the planing of be of be of be of be of being be the planing a the planing a the planing a a the planing a the planing a a the planing a a the be being be the plan",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 2,
+     "gold": "70000",
+     "pred": null,
+     "correct": false,
+     "seconds": 3.308880703058094,
+     "new_tokens": 128,
+     "stages": [
+      {
+       "text": "a additional a a additional a additional to additional a additional to additional to additional the of be a a a additional to additional to additional the of be a a a additional to the of be the of be the of planing of be theing be a the planing of being to the be the, a the planing of being to the be the of be of being to be the of being to the planing of being to the be the of being to a a a a a the be be the planing of be of being a a a a additional a a a the be be the planing",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 3,
+     "gold": "540",
+     "pred": null,
+     "correct": false,
+     "seconds": 3.3000211040489376,
+     "new_tokens": 128,
+     "stages": [
+      {
+       "text": "a a a additional a a additional a a additional to additional a a additional to additional a a additional a a additional a a additional a a additional a a additional a a additional a additional a additional a a additional a a additional a a additional a a additional a a additional a a additional a a additional a additional a a additional a additional a a additional a a additional a a additional a additional a a additional a a additional the be the of planing of planing of being to the be the of planing of being to the be the of planing of being to the be the of planing of being to the",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 4,
+     "gold": "20",
+     "pred": null,
+     "correct": false,
+     "seconds": 3.3163372869603336,
+     "new_tokens": 128,
+     "stages": [
+      {
+       "text": "a a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a a additional a additional a additional a additional the be a additional a a additional a additional the be a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional the be the be the be the planing a the be the planing a a additional the be the planing a the be the planing of being a additional the",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 5,
+     "gold": "64",
+     "pred": null,
+     "correct": false,
+     "seconds": 3.3032368668355048,
+     "new_tokens": 128,
+     "stages": [
+      {
+       "text": "a additional a a additional a a additional a a additional a a additional the be a the be the, a a the be the, be theing be the of being a a the be the, be the, be the of planing a the planing of be of be of being to a additional a the planing a the be being a a the be be the planing of be of be of be of be of being to be the, be the planing of be of be of be of being a a the planing a the planing a a the be be of being to be the",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 6,
+     "gold": "260",
+     "pred": null,
+     "correct": false,
+     "seconds": 3.299019349971786,
+     "new_tokens": 128,
+     "stages": [
+      {
+       "text": "a additional a additional a additional a additional a additional to additional a additional to additional the of be a additional to additional the be a a additional a a additional a a additional the be a a additional a a additional the of being a additional the of being a additional the of being a additional the of being a additional a a additional the be the planing of being a additional the of being a a the planing of being a additional a a a the be the planing of being to the be the of planing of be of be of being be the planing of be of be of be",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 7,
+     "gold": "160",
+     "pred": null,
+     "correct": false,
+     "seconds": 3.305562134133652,
+     "new_tokens": 128,
+     "stages": [
+      {
+       "text": "a additional additional the a a a additional a additional a a additional the be a the be be the planing a the be be the planing of be of be of be of be of being a a the be being a a the be of being a a the planing a the planing of be of be be the planing of be planing to be the planing of be of be plan of planing of be planing to be the planing of be plan of planing of be planing a the be be being be the planing of be planing a a the be be of be of",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 8,
+     "gold": "45",
+     "pred": null,
+     "correct": false,
+     "seconds": 3.3128263980615884,
+     "new_tokens": 128,
+     "stages": [
+      {
+       "text": "a a additional a additional a additional a additional to additional the to additional a a additional to additional to additional the of be a a a additional the of be the of be the of be the of being a a a additional the be the of being a a the be the of being a a a the be the of being a a a additional a a additional a a additional the be the of planing of being a a a additional the be of being a a a the be a the be the of being be the of being to be the of planing of being to the be the of plan",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 9,
+     "gold": "460",
+     "pred": null,
+     "correct": false,
+     "seconds": 3.3008100038859993,
+     "new_tokens": 128,
+     "stages": [
+      {
+       "text": "be a additional a a additional a a additional a a additional a a additional a a additional a a additional the be a the be the planing of be the of be of being of be a the planing of be be the planing of be be be the plan of planing of be of be of be of being be the planing of be of being be the planing of be of being be the planing of be be the planing of be planing a the be be of be be the planing of be planing of be planing of be planing of be planing of be plan",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    }
+   ]
+  },
+  "S2": {
+   "correct": 0,
+   "n": 10,
+   "tokens_per_second": 38.591489251791664,
+   "mean_seconds": 6.633586963429115,
+   "records": [
+    {
+     "idx": 0,
+     "gold": "18",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.637380777159706,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "be a additional a a additional a a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional the of be the of be the of be the of planing the of planing a the be a the be a the be the planing of be of be of be of being be the planing a the be being be the planing a a a additional a a additional a a additional a a additional the be the planing of being a a additional a a the be the planing of being to the be the planing a the be the planing of be of be of being be the planing a the be being be the planing a the be being be the planing a a a a additional a a additional a the being a the be the planing a the be of planing a the be being be the planing a the be of planing a the be be",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 256
+      }
+     ]
+    },
+    {
+     "idx": 1,
+     "gold": "3",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.628459756961092,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "a additional additional the of be a a a a additional the of be a the planing a the be a the be of be a the planing a the planing a the planing a a a a the be be the planing a the planing a the be be of be of being be a the be be the planing a the be be the planing a the planing a a the planing a a the planing a the planing a a the planing a a the be be of be be of be being be a the be being be the planing a the planing a a the planing a a the be be of be of be of be of be being be the planing of be planing a the planing a a the planing a of be planing a a the planing a a the planing a a the be be of be planing a the be be be of be of be of be planing a the planing a a the be be of be planing a the be be of be planing a the be be of be of be of be of be of be of be of being be the planing a a the planing a a the planing a a the",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 256
+      }
+     ]
+    },
+    {
+     "idx": 2,
+     "gold": "70000",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.62935781897977,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "a additional a a additional a a additional to additional a a additional to additional the of be a a a a additional to the be a a a a additional to the of be a the be a the be a the be a the be a the be a the be a the planing a the planing a the planing of being to be a the planing of being to be a the be be the planing of being to be a the be be the planing of be of be of be of be of be of planing of be of be of planing a a the planing of be planing of be planing of be planing of be planing a the planing of be plan of planing of be planing of be planing a a a the be be be of be of be being be a the be being be the planing a a the be be of be of be of be of be of be of planing a a the planing of be planing of be planing of be planing a a a the be be be of be of be being be the planing of be planing a a the be be of be being be the planing of be planing a a the",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 256
+      }
+     ]
+    },
+    {
+     "idx": 3,
+     "gold": "540",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.6211613290943205,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "a a a a additional a a additional a a additional a a additional to a additional to additional a a a a additional a a additional a a additional a a additional a a additional a a additional a a additional a a additional a a additional a a additional a a additional a a additional a additional a a additional a a additional a a additional a a additional a a additional a a additional a a additional the be the be the of planing of planing of being a additional a a a the be the planing of being to the be the of planing of be of be of being be the planing of be of be of being be a additional a a a a a a additional a a additional a a additional a a additional a a the be the planing of being to of be the of planing of be of being be the planing of be of being be the planing of be of be of being be the planing of be of being be the planing of be of being be the planing of be of be of be of being be the planing of be of being be the planing of be of be of being be the planing of be of be of be of be",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 256
+      }
+     ]
+    },
+    {
+     "idx": 4,
+     "gold": "20",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.641553127905354,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "a a a additional a additional a additional a additional a additional a additional a additional a additional to additional a additional a additional a a additional a additional a additional a a additional a additional a additional a additional to additional a additional a additional a a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional the be a additional a additional a additional a a additional a additional a additional a additional a additional the be the be the be the be the be the planing a the be the planing of being a a additional the be the planing a a a additional the be the planing a a additional the be the planing a a a additional the be the planing a the be the planing a a a additional the be the planing a a a additional the be the of planing a the be the planing a the be the planing of be be the planing a a a additional the be be the planing a a a additional a a additional the planing a a the planing a a the be being a additional a a additional the be the planing a a a additional a a additional the be of planing a a the be the plan",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 256
+      }
+     ]
+    },
+    {
+     "idx": 5,
+     "gold": "64",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.630578755168244,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "a additional a a additional a a additional a a additional a a the be a the be a the planing a the be a the planing a the planing a the be being a a the be be the planing of be, a a the be be a the be being a a the be being a the be, be the of be of planing a the planing a the planing a a the planing a the planing a the planing the planing of be planing to be the planing a a the be be be being be the planing a the planing a a the be be of be of be planing a the planing a a the planing a the planing a a the planing a a the planing a a the planing a a the planing aing to be being a additional a the be be of be be of be being a a the be being a a the be being a a the be being a a the be being a a the be be the planing a the planing a the planing a a the planing a the planing a a the planing a a the be be of be of be being be a the",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 256
+      }
+     ]
+    },
+    {
+     "idx": 6,
+     "gold": "260",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.629744623089209,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "a additional a additional a a additional a additional to additional the of be a a a additional to the of be a a a additional a a additional to the be a a a additional a a additional to the be a the be a the be a the be be the of planing of being a a a a the be be the planing of be of be of being a a the be be the planing of be of be of being a a a a the be be the planing of be of be of be of be be the planing of be planing of be planing of be planing of be planing of be planing to be the planing of be planing a a a the be be being be the planing of be planing of be planing a a a the be be of be being be the planing of be planing a a a the be be of be being be the planing of be planing of be planing to be the planing of be planing of be be being be the planing of be planing a a a the be be of be of be of be of be be the planing of be planing of be planing of be planing a a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 256
+      }
+     ]
+    },
+    {
+     "idx": 7,
+     "gold": "160",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.631371940020472,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "a additional additional the of be a a a additional the be be a the be be the planing a a the be be of be of be of be of be be the of planing of be of planing a a the planing of be planing a a the planing a a the be be of be of be of be of be of be of planing of be planing a a the be be be of be of be of be of planing of be planing a a the planing of be planing of be planing a a a the be be be of be of be of be planing a a the planing of be planing of be planing of be planing a a of be be be being be the planing of be planing a a the be be be of be of be plan of planing of be planing a be be being be the planing of be planing a a a the be be being be the planing of be planing a a a the be be of be being be a the be be the planing of be planing a a the be be of be of be being be a the be being be the planing of be planing of be plan",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 256
+      }
+     ]
+    },
+    {
+     "idx": 8,
+     "gold": "45",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.652828172082081,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "a insight the a a additional a additional a additional a additional to additional a a additional to additional the be a a a additional to a a additional to the a a a a additional to the be a the be a the be the of being a a a a the be a the be the of being a a a additional to the of be the of being a a a additional a a additional the be the of planing a the planing of be of be of being a a a a a a a a a the be be the planing of being to be a the be of being a a a a a the be be the planing of be of being a a a a the be a the be a the be the planing of being to be the of planing of be of be of being a a a a the be be the planing of be of be of being be a the be a the be of planing of be of being be a a a a additional a a a the be be the planing of be of be of planing of be planing of be be a the planing of be of be of be planing a a the be being be the planing of be",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 256
+      }
+     ]
+    },
+    {
+     "idx": 9,
+     "gold": "460",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.633433333830908,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "be a additional a a additional a a additional a a a additional a a additional a a a the be a the be a the be a the be of be a the planing a the be being be a the be being be the planing of be of be of be being be the planing of be of be of being be a additional the planing of be of be of be of be of be of be of planing a the planing of be planing of be be be a the be be being be a the be be the planing of be planing of be planing of be planing a the planing of be planing of be planing a a the be be be the planing of be planing of be planing of be planing a a a the be be be of be being be the planing of be planing a a the be be being be the planing of be planing of be planing a a a the be be be of be of be planing of be be be the planing of be planing of be planing a the be be be the planing of be planing of be planing a a a the be be be of be being be",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 256
+      }
+     ]
+    }
+   ]
+  },
+  "S3": {
+   "correct": 0,
+   "n": 10,
+   "tokens_per_second": 37.012570005570225,
+   "mean_seconds": 6.916569153708406,
+   "records": [
+    {
+     "idx": 0,
+     "gold": "18",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.983345004962757,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a a a additional to additional to additional a a additional to additional a a additional to additional a a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional to additional a additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 1,
+     "gold": "3",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.892701176926494,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a a additional a a additional a additional to additional to additional a a additional to additional the to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a a additional a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 2,
+     "gold": "70000",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.912151236087084,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a additional a a additional a additional to additional the to additional a a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 3,
+     "gold": "540",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.903473038924858,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a a a additional to additional to additional to additional to additional to additional a a a a additional to additional to additional to additional a a additional to additional a a additional to additional a a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to\u6027\u4ef7 additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a a additional to additional a a additional to additional a additional to additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 4,
+     "gold": "20",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.922635497059673,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a additional a a additional a a additional to additional the to additional a a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional to additional a additional a additional to additional a additional a additional a additional to additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a a additional a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 5,
+     "gold": "64",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.901158177061006,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a additional a a additional a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 6,
+     "gold": "260",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.909453441156074,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a a additional a a additional a a additional to additional to additional a a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a a additional a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 7,
+     "gold": "160",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.911721526877955,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a additional a additional a additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional to additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a a additional a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 8,
+     "gold": "45",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.917832107981667,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a additional a a additional a additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 9,
+     "gold": "460",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.91122033004649,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a additional a a additional a a additional to additional the to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    }
+   ]
+  },
+  "S4": {
+   "correct": 0,
+   "n": 10,
+   "tokens_per_second": 38.06782775141143,
+   "mean_seconds": 6.724838666175492,
+   "records": [
+    {
+     "idx": 0,
+     "gold": "18",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.719434300903231,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a a additional a a additional to additional a a additional to additional a a additional to additional a a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a a additional a additional to additional a additional to additional a additional a additional a additional a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 1,
+     "gold": "3",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.724244122160599,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a additional a a additional a additional to additional a a additional to additional a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional to additional a additional a additional to additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 2,
+     "gold": "70000",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.7241949120070785,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a additional a a additional a additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional to additional a additional a additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 3,
+     "gold": "540",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.7201415710151196,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a a a additional to additional to additional a a a additional to additional to additional to additional a a a additional to additional to additional a a additional to additional a a additional to additional a a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 4,
+     "gold": "20",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.728676742874086,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a additional a a additional a a additional a additional to additional a a additional to additional a additional to additional a additional to additional a a additional a additional to additional a additional to additional a additional to additional a additional a additional to additional a additional a additional a additional a additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 5,
+     "gold": "64",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.7218945738859475,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a additional a a additional a additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 6,
+     "gold": "260",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.725769881857559,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a additional a a additional a a additional to additional a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a a additional to additional a additional to additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 7,
+     "gold": "160",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.733890525996685,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a additional a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to\u6027\u4ef7 additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 8,
+     "gold": "45",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.727957847993821,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a additional a a additional a additional a additional to additional a additional a additional to additional a additional a additional a additional to additional a additional to additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 9,
+     "gold": "460",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.722182183060795,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a additional a a additional a additional to additional a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    }
+   ]
+  },
+  "S5": {
+   "correct": 0,
+   "n": 10,
+   "tokens_per_second": 38.074444992507026,
+   "mean_seconds": 6.723669906426221,
+   "records": [
+    {
+     "idx": 0,
+     "gold": "18",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.717567035928369,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "a to additional a a additional a a additional a a additional to additional a a additional to additional a a additional to additional a a additional to additional a additional to additional a a additional to additional a a additional to additional a additional to additional a additional to additional a additional a additional a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 1,
+     "gold": "3",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.722066516987979,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a additional a a additional a additional a additional to additional a a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 2,
+     "gold": "70000",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.722441849997267,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a additional a additional a additional to additional a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional to additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 3,
+     "gold": "540",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.717703700065613,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a a a additional to additional to additional a a a additional to additional to additional to additional a a a additional to additional to additional a a additional to additional a a additional to additional a a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 4,
+     "gold": "20",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.734558935044333,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a additional a a additional a additional a a additional a additional to additional a additional to additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional to additional a additional a additional to additional a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 5,
+     "gold": "64",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.723251874092966,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a additional a a additional a additional a additional a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional to additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 6,
+     "gold": "260",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.729183203075081,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a additional a a additional a additional a a additional to additional a a additional to additional a a additional to additional a additional to additional a a additional to additional a additional to additional a additional to additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 7,
+     "gold": "160",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.726773515110835,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a additional a a additional a additional a additional a additional a additional to additional a additional a additional to additional a additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 8,
+     "gold": "45",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.725279493955895,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a additional a a additional a additional a additional a additional a additional to additional a additional a additional to additional a additional a additional to additional a additional a additional a additional to additional a additional a additional a additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    },
+    {
+     "idx": 9,
+     "gold": "460",
+     "pred": null,
+     "correct": false,
+     "seconds": 6.717872940003872,
+     "new_tokens": 256,
+     "stages": [
+      {
+       "text": "to additional a a additional a a additional a additional a a additional to additional a additional to additional a additional to additional a additional to additional a additional to additional a additional a additional to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      },
+      {
+       "text": "to additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional a additional",
+       "stop_reason": "max_new_tokens",
+       "n_new_tokens": 128
+      }
+     ]
+    }
+   ]
+  },
+  "S3_vs_S5_outputs_differ": 10
+ }
+}
