@@ -59,3 +59,19 @@ This file concisely documents all modifications made to the repository across th
   - `smoke_test.py`: checks C0-C8. Examples: the prompt equals the Phase 4 one; our latent filling equals the official one where the official one works; our greedy loop equals `Coconut.generate`.
   - `run_gpt2.slurm`: one Newton job in the Technion template format: smoke test, then the full runs on one L40S, then scoring.
 - **Other:** `environment_newton.yml` (lean env for Newton, same versions, no TensorFlow). `.gitignore` now skips the GSM8K train JSON (over GitHub's 100MB limit).
+
+---
+
+## 6. Phase 5b: SIM-CoT GPT-2, written steps between thought rounds (2026-10-15)
+- **Model:** `internlm/SIM_COT-GPT2-Coconut` (`checkpoint_28`): GPT-2 Coconut + an **explainer** GPT-2 that turns each
+  pair of continuous thoughts into the step text. Loaded by `common.load_simcot`; `common.explain` decodes one pair.
+- **`experiments/simcot_run.py` + `.slurm`** (plan `docs/planning/simcot_interleaved_plan.md`, job 1449771): gate G0
+  (explainer present), G1 (0-10 latents), G2 (decoded thoughts vs true steps), and the main test L / T2 / T2-gold.
+  T2 = question + "\n" + s1 (the explainer's step 1) -> 10 latents -> answer; T2-gold uses the true step 1.
+  Result: T2 and T2-gold both lower than L (KNOWLEDGE_RETENTION.md 16.6).
+- **`experiments/simcot_t2in.py` + `.slurm`** (plan `docs/planning/simcot_t2in_plan.md`): the user's follow-up.
+  **Motivation:** even the true step hurt in T2, so the layout (a `<<...>>` line after the question) may be the
+  problem. Here step 1 is written as plain text (`<<16-3-4=9>>` -> `16-3-4=9.`) and put **inside** the question,
+  right before its last sentence (`insert_step`). Settings L / T2-in / T2-in-gold, all 1319, paired; also compared
+  with the saved T2 / T2-gold (placement effect). Checks: the L re-run and s1 must equal job 1449771. Reuses
+  `run_round` and `decode_thoughts` from `simcot_run.py`; no existing file changed.

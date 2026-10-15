@@ -14,6 +14,50 @@ How we work (lambda / Newton / conversation rules, exact commands, pitfalls): `w
 
 ---
 
+## HANDOFF (read first): exactly where we stopped (2026-10-15, end of a long session)
+
+**New session: read this block, then `workflow.md` (how we work, commands, Newton details), then section 16 (all
+results).** Global rules: `~/.claude/CLAUDE.md` (recap them at the start of every message; no bash by Claude).
+
+1. **SIM-CoT job 1449771: DONE** (results in **section 16.6**). G0/G1/G2 pass (explainer present, 44.7% at
+   10 latents, decoded thoughts are readable `<<a*b=c>>` steps). Main: **T2 34.4% and T2-gold 38.6%, both lower than
+   L 44.7%** (CIs exclude 0). Even the true step hurts, so the layout (a `<<...>>` line after the question, never seen
+   in training) is the likely cause. The user was disappointed by the negative result and chose one more try.
+2. **T2-in job: WRITTEN, NOT RUN** (user approved 2026-10-15). Plan `docs/planning/simcot_t2in_plan.md`. Files
+   `coconut/experiments/simcot_t2in.py` + `.slurm`. Step 1 written as `16-3-4=9.` and put **inside the question,
+   before its last sentence**. Settings L / T2-in / T2-in-gold (1319, paired) + placement effect vs the saved T2 /
+   T2-gold. Needs `coconut/results/simcot/simcot_run.json` on Newton (it is there). ~10 min.
+   - lambda: `git add coconut/experiments/simcot_t2in.* docs KNOWLEDGE_RETENTION.md && git commit && git push`
+   - Newton: `git pull`, `sbatch --test-only coconut/experiments/simcot_t2in.slurm`, then `sbatch ...`.
+   - Push `logs` + `coconut/results` back, `git pull` on lambda.
+   - When results arrive (`logs/simcot_t2in_<job>.log`, `coconut/results/simcot/simcot_t2in.json`): first the
+     `checks` (L and s1 equal the saved run on all 1319; look at the 20 printed questions: is the step in the right
+     place?), then T2-in(-gold) vs L and vs T2(-gold). Report plainly; update 16.6 and memory.
+   - If it crashes: report the reason, do not fix it alone (rule 7).
+   - Dropped by the user: "Option B" (measure readable thoughts on all 1319, "a totally different idea"). Not
+     run: "Option A" (step 1 after `<eot>`), replaced by the user's T2-in design.
+3. **Report (`final_rep/main.tex`, CogSci template, max 6 pages, include an AI-use statement): NOT STARTED.**
+   Next: write a short report plan in `docs/planning/report_plan.md` (sections, tables/figures, page budget), stop for
+   the user's OK, then write. Content:
+   - Part 1 = GPT-2 reproduction + feedback-vs-plain control (16.1).
+   - Part 2 = the interleaving test (SIM-CoT: T2, T2-gold, T2-in, T2-in-gold, section 16.6) + the documented
+     failures (few-shot floor, Qwen 7B broken, Qwen3-4B yes/no). Framing for a negative result: "on a model trained
+     only on question -> latents -> answer, inserting a written step (even the true one) lowers accuracy; a fair
+     test needs a model trained with the interleaved layout (training out of budget)". Do not write "proven false".
+   The old reports/docs over-claim; rewrite in plain words (section 4.11).
+   Figures need an executed notebook (`coconut/analysis.ipynb`, run with nbconvert by the user, global
+   RUNTIME/PRE-EXECUTION mandates).
+4. **Decisions already made by the user (do not re-ask):**
+   - GSM8K only.
+   - Minimal 2-round design (L, T2, T2-gold); T2-plain and A dropped.
+   - Mail `eran.b@campus.technion.ac.il`.
+   - Anaconda ToS accepted.
+   - Keep low-level risk notes short.
+   - The user accepts reporting the failures as documented effort.
+5. **Open offers, not chosen yet:** the cheap GPT-2 ideas in 16.5 (thought transplant, per-thought ablation, noise).
+
+---
+
 ## 0. Status in one screen
 
 - **Paper:** Coconut, "Training Large Language Models to Reason in a Continuous Latent Space" (Hao et al., FAIR Meta, code: github.com/facebookresearch/coconut). Copy in `og_coconut.md` / `og_coconut.pdf`.
@@ -23,6 +67,9 @@ How we work (lambda / Newton / conversation rules, exact commands, pitfalls): `w
 - **Where it runs:** Newton GPU cluster (Technion, Slurm), GPU **NVIDIA L40S 47GB**, section 7.
   Claude Code works on **lambda** (it has issues on Newton): code is written on lambda, pushed with git, and the
   user runs it on Newton (same paths, `/home/eran.b/neuroAI`). Logs and results come back through git.
+- **NEWEST (2026-10-15):** SIM-CoT GPT-2 ran (section 16.6): 44.7% at 10 latents, readable thoughts, but a written
+  step 1 before round 2 lowers accuracy (T2 34.4%, T2-gold 38.6%). Follow-up T2-in (step inside the question)
+  written, not run. See the HANDOFF block.
 - **LATEST (2026-10-15, night):** all Phase 5 results and the model search are in **section 16**. Summary: Part 1
   reproduced (27.1% at 6 latents vs paper 34.1%) + a strong control (feedback vs plain +17.5 points). The user's
   Idea 2 (interleaved latent thinking) is **not yet tested**: GPT-2 ignores step prompts, the Qwen2.5-7B export is
@@ -483,6 +530,9 @@ Phase 5 (written 2026-10-15):
   coconut/experiments/run_gpt2.slurm  the one Newton job
   coconut/experiments/qwen_check.py + .slurm    Qwen2.5-7B gate (+ GPT-2 run_native --fill plain control)
   coconut/experiments/qwen3_check.py + .slurm   Qwen3-4B gate G0-G3 (common.load_coconut_hf)
+  coconut/experiments/simcot_run.py + .slurm    SIM-CoT gate G0-G2 + L / T2 / T2-gold (job 1449771)
+  coconut/experiments/simcot_t2in.py + .slurm   SIM-CoT T2-in / T2-in-gold (step inside the question)
+  coconut/results/simcot/       simcot_run.json, simcot_t2in.json
   coconut/results/gpt2/         native.json, native_plain.json, fewshot_S1..S5.json, results.json, smoke/
   coconut/results/qwen7b/check/, coconut/results/qwen3/check/   gate reports
   docs/planning/gpt2_coconut_phase5_impl.md, qwen7b_coconut_pivot.md, qwen3_4b_interleaved_plan.md,
@@ -714,6 +764,47 @@ Earlier designs considered (not chosen, kept for the record):
 - Gate first: G0 explainer in checkpoint? G1 native sweep 0-10 latents (paper reproduction, vs our 27.1%).
   G2 decode thoughts of 20 questions vs the gold steps. G3 pilot of the chosen design: L, T2, T2-gold on 20 questions.
 - Open risk: in R, after step 1 is added, do the thoughts move on to step 2 or repeat step 1?
+
+### 16.6 SIM-CoT GPT-2 results (`internlm/SIM_COT-GPT2-Coconut`, job 1449771, 837 s, `coconut/results/simcot/simcot_run.json`)
+
+**G0 PASS.** 150 keys: `base_causallm` 149, `expainable_llm` 149, `embedding` 1. No missing / unexpected keys for the
+main model or the explainer.
+
+**G1 (native format, 1319):**
+
+| Latents | 0 | 2 | 4 | 6 | 8 | 10 |
+|---|---|---|---|---|---|---|
+| SIM-CoT | 5.4% | 13.6% | 27.9% | 38.2% | 43.5% | **44.7%** [42.0, 47.3] |
+| Our Coconut GPT-2 (16.1) | 10.4% | 12.9% | 21.0% | 27.1% | - | - |
+
+More thoughts give better accuracy; flattens 8 -> 10. In the range of the SIM-CoT paper's GPT-2 claim (about +8 over
+Coconut); check the exact paper number before the report.
+
+**G2 PASS: the decoded thoughts are readable steps.** First 20 questions: mostly well-formed `<<a*b=c>>` steps, often
+equal to the true steps (q11: `<<3*68=204>> <<2*80=160>> <<6*55=330>>` = gold; q12 first 3 of 4 = gold). Later pairs
+often decode to `### N`, usually the same N as L's answer. Bonus finding for Idea 3 (reading hidden reasoning).
+
+**Main (1319, paired):**
+
+| Setting | Accuracy | vs L [95% CI] | McNemar p |
+|---|---|---|---|
+| L (10 latents) | 44.7% | - | - |
+| T2 (question + "\n" + explainer s1) | 34.4% | -10.2 [-12.3, -8.2] | 3e-22 |
+| T2-gold (question + "\n" + true step 1) | 38.6% | -6.1 [-8.3, -3.9] | 1e-7 |
+
+T2 vs T2-gold: -4.2 [-5.8, -2.6], p = 1e-6. s1 exactly equal to the true step 1: 42.5% (strict string match:
+`<<4*20=80>>` vs `<<20*4=80>>` counts as wrong, so this understates it).
+
+- **Can claim:** on this model, adding a written step before the second thought round lowers accuracy. Even the true
+  step hurts, so most of the drop comes from the layout (text after the question, never seen in training); explainer
+  errors cost ~4 more points.
+- **Cannot claim:** that interleaving fails in general (one model, trained only on question -> latents -> answer);
+  why the true step hurts (guess: the model redoes done work; q0 T2-gold answered 36 = 18 x 2). Not measured.
+- **User reaction:** sad about a negative result. Asked to put the step inside the question instead (T2-in, next).
+  Explained to the user: T2 already was "step added to the question"; a text label like "START OF YOUR ANSWER:"
+  would not help (GPT-2 does not follow instructions).
+
+**T2-in / T2-in-gold:** written, not run (plan `docs/planning/simcot_t2in_plan.md`). Results go here.
 
 ### 16.5 Other Part 2 ideas (cheap, GPT-2, inference only; offered, not chosen yet)
 Thought transplant (question A's thoughts into question B: does B's answer follow A?), per-thought ablation (which of

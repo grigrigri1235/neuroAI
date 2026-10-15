@@ -1,6 +1,7 @@
 # Plan: interleaved latent thinking with SIM-CoT GPT-2 (DRAFT, waiting for approval)
 
-Date: 2026-10-15. Status: APPROVED ("lets go with minimal 2 round"). Code written: `common.load_simcot`,
+Date: 2026-10-15. Status: DONE (job 1449771, results in KNOWLEDGE_RETENTION.md 16.6; follow-up
+`simcot_t2in_plan.md`). Was: APPROVED ("lets go with minimal 2 round"). Code written: `common.load_simcot`,
 `common.explain`, `experiments/simcot_run.py` + `.slurm`. GPT-2 is cheap, so **one job** runs the gate (G0-G2) and
 the main test (L, T2, T2-gold, all 1319). The main numbers count only if G2 shows readable steps.
 Explainer decoding follows SIM-CoT's code: input = the 2 thought vectors, then the main model's embeddings of the
