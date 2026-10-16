@@ -1,0 +1,11 @@
+job 1450503 on clair1 at Thu Oct 15 09:48:21 PM IDT 2026
+name, memory.total [MiB], driver_version
+NVIDIA L40S, 49140 MiB, 595.58.03
+[21:48:27] start steps
+[23:44:20] done  steps
+[23:44:20] start train_mix
+[01:52:13] done  train_mix
+[01:52:13] start train_plain
+[03:58:45] done  train_plain
+[03:58:45] start eval
+[04:18:00] done  eval

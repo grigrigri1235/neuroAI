@@ -1,0 +1,34 @@
+training questions in gsm_train.json: 385620; using 50000 (shuffled, seed 0)
+key prefixes: {'base_causallm': 149, 'expainable_llm': 149, 'embedding': 1}
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+Passing a tuple of `past_key_values` is deprecated and will be removed in Transformers v4.53.0. You should pass an instance of `Cache` instead, e.g. `past_key_values=DynamicCache.from_legacy_cache(past_key_values)`.
+checkpoint: /home/eran.b/.cache/huggingface/hub/models--internlm--SIM_COT-GPT2-Coconut/snapshots/676c8a8aeb4afcef3a4fb98da9d539588d969340/checkpoint_28
+  150 keys, first: ['base_causallm.transformer.wte.weight', 'base_causallm.transformer.wpe.weight', 'base_causallm.transformer.h.0.ln_1.weight']
+<All keys matched successfully>
+check 0 (own step 1 = saved s1 on 20 test questions): 20/20
+2000/50000 steps, 7.7 q/s, ~104 min left | e.g. '<<120+45=165>>' (true ['<<120+45=165>>'])
+4000/50000 steps, 7.8 q/s, ~99 min left | e.g. '<<60-40=20>>' (true ['<<60-40=20>>'])
+6000/50000 steps, 7.8 q/s, ~94 min left | e.g. '<<2+3+4=9>>' (true ['<<2+3+4=9>>'])
+8000/50000 steps, 7.7 q/s, ~91 min left | e.g. '<<200/4=50>>' (true ['<<200/4=50>>'])
+10000/50000 steps, 7.6 q/s, ~88 min left | e.g. '<<400*3/4=300>>' (true ['<<400*3/4=300>>'])
+12000/50000 steps, 7.4 q/s, ~85 min left | e.g. '<<3*5=15>>' (true ['<<3*5=15>>'])
+14000/50000 steps, 7.3 q/s, ~82 min left | e.g. '<<7=7>>' (true ['<<7=7>>'])
+16000/50000 steps, 7.3 q/s, ~78 min left | e.g. '<<70/100*3000=2100>>' (true ['<<70/100*3000=2100>>'])
+18000/50000 steps, 7.2 q/s, ~75 min left | e.g. '<<500/25=20>>' (true ['<<500/25=20>>'])
+20000/50000 steps, 7.1 q/s, ~70 min left | e.g. '<<500-120=380>>' (true ['<<380/3=126.67>>'])
+22000/50000 steps, 7.1 q/s, ~66 min left | e.g. '<<60/100*50=30>>' (true ['<<60/100*50=30>>'])
+24000/50000 steps, 7.1 q/s, ~61 min left | e.g. '<<12-3=9>>' (true ['<<4*12=48>>'])
+26000/50000 steps, 7.1 q/s, ~56 min left | e.g. '<<3*15=45>>' (true ['<<3*15=45>>'])
+28000/50000 steps, 7.1 q/s, ~52 min left | e.g. '<<8*10=80>>' (true ['<<8*10=80>>'])
+30000/50000 steps, 7.1 q/s, ~47 min left | e.g. '<<15/2=7.5>>' (true ['<<6/2=3>>'])
+32000/50000 steps, 7.1 q/s, ~42 min left | e.g. '<<130+150+120+140+160=700>>' (true ['<<130+150+120+140+160=700>>'])
+34000/50000 steps, 7.1 q/s, ~38 min left | e.g. '<<20*8=160>>' (true ['<<20*8=160>>'])
+36000/50000 steps, 7.1 q/s, ~33 min left | e.g. '<<20*3=60>>' (true ['<<20*3=60>>'])
+38000/50000 steps, 7.2 q/s, ~28 min left | e.g. '<<20-5=15>>' (true ['<<5*3=15>>'])
+40000/50000 steps, 7.2 q/s, ~23 min left | e.g. '<<360=360>>' (true ['<<360=360>>'])
+42000/50000 steps, 7.2 q/s, ~18 min left | e.g. '<<80/8=10>>' (true ['<<80/8=10>>'])
+44000/50000 steps, 7.3 q/s, ~14 min left | e.g. '<<45*4=180>>' (true ['<<45*4=180>>'])
+46000/50000 steps, 7.3 q/s, ~9 min left | e.g. '<<100-60=40>>' (true ['<<100-60=40>>'])
+48000/50000 steps, 7.2 q/s, ~5 min left | e.g. '<<2*123-15=255>>' (true ['<<150/3=50>>'])
+50000/50000 steps, 7.2 q/s, ~0 min left | e.g. '<<300*50*.01=150>>' (true ['<<50/100*300=150>>'])
+own step 1 = true step 1 (exact text): 0.8004. saved /home/eran.b/neuroAI/coconut/results/simcot/ft_train_steps.json

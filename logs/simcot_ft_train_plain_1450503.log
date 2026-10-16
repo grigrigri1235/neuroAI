@@ -1,0 +1,46 @@
+key prefixes: {'base_causallm': 149, 'expainable_llm': 149, 'embedding': 1}
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+Passing a tuple of `past_key_values` is deprecated and will be removed in Transformers v4.53.0. You should pass an instance of `Cache` instead, e.g. `past_key_values=DynamicCache.from_legacy_cache(past_key_values)`.
+checkpoint: /home/eran.b/.cache/huggingface/hub/models--internlm--SIM_COT-GPT2-Coconut/snapshots/676c8a8aeb4afcef3a4fb98da9d539588d969340/checkpoint_28
+  150 keys, first: ['base_causallm.transformer.wte.weight', 'base_causallm.transformer.wpe.weight', 'base_causallm.transformer.h.0.ln_1.weight']
+<All keys matched successfully>
+check 1 (training input = test input): 10/10
+check 2: input  = 'George runs three times as fast as Phil. If it takes Phil 30 minutes to run a mile, how long, in minutes, will it take George to run 60 miles?\n<|start-latent|><|latent|><|latent|><|latent|><|latent|><|latent|><|latent|><|latent|><|latent|><|latent|><|latent|><|end-latent|>### 600<|endoftext|>'
+         graded = '### 600<|endoftext|>'
+check 3 (loss before training): plain 0.0720 | with own step 0.2716
+update 50/1563 loss 0.1027 | 3.6 min, ~110 min left
+check 4: 4.36 s/update, max GPU memory 11.6 GB, estimated total 114 min
+update 100/1563 loss 0.0837 | 7.6 min, ~111 min left
+update 150/1563 loss 0.0887 | 11.6 min, ~109 min left
+update 200/1563 loss 0.0878 | 15.6 min, ~106 min left
+update 250/1563 loss 0.0861 | 19.5 min, ~103 min left
+update 300/1563 loss 0.0876 | 23.8 min, ~100 min left
+update 350/1563 loss 0.0871 | 27.9 min, ~97 min left
+update 400/1563 loss 0.0962 | 32.0 min, ~93 min left
+update 450/1563 loss 0.0783 | 36.0 min, ~89 min left
+update 500/1563 loss 0.0810 | 39.8 min, ~85 min left
+update 550/1563 loss 0.0823 | 43.9 min, ~81 min left
+update 600/1563 loss 0.0783 | 47.8 min, ~77 min left
+update 650/1563 loss 0.0854 | 51.9 min, ~73 min left
+update 700/1563 loss 0.0859 | 56.0 min, ~69 min left
+update 750/1563 loss 0.0871 | 60.2 min, ~65 min left
+update 800/1563 loss 0.0808 | 64.2 min, ~61 min left
+update 850/1563 loss 0.0831 | 68.2 min, ~57 min left
+update 900/1563 loss 0.0783 | 72.1 min, ~53 min left
+update 950/1563 loss 0.0740 | 76.2 min, ~49 min left
+update 1000/1563 loss 0.0739 | 80.3 min, ~45 min left
+update 1050/1563 loss 0.0766 | 84.2 min, ~41 min left
+update 1100/1563 loss 0.0786 | 88.2 min, ~37 min left
+update 1150/1563 loss 0.0719 | 92.2 min, ~33 min left
+update 1200/1563 loss 0.0732 | 96.2 min, ~29 min left
+update 1250/1563 loss 0.0635 | 100.3 min, ~25 min left
+update 1300/1563 loss 0.0694 | 104.4 min, ~21 min left
+update 1350/1563 loss 0.0694 | 108.4 min, ~17 min left
+update 1400/1563 loss 0.0659 | 112.3 min, ~13 min left
+update 1450/1563 loss 0.0681 | 116.2 min, ~9 min left
+update 1500/1563 loss 0.0685 | 120.3 min, ~5 min left
+update 1550/1563 loss 0.0766 | 124.4 min, ~1 min left
+update 1563/1563 loss 0.0877 | 125.4 min, ~0 min left
+saved model /home/eran.b/neuroAI/coconut/checkpoints_ft/plain.pt
+valid L (300 questions): 132/300
+saved /home/eran.b/neuroAI/coconut/results/simcot/ft_train_plain.json
